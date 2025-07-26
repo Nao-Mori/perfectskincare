@@ -44,8 +44,8 @@ export const products: Product[] = [
     reviews: [
       { rate: 9, skinType: 3, concern: ["hydration", "dryness"], comment: "Instant hydration, no residue." },
       { rate: 7, skinType: 5, concern: ["hydration", "uneven texture"], comment: "Light gel absorbs fast." },
-      { rate: 8, skinType: 4, concern: ["dryness", "hydration"], comment: "Good under makeup." },
-      { rate: 6, skinType: 6, concern: ["pores", "hydration"], comment: "May cause breakouts on oily skin." },
+      { rate: 8, skinType: 4, concern: ["dryness", "light wrinkles"], comment: "Good under makeup." },
+      { rate: 6, skinType: 6, concern: ["pores", "light wrinkles"], comment: "May cause breakouts on oily skin." },
       { rate: 8, skinType: 2, concern: ["dryness"], comment: "Great for dry to combination." }
     ]
   },
@@ -54,9 +54,9 @@ export const products: Product[] = [
     name: "The Inkey List Ceramide Moisturizer",
     image: "https://example.com/images/inkey-ceramide.jpg",
     reviews: [
-      { rate: 8, skinType: 2, concern: ["dryness", "hydration"], comment: "Ceramide-rich and affordable." },
+      { rate: 8, skinType: 2, concern: ["dryness", "light wrinkles"], comment: "Ceramide-rich and affordable." },
       { rate: 7, skinType: 3, concern: ["dryness", "sensitivity"], comment: "Relieves tightness well." },
-      { rate: 9, skinType: 2, concern: ["dryness", "hydration"], comment: "Staple for winter." },
+      { rate: 9, skinType: 2, concern: ["dryness", "light wrinkles"], comment: "Staple for winter." },
       { rate: 7, skinType: 4, concern: ["redness", "dryness"], comment: "Light, but effective." },
       { rate: 8, skinType: 5, concern: ["hydration", "sensitivity"], comment: "Non-greasy yet moisturizing." }
     ]
