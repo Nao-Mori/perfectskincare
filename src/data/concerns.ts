@@ -1,0 +1,12 @@
+export const concerns = [
+  "dryness",
+  "oiliness",
+  "acne",
+  "redness",
+  "sensitivity",
+  "aging",
+  "dark spots",
+  "uneven texture",
+  "hydration",
+  "pores"
+];
