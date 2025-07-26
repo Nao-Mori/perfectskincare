@@ -1,12 +1,12 @@
 import { useTranslations } from 'next-intl';
 
 export default function Hero() {
-    const t = useTranslations();
+    const t = useTranslations("Hero");
 
     return (
         <section className="text-center max-w-xl mb-12">
-        <h2 className="text-3xl font-bold mb-4">{t('hero.title')}</h2>
-        <p className="text-base text-gray-600 mb-6">{t('hero.subtitle')}</p>
+        <h2 className="text-3xl font-bold mb-4">{t('title')}</h2>
+        <p className="text-base text-gray-600 mb-6">{t('subtitle')}</p>
 
         <div className="flex gap-2 justify-center items-center bg-white rounded-full px-4 py-2 shadow-md">
             <input
