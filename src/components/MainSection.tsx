@@ -10,11 +10,11 @@ export default function MainSection() {
             <SkinTypeSelector />
         </Card>
         <Card step={2} title={"Tell us your skin concerns!"}>
-            <div className="flex flex-wrap justify-center gap-2 mb-6 text-white">
+            <div className="flex flex-wrap justify-center gap-2 mb-6">
                 {concerns.slice(0,9).map((c, i) => (
                 <span
                     key={i}
-                    className="animate-bubble bg-blue-400 text-sm px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm mx-2"
+                    className="cursor-pointer animate-bubble bg-white text-sm px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm mx-2"
                 >
                     {c}
                 </span>

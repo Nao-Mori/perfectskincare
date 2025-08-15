@@ -21,7 +21,7 @@ export default function SkinTypeSelector() {
         <div
           key={id}
           onClick={() => setSelected(prev => (prev === id ? null : id))}
-          className={`cursor-pointer rounded-xl px-5 py-3 transition-all border shadow-sm text-sm font-medium m-1
+          className={`cursor-pointer animate-bubble rounded-xl px-3 py-1 transition-all border shadow-sm text-sm font-medium m-1
             ${
               selected === id
                 ? "bg-pink-100 border-pink-400 text-pink-800 shadow-md"
