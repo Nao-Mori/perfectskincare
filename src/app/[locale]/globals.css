@@ -6,6 +6,7 @@
   --color-text: #444444;
   --color-accent: #ffd3da;
   --color-accent-light: #fff0f3;
+  --color-accent-transparent: rgba(255, 240, 243, 0.5);
   --color-soft-blue: #d6eaff;
   --color-soft-green: #e4f9e5;
 }
@@ -55,4 +56,21 @@ button {
 
 button:hover {
   background-color: var(--color-accent-light);
+}
+
+@keyframes pulse-bubble {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-bubble:hover {
+  animation: pulse-bubble 1s ease-in-out infinite;
+}
+
+.bg-primary {
+  background-color: var(--color-bg);
 }

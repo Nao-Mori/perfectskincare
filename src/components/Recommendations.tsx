@@ -48,7 +48,7 @@ function summarizeReviews(reviews: {
     )[0]?.[0];
 
     // 3. Highest avg rating by specific skinType number
-    const topRatedSkinType = Object.entries(skinTypeRateMap)
+    const topRatedSkinType:{ skinType: number, group: string, avg: number } = Object.entries(skinTypeRateMap)
     .map(([skinNumStr, rates]) => ({
       skinType: Number(skinNumStr),
       group: groupLabel(Number(skinNumStr)),
@@ -110,7 +110,7 @@ export default function Recommendations() {
                 <div>
                     🎯 {t("effectivedTo")} {" "}
                     {topConcerns.map((c, i) => (
-                        <strong key={i}>{t(`concern.${c}`)}{i === 0 ? ", " : null}</strong>
+                      <strong key={i}>{t(`concern.${c}`)}{i === 0 ? ", " : null}</strong>
                     ))}
                 </div>
                 </div>
@@ -163,7 +163,7 @@ function Card({
         </div>
         {avgRating !== undefined && (
             <div className="mt-2">
-                <RatingBar rating={avgRating} />
+              <RatingBar rating={avgRating} />
             </div>
         )}
         <SkinTypeBar value={arrowPos} />
@@ -187,8 +187,7 @@ function RatingBar({ rating }: { rating: number }) {
           className="h-full transition-all duration-700"
           style={{
             width: `${percent}%`,
-            background:
-              "linear-gradient(to right, #fbc2eb, #a6c1ee)" // soft gradient
+            background: "linear-gradient(to right, #fbc2eb, #a6c1ee)" // soft gradient
           }}
         />
       </div>
@@ -201,16 +200,13 @@ function SkinTypeBar({ value }: { value: number }) {
 
   return (
     <div className="mt-4">
-      {/* Labels above */}
       <div className="flex justify-between text-xs text-gray-500 mb-1 px-1">
         {labels.map((label, i) => (
           <span key={i}>{label}</span>
         ))}
       </div>
 
-      {/* Bar */}
       <div className="relative h-4 rounded-full bg-gray-200 overflow-hidden">
-        {/* Gradient fill */}
         <div
           className="absolute top-0 left-0 h-full transition-all duration-700 ease-out"
           style={{
@@ -218,8 +214,7 @@ function SkinTypeBar({ value }: { value: number }) {
             background: "linear-gradient(to right, #f9c5d1, #fbc2eb)"
           }}
         />
-
-        {/* Arrow */}
+        
         <div
           className="absolute top-[-6px] text-pink-500 text-lg transition-all duration-500"
           style={{ left: `${value}%`, transform: "translateX(-50%)" }}
