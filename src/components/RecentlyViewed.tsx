@@ -1,7 +1,7 @@
 import { useRecentViewed } from "@/hooks/useRecentViewed";
 import { useEffect } from "react";
 
-export default function Product({ id }: { id: string }) {
+export default function RecentlyViewed({ id }: { id: string }) {
   const { recent, pushView } = useRecentViewed(8);
 
   useEffect(() => {
@@ -11,9 +11,6 @@ export default function Product({ id }: { id: string }) {
 
   return (
     <>
-      <main>
-        
-      </main>
       <aside>
         <h3>Recently viewed</h3>
         <ul>{recent.map(pid => <li key={pid}>{pid}</li>)}</ul>
