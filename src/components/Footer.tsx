@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="bg-gradient-to-r from-pink-100 via-blue-100 to-purple-100 text-gray-700 text-sm mt-12">
@@ -10,10 +12,10 @@ export default function Footer() {
         <div>
           <h4 className="text-md font-semibold mb-2">Quick Links</h4>
           <ul className="space-y-1">
-            <li><a href="/find-by-concern" className="hover:underline">Find by Concern</a></li>
-            <li><a href="/find-by-ingredient" className="hover:underline">Find by Ingredient</a></li>
-            <li><a href="/talk-to-ai" className="hover:underline">Talk to AI</a></li>
-            <li><a href="/product-check" className="hover:underline">Product Check</a></li>
+            <li><Link href="/find-by-concern" className="hover:underline">Find by Concern</Link></li>
+            <li><Link href="/find-by-ingredient" className="hover:underline">Find by Ingredient</Link></li>
+            <li><Link href="/talk-to-ai" className="hover:underline">Talk to AI</Link></li>
+            <li><Link href="/product-check" className="hover:underline">Product Check</Link></li>
           </ul>
         </div>
 
