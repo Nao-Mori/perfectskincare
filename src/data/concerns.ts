@@ -7,6 +7,6 @@ export const concerns = [
   "aging",
   "dark spots",
   "uneven texture",
-  "hydration",
+  "wrinkles",
   "pores"
 ];

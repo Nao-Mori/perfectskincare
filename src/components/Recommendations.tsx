@@ -3,52 +3,52 @@ import { useTranslations } from "next-intl";
 import Image from 'next/image';
 
 function summarizeReviews(reviews: {
-  rate: number;
-  skinType: number; // 1–8
-  concern: string[];
-  comment: string;
+    rate: number;
+    skinType: number; // 1–8
+    concern: string[];
+    comment: string;
 }[]) {
-  // 1. Average rating overall
-  const avgRating =
-    reviews.reduce((sum, r) => sum + r.rate, 0) / reviews.length;
+    // 1. Average rating overall
+    const avgRating =
+        reviews.reduce((sum, r) => sum + r.rate, 0) / reviews.length;
 
-  // 2. Skin type (grouped 1–2, 3–4, 5–6, 7–8) that reviewed the most
-  const skinTypeGroups: Record<
-    "dry" | "drycombination" | "oilycombination" | "oily",
-    number[]
-  > = {
-    dry: [],
-    drycombination: [],
-    oilycombination: [],
-    oily: []
-  };
+    // 2. Skin type (grouped 1–2, 3–4, 5–6, 7–8) that reviewed the most
+    const skinTypeGroups: Record<
+        "dry" | "drycombination" | "oilycombination" | "oily",
+        number[]
+    > = {
+        dry: [],
+        drycombination: [],
+        oilycombination: [],
+        oily: []
+    };
 
-  const groupLabel = (num: number) => {
-    if (num <= 2) return "dry";
-    if (num <= 4) return "drycombination";
-    if (num <= 6) return "oilycombination";
-    return "oily";
-  };
+    const groupLabel = (num: number) => {
+        if (num <= 2) return "dry";
+        if (num <= 4) return "drycombination";
+        if (num <= 6) return "oilycombination";
+        return "oily";
+    };
 
-  const skinTypeCount: Record<string, number> = {};
-  const skinTypeRateMap: Record<number, number[]> = {};
+    const skinTypeCount: Record<string, number> = {};
+    const skinTypeRateMap: Record<number, number[]> = {};
 
-  for (const r of reviews) {
-    const group = groupLabel(r.skinType);
-    skinTypeGroups[group].push(r.skinType);
+    for (const r of reviews) {
+        const group = groupLabel(r.skinType);
+        skinTypeGroups[group].push(r.skinType);
 
-    skinTypeCount[group] = (skinTypeCount[group] || 0) + 1;
+        skinTypeCount[group] = (skinTypeCount[group] || 0) + 1;
 
-    if (!skinTypeRateMap[r.skinType]) skinTypeRateMap[r.skinType] = [];
-    skinTypeRateMap[r.skinType].push(r.rate);
-  }
+        if (!skinTypeRateMap[r.skinType]) skinTypeRateMap[r.skinType] = [];
+        skinTypeRateMap[r.skinType].push(r.rate);
+    }
 
-  const mostFrequentGroup = Object.entries(skinTypeCount).sort(
-    (a, b) => b[1] - a[1]
-  )[0]?.[0];
+    const mostFrequentGroup = Object.entries(skinTypeCount).sort(
+        (a, b) => b[1] - a[1]
+    )[0]?.[0];
 
-  // 3. Highest avg rating by specific skinType number
-  const topRatedSkinType = Object.entries(skinTypeRateMap)
+    // 3. Highest avg rating by specific skinType number
+    const topRatedSkinType = Object.entries(skinTypeRateMap)
     .map(([skinNumStr, rates]) => ({
       skinType: Number(skinNumStr),
       group: groupLabel(Number(skinNumStr)),
@@ -57,24 +57,19 @@ function summarizeReviews(reviews: {
     }))
     .sort((a, b) => b.avg - a.avg)[0];
 
-  // 4. Top 2 concerns
-  const concernRatings: Record<string, number[]> = {};
+    // 4. Top 2 concerns
+    const concernCounts: Record<string, number> = {};
 
-  reviews.forEach((r) => {
+    reviews.forEach((r) => {
     r.concern.forEach((c) => {
-      if (!concernRatings[c]) concernRatings[c] = [];
-      concernRatings[c].push(r.rate);
+        concernCounts[c] = (concernCounts[c] || 0) + 1;
     });
-  });
+    });
 
-  const topConcerns = Object.entries(concernRatings)
-    .map(([c, rates]) => ({
-      concern: c,
-      avg: rates.reduce((a, b) => a + b, 0) / rates.length
-    }))
-    .sort((a, b) => b.avg - a.avg)
-    .slice(0, 2)
-    .map((e) => e.concern);
+    const topConcerns = Object.entries(concernCounts)
+    .sort((a, b) => b[1] - a[1]) // sort by count
+    .slice(0, 2) // top 2
+    .map(([concern]) => concern);
 
   return {
     avgRating: Number(avgRating.toFixed(2)), // 1
@@ -113,7 +108,7 @@ export default function Recommendations() {
                     {" "} ({topRatedSkinType.avg})
                     </div>
                 <div>
-                    🎯 {t("popularFor")} {" "}
+                    🎯 {t("effectivedTo")} {" "}
                     {topConcerns.map((c, i) => (
                         <strong key={i}>{t(`concern.${c}`)}{i === 0 ? ", " : null}</strong>
                     ))}
@@ -172,7 +167,7 @@ function Card({
             </div>
         )}
         <SkinTypeBar value={arrowPos} />
-        <p className="text-sm text-gray-600">{latestComment}</p>
+        {/* <p className="text-sm text-gray-600">{latestComment}</p> */}
         {extra}
     </div>
   );

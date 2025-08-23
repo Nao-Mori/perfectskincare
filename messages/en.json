@@ -12,6 +12,7 @@
     "skin": "skin",
     "popularFor": "Popular for",
     "ratedHighBy": "Rated High by",
+    "effectivedTo": "Effective to",
     "skinType": {
       "dry": "Dry",
       "drycombination": "Dry Combination",
@@ -29,7 +30,9 @@
       "dark spots": "dark spots",
       "uneven texture": "uneven texture",
       "oiliness": "oiliness",
-      "pores": "visible pores"
+      "pores": "visible pores",
+      "light wrinkles": "light wrinkles",
+      "deep wrinkles": "deep wrinkles"
     }
   }
 }
