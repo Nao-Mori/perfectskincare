@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-pink-100 via-blue-100 to-purple-100 text-gray-700 text-sm mt-12">
+    <footer className="relative z-10 bg-gradient-to-r from-pink-100 via-blue-100 to-purple-100 text-gray-700 text-sm mt-12">
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <h4 className="text-lg font-semibold mb-2">SkinMatch.AI</h4>
+          <h4 className="text-lg font-semibold mb-2">SkinMatch.io</h4>
           <p>Your gentle skincare matchmaker 🤍</p>
         </div>
 
@@ -28,7 +28,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center py-4 border-t border-gray-300 text-xs">
-        &copy; {new Date().getFullYear()} SkinMatch.AI – All rights reserved.
+        &copy; {new Date().getFullYear()} SkinMatch.io – All rights reserved.
       </div>
     </footer>
   );

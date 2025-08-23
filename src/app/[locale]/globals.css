@@ -2,7 +2,7 @@
 
 :root {
   --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
-  --color-bg: #fef9f4;
+  --color-bg: #fef9f4; /*rgb(254, 249, 244)*/
   --color-text: #444444;
   --color-accent: #ffd3da;
   --color-accent-light: #fff0f3;

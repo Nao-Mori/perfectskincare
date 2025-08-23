@@ -1,9 +1,9 @@
-# SkinMatch.AI — Your Personalized Skincare Assistant 🧴✨
+# SkinMatch.io — Your Personalized Skincare Assistant 🧴✨
 
 AI-powered skincare product recommendation web app built with **Next.js**, **TypeScript**, and **Tailwind CSS**.  
 Users can log in with Google and describe their skin concerns in natural language — the app listens, understands, and recommends the best-matching skincare products using AI.
 
-#Live DEMO: https://perfectskincare.vercel.app/en
+# Live DEMO: https://perfectskincare.vercel.app/en
 
 ## 🚀 Features
 
