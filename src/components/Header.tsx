@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import LanguageDropdown from "./ui/LanguageDropdown";
 import { internalLinks } from "@/data/internalLinks";
 import { useTranslations } from 'next-intl';
+import { signIn, signOut } from "next-auth/react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -66,7 +67,7 @@ export default function Header() {
         </nav> */}
         <div className="flex">
           <LanguageDropdown isWide={true} />
-          <button className="text-sm whitespace-nowrap font-bold ml-2">
+          <button className="text-sm whitespace-nowrap font-bold ml-2" onClick={() => signIn("google")}>
             {tControls("login")}
           </button>
         </div>
