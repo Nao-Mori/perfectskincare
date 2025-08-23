@@ -7,7 +7,7 @@ export default function Footer() {
   const tLinks = useTranslations('Links');
 
   return (
-    <footer className="relative z-10 bg-gradient-to-r from-pink-100 via-blue-100 to-purple-100 text-gray-700 text-sm mt-12">
+    <footer className="relative z-8 bg-gradient-to-r from-pink-100 via-blue-100 to-purple-100 text-gray-700 text-sm mt-12">
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <h4 className="text-lg font-semibold mb-2">SkinMatch.io</h4>

@@ -1,8 +1,10 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 import { NextResponse } from 'next/server';
 import { writeFile } from 'fs/promises';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
+
+const prisma = new PrismaClient();
 
 export const config = {
   api: {
@@ -15,8 +17,9 @@ export async function POST(req: Request) {
     const formData = await req.formData();
     const file = formData.get('image') as File;
     const name = formData.get('name') as string;
+    const category = formData.get('category') as string;
 
-    if (!file || !name) {
+    if (!file || !name || !category) {
       return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
     }
 
@@ -30,9 +33,11 @@ export async function POST(req: Request) {
     await writeFile(filePath, buffer);
 
     const imageUrl = `/uploads/${filename}`;
+    const data = { name, image: imageUrl, category };
 
-    // Example: save to DB here using imageUrl
-    return NextResponse.json({ name, image: imageUrl }, { status: 201 });
+    await prisma.product.create({ data });
+
+    return NextResponse.json(data, { status: 201 });
   } catch (error) {
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }

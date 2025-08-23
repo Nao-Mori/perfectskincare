@@ -65,12 +65,6 @@ export default function Header() {
           ))}
         </nav> */}
         <div className="flex">
-          {/* <button
-          //onClick={handleSwitchLocale}
-          className="hidden md:flex text-sm whitespace-nowrap font-bold button--outlined"
-          >
-            🌐 {locale}
-          </button> */}
           <LanguageDropdown isWide={true} />
           <button className="text-sm whitespace-nowrap font-bold ml-2">
             {tControls("login")}

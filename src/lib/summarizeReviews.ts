@@ -3,7 +3,13 @@ export function summarizeReviews(reviews: {
   skinType: number; // 1–8
   concerns: { value: string }[];
   comment: string;
-}[]) {
+}[]): {
+  avgRating: number;
+  mostFrequentGroup: string;
+  topRatedSkinType: { skinType: number, group: string, avg: number };
+  topConcerns: string[];
+  averageReviewedSkinType: number;
+} {
   // 1. Average rating overall
   const avgRating = reviews.reduce((sum, r) => sum + r.rate, 0) / reviews.length;
 
@@ -71,10 +77,10 @@ export function summarizeReviews(reviews: {
   const averageReviewedSkinType = allSkinTypes.reduce((a, b) => a + b, 0) / allSkinTypes.length;
 
   return {
-    avgRating: Number(avgRating.toFixed(2)), // 1
-    mostFrequentGroup, // 2
-    topRatedSkinType,  // 3: { skinType: number, group: string, avg: number }
-    topConcerns,       // 4
-    averageReviewedSkinType // 5
+    avgRating: Number(avgRating.toFixed(2)),
+    mostFrequentGroup,
+    topRatedSkinType,
+    topConcerns,
+    averageReviewedSkinType
   };
 }

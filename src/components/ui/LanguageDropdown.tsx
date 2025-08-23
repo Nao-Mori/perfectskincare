@@ -25,7 +25,7 @@ export default function LanguageDropdown({ isWide }: { isWide: boolean }) {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className={`${isWide ? "hidden md:flex" : ""} text-sm whitespace-nowrap font-bold button--outlined`}
+        className={`${isWide ? "hidden md:flex" : ""} text-sm whitespace-nowrap font-bold btn--outlined`}
       >
         🌐 {locales.find(l => l.code === locale)?.label}
       </button>

@@ -61,7 +61,8 @@ async function main(pro: any) { //IDK why importing TYPE doesn't work, sorry!!
   const product = await prisma.product.create({
     data: {
       name: pro.name,
-      image: pro.image
+      image: pro.image,
+      category: pro.category
     },
   });
 
@@ -73,14 +74,14 @@ async function main(pro: any) { //IDK why importing TYPE doesn't work, sorry!!
       skinType: review.skinType,
       comment: review.comment || null,
         product: {
-            connect: { id: product.id },
+          connect: { id: product.id },
         },
       },
     });
     // Step 3: Add Concerns to that Review
     const concerns = review.concerns;
     await prisma.concern.createMany({
-        data: concerns.map(({ value }:any)=> ({ value, reviewId: reviewDoc.id })),
+      data: concerns.map(({ value }:any)=> ({ value, reviewId: reviewDoc.id })),
     });
   }
 

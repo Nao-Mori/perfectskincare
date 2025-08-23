@@ -15,6 +15,8 @@
     "favorite": "Favorite"
   },
   "Product": {
+    "name": "Product Name",
+    "category": "Category",
     "noDescription": "No description yet",
     "rating": "Rating",
     "especially": "Especially for",

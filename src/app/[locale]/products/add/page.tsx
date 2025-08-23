@@ -1,18 +1,22 @@
 'use client';
 
 import Spinner from "@/components/ui/Spinner";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 export default function AddProductPage() {
   const [name, setName] = useState('');
   const [image, setImage] = useState<File | null>(null);
+  const [category, setCategory] = useState('');
   const [message, setMessage] = useState('');
   const [sending, setSending] = useState(false);
+
+  const t = useTranslations("Product");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!name || !image) {
+    if (!name || !image || !category) {
       setMessage('Please provide both name and image');
       return;
     }
@@ -22,6 +26,7 @@ export default function AddProductPage() {
     const formData = new FormData();
     formData.append('name', name);
     formData.append('image', image);
+    formData.append('category', category);
 
     //REMOVE Later
     console.log(formData);
@@ -58,16 +63,32 @@ export default function AddProductPage() {
           placeholder="Product name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="border px-3 py-2 rounded"
+          className="input-base"
           required
         />
         <input
           type="file"
           accept="image/*"
           onChange={(e) => setImage(e.target.files?.[0] || null)}
-          className="border px-3 py-2 rounded"
+          className="input-base"
           required
         />
+        <label className="block">
+          <div className="relative">
+            <select className="select-base" value={category} onChange={(e) => setCategory(e.target.value)}>
+              <option value="" disabled>{t("category")}</option>
+              <option>Cleanser</option>
+              <option>Toner</option>
+              <option>Serum</option>
+              <option>Cream</option>
+            </select>
+            <svg className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500"
+            viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+            >
+              <path d="M5.25 7.5l4.5 4.5 4.5-4.5" />
+            </svg>
+          </div>
+        </label>
         {sending ? (
           <Spinner />
         ) : (

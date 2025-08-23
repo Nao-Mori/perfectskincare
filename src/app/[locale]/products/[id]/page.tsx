@@ -5,27 +5,25 @@ import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useProduct } from '@/hooks/useProduct';
 import type { Product } from '@/data/products';
-import { summarizeReviews } from '@/lib/summarizeReviews';
-import RatingBar from '@/components/ui/RatingBar';
-import SkinTypeBar from '@/components/ui/SkinTypeBar';
 import Spinner from '@/components/ui/Spinner';
 import RecentlyViewed from "@/components/RecentlyViewed";
+import Link from 'next/link';
+import ReviewResult from '@/components/ui/ReviewResult';
 
 export default function ProductPage() {
   const { id } = useParams();
 
   return (
     <>
-    <div className="w-full mt-5 mb-10 bg-white shadow-md py-5 rounded-2xl">
-      <Details />
+    <div className="w-full mt-5 mb-10 bg-white shadow-md py-5 rounded-2xl min-h-60">
+      <Details id={String(id)} />
       </div>
       <RecentlyViewed id={String(id)} />
     </>
   );
 }
 
-function Details() {
-  const t = useTranslations("Product");
+function Details({ id }: { id: string }) {
   const param = useParams();
   const { data, isLoading, error } = useProduct(param.id as string);
   const product = data as Product;
@@ -40,17 +38,6 @@ function Details() {
     return <div className="text-red-500 text-center">Product does not exist</div>;
   }
 
-  const { 
-    avgRating,
-    //mostFrequentGroup,
-    topRatedSkinType,
-    topConcerns,
-    averageReviewedSkinType
-  } = summarizeReviews(product.reviews);
-
-  // convert to percentage offset for arrow placement (1–8 scale)
-  const arrowPos = ((averageReviewedSkinType - 1) / 7) * 100;
-
   return (
     <div className="flex flex-wrap item-center justify-center">
       <div className="relative min-w-full min-h-60 md:min-w-[500px] md:h-80"> 
@@ -62,28 +49,11 @@ function Details() {
         />
       </div>
       <div className="text-sm text-gray-600 px-5 min-w-full md:min-w-[500px]">
-        <div className="flex items-center mb-5">
+        <div className="flex items-center mb-5 mt-3">
           <h4 className="text-base md:text-xl font-semibold w-full">{product.name}</h4>
         </div>
-        {avgRating !== undefined && (
-          <div className="mt-2">
-            <RatingBar rating={avgRating} />
-          </div>
-        )}
-        <SkinTypeBar value={arrowPos} />
-        <div className="text-sm text-gray-600 mt-4 space-y-1">
-          <div>
-            ⭐ {t("ratedHighBy")} {" "}
-            <strong>{t(`skinType.${topRatedSkinType.group}`)}</strong> {t("skin")}
-            {" "} ({topRatedSkinType.avg})
-          </div>
-          <div>
-            🎯 {t("effectivedTo")} {" "}
-            {topConcerns.map((c, i) => (
-              <strong key={i}>{t(`concern.${c}`)}{i === 0 ? ", " : null}</strong>
-            ))}
-          </div>
-        </div>
+        <ReviewResult reviews={product.reviews} />
+        <Link className="btn mt-5 font-bold" href={`${id}/reviews`}>Post a review!</Link>
       </div>
     </div>
   );

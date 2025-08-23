@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
@@ -43,31 +46,6 @@ a {
   box-sizing: border-box;
 }
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  border-radius: 6px;
-  padding: 0.6rem 1rem;
-  background-color: var(--color-accent);
-  color: #222;
-  transition: background-color 0.2s;
-}
-
-button:hover {
-  background-color: var(--color-accent-light);
-}
-
-.button--outlined {
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border, #ccc);
-  color: var(--color-text, #333);
-}
-
-.button--outlined:hover {
-  background-color: var(--color-soft-blue);
-}
-
 @keyframes pulse-bubble {
   0%, 100% {
     transform: scale(1);
@@ -83,4 +61,51 @@ button:hover {
 
 .bg-primary {
   background-color: var(--color-bg);
+}
+
+@layer components {
+  :where(button, a.btn) {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    background-color: var(--color-accent);
+    color: #222;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    text-decoration: none;
+  }
+  :where(button, a.btn):hover {
+    background-color: var(--color-accent-light);
+  }
+  :where(button, a.btn):focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.35);
+  }
+  :where(button:disabled, a.btn[aria-disabled="true"]) {
+    opacity: .6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  :where(button, a.btn).btn--outlined {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border, #ccc);
+    color: var(--color-text, #333);
+  }
+  :where(button, a.btn).btn--outlined:hover {
+    background-color: var(--color-soft-blue);
+  }
+
+  .input-base {
+    @apply rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900
+           focus:outline-none focus:ring-2 focus:ring-indigo-500;
+  }
+  .select-base {
+    @apply rounded-xl border border-gray-300 bg-transparent px-3 py-2 pr-9 text-sm text-gray-900
+           focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full appearance-none;
+  }
 }
