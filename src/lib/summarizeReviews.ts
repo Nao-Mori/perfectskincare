@@ -66,15 +66,15 @@ export function summarizeReviews(reviews: {
   .slice(0, 2) // top 2
   .map(([concern]) => concern);
 
-  // 5. Skin type that reviewed this product the most
+  // 5. Average Skin type that reviewed this product
   const allSkinTypes = reviews.map((r) => r.skinType);
-  const mostReviewedSkinType = allSkinTypes.reduce((a, b) => a + b, 0) / allSkinTypes.length;
+  const averageReviewedSkinType = allSkinTypes.reduce((a, b) => a + b, 0) / allSkinTypes.length;
 
   return {
     avgRating: Number(avgRating.toFixed(2)), // 1
     mostFrequentGroup, // 2
     topRatedSkinType,  // 3: { skinType: number, group: string, avg: number }
     topConcerns,       // 4
-    mostReviewedSkinType // 5
+    averageReviewedSkinType // 5
   };
 }

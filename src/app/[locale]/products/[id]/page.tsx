@@ -1,16 +1,31 @@
 'use client';
 
-import { useTranslations } from "next-intl";
-import { useProduct } from '@/hooks/useProduct';
 import Image from 'next/image';
-import type { Product } from '../data/products';
-import { summarizeReviews } from "@/lib/summarizeReviews";
-import RatingBar from "./ui/RatingBar";
-import SkinTypeBar from "./ui/SkinTypeBar";
-import Spinner from "./ui/Spinner";
+import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
+import { useProduct } from '@/hooks/useProduct';
+import type { Product } from '@/data/products';
+import { summarizeReviews } from '@/lib/summarizeReviews';
+import RatingBar from '@/components/ui/RatingBar';
+import SkinTypeBar from '@/components/ui/SkinTypeBar';
+import Spinner from '@/components/ui/Spinner';
+import RecentlyViewed from "@/components/RecentlyViewed";
 
-export default function SingleProduct({ id }: { id: string }) {
-  const { data, isLoading, error } = useProduct(id as string);
+export default function ProductPage() {
+  const { id } = useParams();
+
+  return (
+    <div className="px-5">
+      <Details />
+      <RecentlyViewed id={String(id)} />
+    </div>
+  );
+}
+
+function Details() {
+  const t = useTranslations("Recommendations");
+  const param = useParams();
+  const { data, isLoading, error } = useProduct(param.id as string);
   const product = data as Product;
 
   if (isLoading) {
@@ -23,23 +38,20 @@ export default function SingleProduct({ id }: { id: string }) {
     return <div className="text-red-500 text-center">Product doesn't exist</div>;
   }
 
-  const t = useTranslations("Recommendations");
-
   const { 
     avgRating,
     mostFrequentGroup,
     topRatedSkinType,
     topConcerns,
-    mostReviewedSkinType
+    averageReviewedSkinType
   } = summarizeReviews(product.reviews);
 
   // convert to percentage offset for arrow placement (1–8 scale)
-  const arrowPos = ((mostReviewedSkinType - 1) / 7) * 100;
+  const arrowPos = ((averageReviewedSkinType - 1) / 7) * 100;
 
   return (
-    <section className="max-w-5xl w-full">
-      <h3 className="text-xl font-semibold mb-6">{t("title")}</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <section className="w-full">
+      <div className="flex">
         <div className="relative w-full h-48"> 
           <Image
           src={product.image}
@@ -48,7 +60,7 @@ export default function SingleProduct({ id }: { id: string }) {
           className="object-contain p-2"
           />
         </div>
-        <div className="text-sm text-gray-600 mt-2 space-y-1">
+        <div className="text-sm text-gray-600">
           <div className="flex items-center h-16">
             <h4 className="text-base font-semibold w-full">{product.name}</h4>
           </div>

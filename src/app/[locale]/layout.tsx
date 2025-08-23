@@ -7,6 +7,7 @@ import "./globals.css";
 import BackgroundImage from "@/components/ui/BackgroundImage";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import QueryProvider from "../query-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,14 +40,16 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
         <div className="min-h-screen flex flex-col">
-          <NextIntlClientProvider>
-            <BackgroundImage />
-            <Header />
-              <main className="bg-bg text-text font-sans flex-grow">
+          <QueryProvider>
+            <NextIntlClientProvider>
+              <BackgroundImage />
+              <Header />
+              <main className="bg-bg text-text font-sans flex-grow px-5 flex flex-col items-center z-10">
                 {children}
               </main>
-            <Footer />
-          </NextIntlClientProvider>
+              <Footer />
+            </NextIntlClientProvider>
+          </QueryProvider>
         </div>
       </body>
     </html>

@@ -11,12 +11,12 @@ export default function RecentlyViewed({ id }: { id: string }) {
     pushView(id);
   }, [id, pushView]);
 
+  if (!recent) return null;
+
   return (
-    <>
-      <aside>
-        <h3>Recently viewed</h3>
-        <ul>{recent.map(pid => <li key={pid}>{pid}</li>)}</ul>
-      </aside>
-    </>
+    <aside>
+      <h3>Recently viewed</h3>
+      <ul>{recent.map(pid => <li key={pid}>{pid}</li>)}</ul>
+    </aside>
   );
 }

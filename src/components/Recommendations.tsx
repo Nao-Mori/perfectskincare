@@ -15,14 +15,14 @@ export default function Recommendations({ products }: { products: Product[] }) {
         {products.map((product: Product) => {
           const { 
             avgRating,
-            mostFrequentGroup, 
+            mostFrequentGroup,
             topRatedSkinType,
             topConcerns,
-            mostReviewedSkinType
+            averageReviewedSkinType
           } = summarizeReviews(product.reviews);
 
           // convert to percentage offset for arrow placement (1–8 scale)
-          const arrowPos = ((mostReviewedSkinType - 1) / 7) * 100;
+          const arrowPos = ((averageReviewedSkinType - 1) / 7) * 100;
 
           const extra = (
             <div className="text-sm text-gray-600 mt-2 space-y-1">
