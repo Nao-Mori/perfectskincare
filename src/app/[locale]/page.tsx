@@ -11,12 +11,24 @@ export default function Home() {
     <div>
       <main className="min-h-screen bg-bg text-text font-sans">
         <div className="relative w-full z-1">
-          <div className="absolute right-0">
-            <div className="w-full">
-          <Image alt="background" priority src="/images/background.png" 
-           className="w-full opacity-90" height={1024} width={1536}
-           />
-           </div>
+          <div className="absolute w-full z-[-5]">
+            <div className="flex flex-row-reverse justify-between gap-2">
+              <div>
+                <Image alt="background" priority src="/images/background.webp" 
+                className="w-full opacity-90" height={1024} width={1024}
+                />
+              </div>
+              <div className="hidden lg:block">
+                <Image alt="background2" priority src="/images/background2.webp" 
+                className="w-full opacity-90" height={1024} width={1024}
+                />
+              </div>
+            </div>
+              <div className="block lg:hidden max-w-[700px]">
+                <Image alt="background3" priority src="/images/background2.webp" 
+                className="opacity-90" height={1024} width={1024}
+                />
+              </div>
           </div>
           <Header />
           <div className="px-5 flex flex-col items-center z-10">

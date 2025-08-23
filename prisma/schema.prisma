@@ -15,16 +15,16 @@ datasource db {
 
 model Product {
   id        Int        @id @default(autoincrement())
-  name      String
-  reviews   Review[]   //When added empty
-  concerns  Concern[]  // Optional, idk but could be used for direct look up
+  name      String     @unique
+  image     String     @unique @db.Text
+  reviews   Review[]
 }
 
 model Review {
   id         Int        @id @default(autoincrement())
   product    Product    @relation(fields: [productId], references: [id])
   productId  Int
-  concerns   Concern[]  // It can start from empty
+  concerns   Concern[]
   comment    String?
   rate       Int
   skinType   Int
@@ -35,6 +35,4 @@ model Concern {
   value      String
   review     Review   @relation(fields: [reviewId], references: [id])
   reviewId   Int
-  product    Product  @relation(fields: [productId], references: [id])
-  productId  Int
 }
