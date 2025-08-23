@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { hasLocale } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import "./globals.css";
 import BackgroundImage from "@/components/ui/BackgroundImage";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import QueryProvider from "../query-provider";
+import AppProviders from "../providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
+  const messages = await getMessages();
 
   return (
     <html lang={locale}>
@@ -40,16 +42,14 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
         <div className="min-h-screen flex flex-col">
-          <QueryProvider>
-            <NextIntlClientProvider>
-              <BackgroundImage />
-              <Header />
-              <main className="bg-bg text-text font-sans flex-grow px-5 flex flex-col items-center z-10">
-                {children}
-              </main>
-              <Footer />
-            </NextIntlClientProvider>
-          </QueryProvider>
+          <AppProviders locale={locale} messages={messages}>
+            <BackgroundImage />
+            <Header />
+            <main className="bg-bg text-text font-sans flex-grow px-5 flex flex-col items-center z-10">
+              {children}
+            </main>
+            <Footer />
+          </AppProviders>
         </div>
       </body>
     </html>

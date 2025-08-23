@@ -1,16 +1,16 @@
 'use client'
+
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import LanguageDropdown from "./ui/LanguageDropdown";
 import { internalLinks } from "@/data/internalLinks";
-import { useTranslations } from 'next-intl';
-import { signIn, signOut } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import LoginButton from "./ui/LoginButton";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const tLinks = useTranslations('Links');
-  const tControls = useTranslations('Controls');
 
   return (
     <header className="
@@ -67,9 +67,7 @@ export default function Header() {
         </nav> */}
         <div className="flex">
           <LanguageDropdown isWide={true} />
-          <button className="text-sm whitespace-nowrap font-bold ml-2" onClick={() => signIn("google")}>
-            {tControls("login")}
-          </button>
+          <LoginButton />
         </div>
       </div>
       <div className="relative">
