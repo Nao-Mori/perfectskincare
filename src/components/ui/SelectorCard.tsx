@@ -8,7 +8,7 @@ const textColorMap:Record<number, string> = {
   1: "text-blue-500 border-blue-300", 2: "text-red-500 border-red-300", 3: "text-green-500 border-green-300"
 };
 
-export default function Card({
+export default function SelectorCard({
   step,
   title,
   children,

@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
 export default function RatingBar({ rating }: { rating: number }) {
-  const t = useTranslations("Recommendations");
+  const t = useTranslations("Product");
   const percent = (rating / 10) * 100;
 
   return (

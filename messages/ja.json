@@ -6,15 +6,15 @@
     "title": "ぴったりのスキンケアを見つけましょう",
     "subtitle": "肌の状態を教えてください。最適な製品を見つけます！",
     "placeholder": "頬は乾燥していてTゾーンは脂っぽいです…",
-    "button": "おすすめをもらう"
+    "button": "おすすめをもらう",
+    "recommendations": "最もおすすめされた製品"
   },
   "Links": {
     "yourdata": "あなたのデータ",
     "history": "履歴",
     "favorite": "お気に入り"
   },
-  "Recommendations": {
-    "title": "最もおすすめされた製品",
+  "Product": {
     "noDescription": "まだ説明がありません",
     "rating": "評価",
     "especially": "特におすすめ",

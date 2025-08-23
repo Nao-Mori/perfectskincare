@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 
 export default function SkinTypeBar({ value }: { value: number }) {
   const labels = ["dry", "drycombination", "oilycombination", "oily"];
-  const t = useTranslations("Recommendations.skinType");
+  const t = useTranslations("Product.skinType");
 
   return (
     <div className="mt-4">

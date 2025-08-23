@@ -1,15 +1,15 @@
 import SkinTypeSelector from "./sections/SkinTypeSelector";
-import Card from "./ui/Card";
+import SelectorCard from "./ui/SelectorCard";
 
 export default function MainSection() {
   const concerns = ["Dryness", "Oiliness", "Acne", "Redness", "Wrinkles", "Dark Spots", "Rough Skin", "Wrinkles", "Lack of Elasty", "Blackheads"];
 
   return (
     <div className="flex flex-wrap justify-center">
-      <Card step={1} title={"Tell us your skin type!"}>
+      <SelectorCard step={1} title={"Tell us your skin type!"}>
         <SkinTypeSelector />
-      </Card>
-      <Card step={2} title={"Tell us your skin concerns!"}>
+      </SelectorCard>
+      <SelectorCard step={2} title={"Tell us your skin concerns!"}>
         <div className="flex flex-wrap justify-center gap-2 mb-6">
           {concerns.slice(0,9).map((c, i) => (
             <span
@@ -20,10 +20,10 @@ export default function MainSection() {
             </span>
           ))}
         </div>
-      </Card>
+      </SelectorCard>
 
       {/* for now dupe */}
-      <Card step={3} title={"Tell us ingredients you like!"}>
+      <SelectorCard step={3} title={"Tell us ingredients you like!"}>
         <div className="flex flex-wrap justify-center gap-2 mb-6 text-white">
           {concerns.slice(0,9).map((c, i) => (
             <span
@@ -34,7 +34,7 @@ export default function MainSection() {
             </span>
           ))}
         </div>
-      </Card>
+      </SelectorCard>
     </div>
   );
 }

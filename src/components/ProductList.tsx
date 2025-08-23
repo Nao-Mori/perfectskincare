@@ -5,12 +5,11 @@ import { summarizeReviews } from "@/lib/summarizeReviews";
 import RatingBar from "./ui/RatingBar";
 import SkinTypeBar from "./ui/SkinTypeBar";
 
-export default function Recommendations({ products }: { products: Product[] }) {
-  const t = useTranslations("Recommendations");
+export default function ProductList({ products }: { products: Product[] }) {
+  const t = useTranslations("Product");
 
   return (
     <section className="max-w-5xl w-full">
-      <h3 className="text-xl font-semibold mb-6">{t("title")}</h3>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {products.map((product: Product) => {
           const { 

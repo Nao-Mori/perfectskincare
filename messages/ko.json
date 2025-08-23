@@ -6,15 +6,15 @@
     "title": "피부에 꼭 맞는 스킨케어 찾기",
     "subtitle": "피부에 대해 알려주세요. 우리가 딱 맞는 제품을 찾아드릴게요.",
     "placeholder": "볼은 건조하고 T존은 기름져요...",
-    "button": "추천 받기"
+    "button": "추천 받기",
+    "recommendations": "맞춤 추천 제품"
   },
   "Links": {
     "yourdata": "당신의 데이터",
     "history": "기록",
     "favorite": "즐겨찾기"
   },
-  "Recommendations": {
-    "title": "맞춤 추천 제품",
+  "Product": {
     "noDescription": "아직 설명이 없어요",
     "rating": "평가",
     "especially": "~에 특히 좋아요",

@@ -15,15 +15,17 @@ export default function ProductPage() {
   const { id } = useParams();
 
   return (
-    <div className="px-5">
+    <>
+    <div className="w-full mt-5 mb-10 bg-white shadow-md py-5 rounded-2xl">
       <Details />
+      </div>
       <RecentlyViewed id={String(id)} />
-    </div>
+    </>
   );
 }
 
 function Details() {
-  const t = useTranslations("Recommendations");
+  const t = useTranslations("Product");
   const param = useParams();
   const { data, isLoading, error } = useProduct(param.id as string);
   const product = data as Product;
@@ -50,18 +52,18 @@ function Details() {
   const arrowPos = ((averageReviewedSkinType - 1) / 7) * 100;
 
   return (
-    <div className="w-full flex flex-wrap item-center justify-center mt-5 mb-10">
-      <div className="relative h-60 w-60"> 
+    <div className="flex flex-wrap item-center justify-center">
+      <div className="relative min-w-full min-h-60 md:min-w-[500px] md:h-80"> 
         <Image
         src={product.image}
         alt={product.name}
         fill
-        className="object-contain rounded-lg shadow-md"
+        className="object-contain rounded-lg"
         />
       </div>
-      <div className="text-sm text-gray-600 px-5">
-        <div className="flex items-center h-16">
-          <h4 className="text-base font-semibold w-full">{product.name}</h4>
+      <div className="text-sm text-gray-600 px-5 min-w-full md:min-w-[500px]">
+        <div className="flex items-center mb-5">
+          <h4 className="text-base md:text-xl font-semibold w-full">{product.name}</h4>
         </div>
         {avgRating !== undefined && (
           <div className="mt-2">

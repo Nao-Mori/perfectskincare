@@ -6,15 +6,15 @@
     "title": "Find the perfect skincare for your skin",
     "subtitle": "Tell us about your skin, and let us find the best matches just for you.",
     "placeholder": "I have dry cheeks and an oily T-zone...",
-    "button": "Get recommendations"
+    "button": "Get recommendations",
+    "recommendations": "Top Recommendations"
   },
   "Links": {
     "yourdata": "Your Data",
     "history": "History",
     "favorite": "Favorite"
   },
-  "Recommendations": {
-    "title": "Top Recommendations",
+  "Product": {
     "noDescription": "No description yet",
     "rating": "Rating",
     "especially": "Especially for",

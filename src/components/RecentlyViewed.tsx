@@ -3,7 +3,7 @@
 import { useRecentViewed } from "@/hooks/useRecentViewed";
 import { useEffect, useMemo } from "react";
 import { useProducts } from "@/hooks/useProducts";
-import Recommendations from "./Recommendations";
+import ProductList from "./ProductList";
 import Spinner from "./ui/Spinner";
 
 export default function RecentlyViewed({ id }: { id: string }) {
@@ -19,12 +19,12 @@ export default function RecentlyViewed({ id }: { id: string }) {
 
   return (
     <aside>
-      <h3>Recently viewed</h3>
+      <h3 className="text-xl font-semibold mb-6">Recently viewed</h3>
 
       {isPending ? (
         <Spinner />
       ) : products ? (
-        <Recommendations products={products} />
+        <ProductList products={products} />
       ) : (
         <p style={{ color: "crimson" }}>{error ? (error as Error).message : "Unknow error occured"}</p>
       )}
