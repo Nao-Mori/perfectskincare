@@ -7,6 +7,7 @@ const firstProducts = {
   id: 1,
   name: "CeraVe Moisturizing Cream",
   image: "https://i5.walmartimages.com/seo/CeraVe-Moisturizing-Cream-Face-Moisturizer-Body-Lotion-for-Normal-to-Very-Dry-Skin-12-oz_2fae0aa2-a8af-4ba5-9033-a61e0f1f1e4f.0f1f517b1d4447237c2f3f696f05caad.jpeg",
+  category: "cream",
   reviews: [
     {
       rate: 9,

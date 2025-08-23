@@ -17,14 +17,12 @@ export default function Recommendations({ products }: { products: Product[] }) {
             avgRating,
             mostFrequentGroup, 
             topRatedSkinType,
-            topConcerns 
+            topConcerns,
+            mostReviewedSkinType
           } = summarizeReviews(product.reviews);
-          const allSkinTypes = product.reviews.map((r) => r.skinType);
-          const avgSkinType =
-          allSkinTypes.reduce((a, b) => a + b, 0) / allSkinTypes.length;
 
           // convert to percentage offset for arrow placement (1–8 scale)
-          const arrowPos = ((avgSkinType - 1) / 7) * 100;
+          const arrowPos = ((mostReviewedSkinType - 1) / 7) * 100;
 
           const extra = (
             <div className="text-sm text-gray-600 mt-2 space-y-1">

@@ -29,13 +29,12 @@ export default function SingleProduct({ id }: { id: string }) {
     avgRating,
     mostFrequentGroup,
     topRatedSkinType,
-    topConcerns 
+    topConcerns,
+    mostReviewedSkinType
   } = summarizeReviews(product.reviews);
-  const allSkinTypes = product.reviews.map((r) => r.skinType);
-  const avgSkinType = allSkinTypes.reduce((a, b) => a + b, 0) / allSkinTypes.length;
 
   // convert to percentage offset for arrow placement (1–8 scale)
-  const arrowPos = ((avgSkinType - 1) / 7) * 100;
+  const arrowPos = ((mostReviewedSkinType - 1) / 7) * 100;
 
   return (
     <section className="max-w-5xl w-full">

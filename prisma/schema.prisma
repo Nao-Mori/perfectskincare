@@ -17,6 +17,7 @@ model Product {
   id        Int        @id @default(autoincrement())
   name      String     @unique
   image     String     @unique @db.Text
+  category  String
   reviews   Review[]
 }
 
