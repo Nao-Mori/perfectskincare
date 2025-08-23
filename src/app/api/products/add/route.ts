@@ -1,27 +1,40 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client'
 import { NextResponse } from 'next/server';
+import { writeFile } from 'fs/promises';
+import path from 'path';
+import { v4 as uuidv4 } from 'uuid';
 
-const prisma = new PrismaClient();
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const { name, image } = body;
-
   try {
-    const product = await prisma.product.create({
-      data: {
-        name,
-        image,
-      },
-    });
+    const formData = await req.formData();
+    const file = formData.get('image') as File;
+    const name = formData.get('name') as string;
 
-    return NextResponse.json({ product }, { status: 201 });
-  } catch (e: any) {
-    if (e.code === 'P2002') {
-      return NextResponse.json({ error: 'Name or image duplicate!' }, { status: 400 });
+    if (!file || !name) {
+      return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
     }
+
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+
+    const filename = `${uuidv4()}-${file.name}`;
+    const uploadDir = path.join(process.cwd(), 'public/uploads');
+    const filePath = path.join(uploadDir, filename);
+
+    await writeFile(filePath, buffer);
+
+    const imageUrl = `/uploads/${filename}`;
+
+    // Example: save to DB here using imageUrl
+    return NextResponse.json({ name, image: imageUrl }, { status: 201 });
+  } catch (error) {
+    console.error(error);
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
-  } finally {
-    await prisma.$disconnect();
   }
 }

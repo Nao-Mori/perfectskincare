@@ -1,9 +1,13 @@
-'use client'
+'use client';
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { usePathname } from 'next/navigation';
 
 export default function BackgroundImage () {
   const [loaded, setLoaded] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === '/' || pathname === '/en' || pathname === '/ko' || pathname === '/ja';
 
   useEffect(() => {
     //Lazy load to boost performance
@@ -11,10 +15,10 @@ export default function BackgroundImage () {
     return () => clearTimeout(timer);
   }, []);
 
-  if (!loaded) return null;
+  if (!loaded || !isHomePage) return null;
 
   return (
-    <div className="absolute w-full z-[-5]">
+    <div className="absolute w-full z-0">
       <div className="flex flex-row-reverse justify-between gap-2">
         <div>
           <Image 

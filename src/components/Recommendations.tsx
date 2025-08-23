@@ -2,6 +2,8 @@ import { useTranslations } from "next-intl";
 import Image from 'next/image';
 import type { Product } from '../data/products';
 import { summarizeReviews } from "@/lib/summarizeReviews";
+import RatingBar from "./ui/RatingBar";
+import SkinTypeBar from "./ui/SkinTypeBar";
 
 export default function Recommendations({ products }: { products: Product[] }) {
   const t = useTranslations("Recommendations");
@@ -93,59 +95,6 @@ function Card({
       <SkinTypeBar value={arrowPos} />
       {/* <p className="text-sm text-gray-600">{latestComment}</p> */}
       {extra}
-    </div>
-  );
-}
-
-function RatingBar({ rating }: { rating: number }) {
-  const percent = (rating / 10) * 100;
-
-  return (
-    <div className="w-full text-sm text-gray-600">
-      <div className="flex justify-between mb-1 px-1">
-        <span>Rating</span>
-        <span>{rating.toFixed(1)} / 10</span>
-      </div>
-      <div className="relative h-3 rounded-full bg-gray-200 overflow-hidden">
-        <div
-          className="h-full transition-all duration-700"
-          style={{
-            width: `${percent}%`,
-            background: "linear-gradient(to right, #fbc2eb, #a6c1ee)" // soft gradient
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
-function SkinTypeBar({ value }: { value: number }) {
-  const labels = ["Dry", "Dry Combo", "Oily Combo", "Oily"];
-
-  return (
-    <div className="mt-4">
-      <div className="flex justify-between text-xs text-gray-500 mb-1 px-1">
-        {labels.map((label, i) => (
-          <span key={i}>{label}</span>
-        ))}
-      </div>
-
-      <div className="relative h-4 rounded-full bg-gray-200 overflow-hidden">
-        <div
-          className="absolute top-0 left-0 h-full transition-all duration-700 ease-out"
-          style={{
-            width: `${value}%`,
-            background: "linear-gradient(to right, #f9c5d1, #fbc2eb)"
-          }}
-        />
-        
-        <div
-          className="absolute top-[-6px] text-pink-500 text-lg transition-all duration-500"
-          style={{ left: `${value}%`, transform: "translateX(-50%)" }}
-        >
-          ▲
-        </div>
-      </div>
     </div>
   );
 }

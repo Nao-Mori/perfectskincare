@@ -1,3 +1,5 @@
+'use client'
+
 import { useRecentViewed } from "@/hooks/useRecentViewed";
 import { useEffect } from "react";
 
