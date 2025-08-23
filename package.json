@@ -12,6 +12,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.10.0",
     "@prisma/client": "^6.14.0",
     "@tanstack/react-query": "^5.85.5",
     "class-variance-authority": "^0.7.1",

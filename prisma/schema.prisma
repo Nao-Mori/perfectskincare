@@ -4,6 +4,10 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// When changed:
+// npx prisma migrate dev -n "what changed"
+// npx prisma generate
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,6 +15,41 @@ generator client {
 datasource db {
   provider = "mysql"
   url = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String?  @unique
+  image     String?
+  emailVerified  DateTime?
+  accounts  Account[]
+  sessions  Session[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  access_token      String?  @db.Text
+  refresh_token     String?  @db.Text
+  id_token          String?  @db.Text
+  expires_at        Int?
+  scope             String?
+  token_type        String?
+  user              User     @relation(fields: [userId], references: [id])
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  expires      DateTime
+  sessionToken String   @unique
+  user         User     @relation(fields: [userId], references: [id])
 }
 
 model Product {
