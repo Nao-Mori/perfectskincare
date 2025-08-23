@@ -5,8 +5,11 @@
       "placeholder": "I have dry cheeks and an oily T-zone...",
       "button": "Get recommendations"
   },
+  "HomePage": {
+
+  },
   "Recommendations": {
-    "title": "Recommendations",
+    "title": "Top Recommendations",
     "noDescription": "No description yet",
     "especially": "Especially for",
     "skin": "skin",

@@ -40,38 +40,38 @@ export const products: Product[] = [
   {
     id: 3,
     name: "Neutrogena Hydro Boost Water Gel",
-    image: "https://example.com/images/neutrogena-hydro-boost.jpg",
+    image: "https://i5.walmartimages.com/seo/Neutrogena-Hydro-Boost-Water-Gel-Moisturizer-50-ml_7dec21bf-13a0-475d-9c0c-698414abac0f.216f91aac2622f02dfb87776ddfc2d98.jpeg",
     reviews: [
       { rate: 9, skinType: 3, concern: ["hydration", "dryness"], comment: "Instant hydration, no residue." },
       { rate: 7, skinType: 5, concern: ["hydration", "uneven texture"], comment: "Light gel absorbs fast." },
-      { rate: 8, skinType: 4, concern: ["dryness", "light wrinkles"], comment: "Good under makeup." },
+      { rate: 9, skinType: 4, concern: ["dryness", "light wrinkles"], comment: "Good under makeup." },
       { rate: 6, skinType: 6, concern: ["pores", "light wrinkles"], comment: "May cause breakouts on oily skin." },
       { rate: 8, skinType: 2, concern: ["dryness"], comment: "Great for dry to combination." }
     ]
   },
-  {
-    id: 4,
-    name: "The Inkey List Ceramide Moisturizer",
-    image: "https://example.com/images/inkey-ceramide.jpg",
-    reviews: [
-      { rate: 8, skinType: 2, concern: ["dryness", "light wrinkles"], comment: "Ceramide-rich and affordable." },
-      { rate: 7, skinType: 3, concern: ["dryness", "sensitivity"], comment: "Relieves tightness well." },
-      { rate: 9, skinType: 2, concern: ["dryness", "light wrinkles"], comment: "Staple for winter." },
-      { rate: 7, skinType: 4, concern: ["redness", "dryness"], comment: "Light, but effective." },
-      { rate: 8, skinType: 5, concern: ["hydration", "sensitivity"], comment: "Non-greasy yet moisturizing." }
-    ]
-  },
-  {
-    id: 5,
-    name: "Hero Cosmetics Mighty Patch",
-    image: "https://example.com/images/mighty-patch.jpg",
-    reviews: [
-      { rate: 10, skinType: 6, concern: ["acne"], comment: "Cleared a zit overnight!" },
-      { rate: 9, skinType: 7, concern: ["acne", "pores"], comment: "So easy to apply." },
-      { rate: 8, skinType: 5, concern: ["acne"], comment: "Sticks well, no irritation." },
-      { rate: 9, skinType: 8, concern: ["acne", "sensitivity"], comment: "Removed blackheads cleanly." },
-      { rate: 7, skinType: 6, concern: ["acne"], comment: "Works best on smaller blemishes." }
-    ]
-  },
+  //{
+  //   id: 4,
+  //   name: "The Inkey List Ceramide Moisturizer",
+  //   image: "https://example.com/images/inkey-ceramide.jpg",
+  //   reviews: [
+  //     { rate: 8, skinType: 2, concern: ["dryness", "light wrinkles"], comment: "Ceramide-rich and affordable." },
+  //     { rate: 7, skinType: 3, concern: ["dryness", "sensitivity"], comment: "Relieves tightness well." },
+  //     { rate: 9, skinType: 2, concern: ["dryness", "light wrinkles"], comment: "Staple for winter." },
+  //     { rate: 7, skinType: 4, concern: ["redness", "dryness"], comment: "Light, but effective." },
+  //     { rate: 8, skinType: 5, concern: ["hydration", "sensitivity"], comment: "Non-greasy yet moisturizing." }
+  //   ]
+  // },
+  // {
+  //   id: 5,
+  //   name: "Hero Cosmetics Mighty Patch",
+  //   image: "https://example.com/images/mighty-patch.jpg",
+  //   reviews: [
+  //     { rate: 10, skinType: 6, concern: ["acne"], comment: "Cleared a zit overnight!" },
+  //     { rate: 9, skinType: 7, concern: ["acne", "pores"], comment: "So easy to apply." },
+  //     { rate: 8, skinType: 5, concern: ["acne"], comment: "Sticks well, no irritation." },
+  //     { rate: 9, skinType: 8, concern: ["acne", "sensitivity"], comment: "Removed blackheads cleanly." },
+  //     { rate: 7, skinType: 6, concern: ["acne"], comment: "Works best on smaller blemishes." }
+  //   ]
+  // },
   // Continue products 6–30 similarly using names like "Olay Regenerist Retinol24", "First Aid Beauty Ultra Repair Cream", etc.
 ];
