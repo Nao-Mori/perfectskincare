@@ -58,6 +58,16 @@ button:hover {
   background-color: var(--color-accent-light);
 }
 
+.button--outlined {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border, #ccc);
+  color: var(--color-text, #333);
+}
+
+.button--outlined:hover {
+  background-color: var(--color-soft-blue);
+}
+
 @keyframes pulse-bubble {
   0%, 100% {
     transform: scale(1);

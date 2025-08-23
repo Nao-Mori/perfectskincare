@@ -1,6 +1,41 @@
 {
-  "hero.title": "Find the perfect skincare for your skin",
-  "hero.subtitle": "Tell us about your skin, and let our AI find the best matches just for you.",
-  "hero.placeholder": "I have dry cheeks and an oily T-zone...",
-  "hero.button": "Get recommendations"
+  "Hero": {
+    "title": "피부에 꼭 맞는 스킨케어 찾기",
+    "subtitle": "피부에 대해 알려주세요. AI가 딱 맞는 제품을 찾아드릴게요.",
+    "placeholder": "볼은 건조하고 T존은 기름져요...",
+    "button": "추천 받기"
+  },
+  "HomePage": {
+
+  },
+  "Recommendations": {
+    "title": "맞춤 추천 제품",
+    "noDescription": "아직 설명이 없어요",
+    "especially": "~에 특히 좋아요",
+    "skin": "피부",
+    "popularFor": "~에 인기 있어요",
+    "ratedHighBy": "높은 평점을 준",
+    "effectivedTo": "~에 효과적이에요",
+    "skinType": {
+      "dry": "건성",
+      "drycombination": "건성 복합성",
+      "oilycombination": "지성 복합성",
+      "balanced": "중성/복합성",
+      "oily": "지성"
+    },
+    "concern": {
+      "dryness": "건조함",
+      "acne": "여드름",
+      "hydration": "수분 공급",
+      "redness": "붉은기",
+      "aging": "노화",
+      "sensitivity": "민감성",
+      "dark spots": "기미·잡티",
+      "uneven texture": "피부결",
+      "oiliness": "지성",
+      "pores": "모공",
+      "light wrinkles": "잔주름",
+      "deep wrinkles": "깊은 주름"
+    }
+  }
 }

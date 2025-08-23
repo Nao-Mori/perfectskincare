@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import LanguageDropdown from "./ui/LanguageDropdown";
 
 const navItems = [
   { href: "/find-by-concern", label: "Find by Concern" },
@@ -15,12 +16,30 @@ export default function Header() {
 
   return (
     <header className="
-    sticky w-full top-0 z-50 px-4 py-3
-    bg-gradient-to-b from-[var(--color-bg)] via-[var(--color-bg)] to-transparent
+    sticky w-full top-0 z-50
     ">
-      <div className="flex items-center justify-between pb-4">
-        {/* Mobile menu button */}
+      <div className="flex items-center justify-between px-4 py-3 bg-[var(--color-bg)]">
+      {/* Mobile dropdown */}
+      {menuOpen && (
+        <div className="
+        absolute top-full left-0 w-full flex flex-col items-start gap-4 px-4 py-4 md:hidden
+        ">
+          <div className="bg-gradient-to-b from-transparent to-[var(--color-bg)]" />
+          {navItems.map(({ href, label }) => (
+            <Link
+            key={href}
+            href={href}
+            className="text-sm text-gray-700 hover:text-black"
+            onClick={() => setMenuOpen(false)}
+            >
+              {label}
+            </Link>
+          ))}
+          <LanguageDropdown isWide={false} />
+        </div>
+      )}
         <div>
+          {/* Mobile menu button */}
           <button
           className="md:hidden mr-3"
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -28,6 +47,7 @@ export default function Header() {
           >
             {menuOpen ? <X size={17}/> : <Menu size={17} />}
           </button>
+
           <Link href="/" className="text-xl font-bold pr-2">
             SkinMatch.io
           </Link>
@@ -45,26 +65,20 @@ export default function Header() {
             </Link>
           ))}
         </nav> */}
-        <button className="text-sm whitespace-nowrap font-bold">
-          Sign in with Google
-        </button>
-      </div>
-
-      {/* Mobile dropdown */}
-      {menuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white shadow-md flex flex-col items-start gap-4 px-4 py-4 md:hidden">
-          {navItems.map(({ href, label }) => (
-            <Link
-            key={href}
-            href={href}
-            className="text-sm text-gray-700 hover:text-black"
-            onClick={() => setMenuOpen(false)}
-            >
-              {label}
-            </Link>
-          ))}
+        <div className="flex">
+          {/* <button
+          //onClick={handleSwitchLocale}
+          className="hidden md:flex text-sm whitespace-nowrap font-bold button--outlined"
+          >
+            🌐 {locale}
+          </button> */}
+          <LanguageDropdown isWide={true} />
+          <button className="text-sm whitespace-nowrap font-bold ml-2">
+            Sign in with Google
+          </button>
         </div>
-      )}
+      </div>
+      <div className="bg-gradient-to-b from-[var(--color-bg)] to-transparent h-3" />
     </header>
   );
 }
