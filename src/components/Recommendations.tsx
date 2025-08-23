@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
-import Image from 'next/image';
-import type { Product } from '../data/products';
+import Image from "next/image";
+import type { Product } from "../data/products";
 import { summarizeReviews } from "@/lib/summarizeReviews";
 import RatingBar from "./ui/RatingBar";
 import SkinTypeBar from "./ui/SkinTypeBar";
@@ -15,7 +15,7 @@ export default function Recommendations({ products }: { products: Product[] }) {
         {products.map((product: Product) => {
           const { 
             avgRating,
-            mostFrequentGroup,
+            //mostFrequentGroup,
             topRatedSkinType,
             topConcerns,
             averageReviewedSkinType
@@ -59,7 +59,7 @@ export default function Recommendations({ products }: { products: Product[] }) {
 
 function Card({
   title,
-  latestComment,
+  //latestComment,
   image,
   extra,
   arrowPos,

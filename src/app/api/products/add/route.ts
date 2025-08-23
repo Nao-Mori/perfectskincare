@@ -34,7 +34,6 @@ export async function POST(req: Request) {
     // Example: save to DB here using imageUrl
     return NextResponse.json({ name, image: imageUrl }, { status: 201 });
   } catch (error) {
-    console.error(error);
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }
 }

@@ -1,7 +1,7 @@
 'use client';
 
-import Spinner from '@/components/ui/Spinner';
-import { useState } from 'react';
+import Spinner from "@/components/ui/Spinner";
+import { useState } from "react";
 
 export default function AddProductPage() {
   const [name, setName] = useState('');
@@ -23,6 +23,7 @@ export default function AddProductPage() {
     formData.append('name', name);
     formData.append('image', image);
 
+    //REMOVE Later
     console.log(formData);
     try {
       const res = await fetch('/api/products/add', {
@@ -38,9 +39,13 @@ export default function AddProductPage() {
       setName('');
       setImage(null);
       setSending(false);
-    } catch (err: any) {
-      setMessage(err.message);
+    } catch (err) {
       setSending(false);
+      if (err instanceof Error) {
+        setMessage(err.message);
+      } else {
+        setMessage('An unknown error occurred');
+      }
     }
   };
 

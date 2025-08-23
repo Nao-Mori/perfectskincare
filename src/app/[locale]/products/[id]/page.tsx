@@ -35,12 +35,12 @@ function Details() {
   }
 
   if (error || !product) {
-    return <div className="text-red-500 text-center">Product doesn't exist</div>;
+    return <div className="text-red-500 text-center">Product does not exist</div>;
   }
 
   const { 
     avgRating,
-    mostFrequentGroup,
+    //mostFrequentGroup,
     topRatedSkinType,
     topConcerns,
     averageReviewedSkinType

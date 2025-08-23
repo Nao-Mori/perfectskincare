@@ -1,22 +1,33 @@
-'use client'
+'use client';
 
 import { useRecentViewed } from "@/hooks/useRecentViewed";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
+import { useProducts } from "@/hooks/useProducts";
+import Recommendations from "./Recommendations";
+import Spinner from "./ui/Spinner";
 
 export default function RecentlyViewed({ id }: { id: string }) {
   const { recent, pushView } = useRecentViewed(8);
 
   useEffect(() => {
-    //Update the recently viewed list
     pushView(id);
   }, [id, pushView]);
 
-  if (!recent) return null;
+  const ids = useMemo(() => recent ?? [], [recent]);
+
+  const { data: products, error, isPending } = useProducts(ids);
 
   return (
     <aside>
       <h3>Recently viewed</h3>
-      <ul>{recent.map(pid => <li key={pid}>{pid}</li>)}</ul>
+
+      {isPending ? (
+        <Spinner />
+      ) : products ? (
+        <Recommendations products={products} />
+      ) : (
+        <p style={{ color: "crimson" }}>{error ? (error as Error).message : "Unknow error occured"}</p>
+      )}
     </aside>
   );
 }
