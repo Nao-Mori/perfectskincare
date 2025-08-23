@@ -21,7 +21,7 @@ export function useProducts(ids: string[]) {
       // NECESSARY to make them ordered cause it's recently viewed!
       const map = new Map(items.map(p => [String(p.id), p]));
       const dd = ids.map(x => map.get(String(x))).filter(Boolean) as Product[];
-      return items;
+      return dd;
     },
   });
 }

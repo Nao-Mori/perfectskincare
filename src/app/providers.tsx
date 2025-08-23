@@ -8,7 +8,7 @@ import { NextIntlClientProvider } from 'next-intl';
 type Props = {
   children: React.ReactNode;
   locale: string;
-  messages: Record<string, any>;
+  messages: Record<string, unknown>;
 };
 
 export default function AppProviders({ locale, messages, children }: Props) {
