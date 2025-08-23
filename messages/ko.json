@@ -1,7 +1,7 @@
 {
   "Hero": {
     "title": "피부에 꼭 맞는 스킨케어 찾기",
-    "subtitle": "피부에 대해 알려주세요. AI가 딱 맞는 제품을 찾아드릴게요.",
+    "subtitle": "피부에 대해 알려주세요. 우리가 딱 맞는 제품을 찾아드릴게요.",
     "placeholder": "볼은 건조하고 T존은 기름져요...",
     "button": "추천 받기"
   },
@@ -15,7 +15,7 @@
     "skin": "피부",
     "popularFor": "~에 인기 있어요",
     "ratedHighBy": "높은 평점을 준",
-    "effectivedTo": "~에 효과적이에요",
+    "effectivedTo": "효과",
     "skinType": {
       "dry": "건성",
       "drycombination": "건성 복합성",

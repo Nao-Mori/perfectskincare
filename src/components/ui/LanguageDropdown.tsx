@@ -1,20 +1,20 @@
 'use client'
 
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { useState } from 'react';
+
+const locales = [
+  { code: 'en', label: 'English' },
+  { code: 'ko', label: '한국어' },
+  { code: 'ja', label: "日本語" }
+];
 
 export default function LanguageDropdown({ isWide }: { isWide: boolean }) {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-
-  const locales = [
-    { code: 'en', label: 'English' },
-    { code: 'ko', label: '한국어' },
-    { code: 'jp', label: "日本語" }
-  ];
 
   const handleLocaleChange = (code: string) => {
     router.replace(pathname, { locale: code });

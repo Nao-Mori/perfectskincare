@@ -1,6 +1,41 @@
 {
-  "hero.title": "Find the perfect skincare for your skin",
-  "hero.subtitle": "Tell us about your skin, and let our AI find the best matches just for you.",
-  "hero.placeholder": "I have dry cheeks and an oily T-zone...",
-  "hero.button": "Get recommendations"
+  "Hero": {
+    "title": "ぴったりのスキンケアを見つけましょう",
+    "subtitle": "肌の状態を教えてください。最適な製品を見つけます！",
+    "placeholder": "頬は乾燥していてTゾーンは脂っぽいです…",
+    "button": "おすすめをもらう"
+  },
+  "HomePage": {
+
+  },
+  "Recommendations": {
+    "title": "おすすめ製品",
+    "noDescription": "まだ説明がありません",
+    "especially": "特におすすめ",
+    "skin": "肌",
+    "popularFor": "人気",
+    "ratedHighBy": "高評価をつけた人",
+    "effectivedTo": "レビューされた効果",
+    "skinType": {
+      "dry": "乾燥",
+      "drycombination": "乾燥気味混合",
+      "oilycombination": "脂性気味混合",
+      "balanced": "普通/混合",
+      "oily": "脂性"
+    },
+    "concern": {
+      "dryness": "乾燥",
+      "acne": "ニキビ",
+      "hydration": "保湿",
+      "redness": "赤み",
+      "aging": "エイジングケア",
+      "sensitivity": "敏感肌",
+      "dark spots": "シミ",
+      "uneven texture": "肌の凹凸",
+      "oiliness": "脂っぽさ",
+      "pores": "毛穴",
+      "light wrinkles": "小じわ",
+      "deep wrinkles": "深いしわ"
+    }
+  }
 }

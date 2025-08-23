@@ -5,9 +5,8 @@ import { Menu, X } from "lucide-react";
 import LanguageDropdown from "./ui/LanguageDropdown";
 
 const navItems = [
-  { href: "/find-by-concern", label: "Find by Concern" },
-  { href: "/find-by-ingredient", label: "Find by Ingredient" },
-  { href: "/talk-to-ai", label: "Talk to AI" },
+  { href: "/user/data", label: "yourdata" },
+  { href: "/user/history", label: "Find by Ingredient" },
   { href: "/product-check", label: "Product Check" },
 ];
 
@@ -22,20 +21,22 @@ export default function Header() {
       {/* Mobile dropdown */}
       {menuOpen && (
         <div className="
-        absolute top-full left-0 w-full flex flex-col items-start gap-4 px-4 py-4 md:hidden
+        absolute top-full left-0 w-full md:hidden
         ">
-          <div className="bg-gradient-to-b from-transparent to-[var(--color-bg)]" />
-          {navItems.map(({ href, label }) => (
-            <Link
-            key={href}
-            href={href}
-            className="text-sm text-gray-700 hover:text-black"
-            onClick={() => setMenuOpen(false)}
-            >
-              {label}
-            </Link>
-          ))}
-          <LanguageDropdown isWide={false} />
+          <div className="flex flex-col items-start bg-[var(--color-bg)] px-4 py-4 gap-4">
+            {navItems.map(({ href, label }) => (
+              <Link
+              key={href}
+              href={href}
+              className="text-sm text-gray-700 hover:text-black"
+              onClick={() => setMenuOpen(false)}
+              >
+                {label}
+              </Link>
+            ))}
+            <LanguageDropdown isWide={false} />
+          </div>
+          <div className="bg-gradient-to-b from-[var(--color-bg)] to-transparent h-3" />
         </div>
       )}
         <div>
@@ -78,7 +79,9 @@ export default function Header() {
           </button>
         </div>
       </div>
-      <div className="bg-gradient-to-b from-[var(--color-bg)] to-transparent h-3" />
+      <div className="relative">
+        <div className="bg-gradient-to-b from-[var(--color-bg)] to-transparent h-3 absolute top-0 left-0 w-full" />
+      </div>
     </header>
   );
 }
