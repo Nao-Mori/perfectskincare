@@ -1,0 +1,18 @@
+import { products } from '../data/products';
+import { summarizeReviews } from '../lib/summarizeReviews';
+
+test('correctly calculates average rating', () => {
+  const result = summarizeReviews(products[0].reviews);
+  expect(result).toEqual({
+    avgRating: expect.any(Number),
+    mostFrequentGroup: expect.any(String),
+    topRatedSkinType: {
+      skinType: expect.any(Number),
+      group: expect.any(String),
+      avg: expect.any(Number),
+    },
+    topConcerns: expect.arrayContaining(["dryness"]),
+  });
+
+  expect(result.topConcerns.length).toBeLessThanOrEqual(2);
+});
