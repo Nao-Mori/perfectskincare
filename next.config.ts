@@ -2,9 +2,18 @@ import { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
-    images: {
-        domains: ['i5.walmartimages.com', 'example.com']
-    }
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i5.walmartimages.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'example.com',
+      }
+    ]
+  }
 };
 
 
