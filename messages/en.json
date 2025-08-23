@@ -4,5 +4,32 @@
       "subtitle": "Tell us about your skin, and let our AI find the best matches just for you.",
       "placeholder": "I have dry cheeks and an oily T-zone...",
       "button": "Get recommendations"
+  },
+  "Recommendations": {
+    "title": "Recommendations",
+    "noDescription": "No description yet",
+    "especially": "Especially for",
+    "skin": "skin",
+    "popularFor": "Popular for",
+    "ratedHighBy": "Rated High by",
+    "skinType": {
+      "dry": "Dry",
+      "drycombination": "Dry Combination",
+      "oilycombination": "Oily Combination",
+      "balanced": "balanced/combination",
+      "oily": "Oily"
+    },
+    "concern": {
+      "dryness": "dryness",
+      "acne": "acne",
+      "hydration": "hydration",
+      "redness": "redness",
+      "aging": "aging",
+      "sensitivity": "sensitivity",
+      "dark spots": "dark spots",
+      "uneven texture": "uneven texture",
+      "oiliness": "oiliness",
+      "pores": "visible pores"
+    }
   }
 }
