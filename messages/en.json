@@ -1,12 +1,17 @@
 {
+  "Controls": {
+    "login": "Sign in with Google"
+  },
   "Hero": {
     "title": "Find the perfect skincare for your skin",
     "subtitle": "Tell us about your skin, and let us find the best matches just for you.",
     "placeholder": "I have dry cheeks and an oily T-zone...",
     "button": "Get recommendations"
   },
-  "HomePage": {
-
+  "Links": {
+    "yourdata": "Your Data",
+    "history": "History",
+    "favorite": "Favorite"
   },
   "Recommendations": {
     "title": "Top Recommendations",
@@ -37,5 +42,14 @@
       "light wrinkles": "light wrinkles",
       "deep wrinkles": "deep wrinkles"
     }
+  },
+  "Footer": {
+    "description": "Your gentle skincare matchmaker 🤍",
+    "quickLinks": "Quick Links",
+    "connect": "Connect",
+    "email": "contact.naomori@gmail.com",
+    "instagram": "Instagram: soon..? lol",
+    "credit": "Made with 💙 by Nao Mori",
+    "copyright": "SkinMatch.io – All rights reserved."
   }
 }

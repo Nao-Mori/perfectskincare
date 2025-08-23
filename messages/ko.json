@@ -1,12 +1,17 @@
 {
+  "Controls": {
+    "login": "Google 로그인"
+  },
   "Hero": {
     "title": "피부에 꼭 맞는 스킨케어 찾기",
     "subtitle": "피부에 대해 알려주세요. 우리가 딱 맞는 제품을 찾아드릴게요.",
     "placeholder": "볼은 건조하고 T존은 기름져요...",
     "button": "추천 받기"
   },
-  "HomePage": {
-
+  "Links": {
+    "yourdata": "당신의 데이터",
+    "history": "기록",
+    "favorite": "즐겨찾기"
   },
   "Recommendations": {
     "title": "맞춤 추천 제품",
@@ -37,5 +42,14 @@
       "light wrinkles": "잔주름",
       "deep wrinkles": "깊은 주름"
     }
+  },
+  "Footer": {
+    "description": "당신을 위한 스킨케어 매치메이커 🤍",
+    "quickLinks": "바로가기",
+    "connect": "연락하기",
+    "email": "contact.naomori@gmail.com",
+    "instagram": "인스타그램: 곧..? ㅎㅎ",
+    "credit": "Made with 💙 by Nao Mori",
+    "copyright": "SkinMatch.io – All rights reserved."
   }
 }

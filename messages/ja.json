@@ -1,15 +1,20 @@
 {
+  "Controls": {
+    "login": "Googleでログイン"
+  },
   "Hero": {
     "title": "ぴったりのスキンケアを見つけましょう",
     "subtitle": "肌の状態を教えてください。最適な製品を見つけます！",
     "placeholder": "頬は乾燥していてTゾーンは脂っぽいです…",
     "button": "おすすめをもらう"
   },
-  "HomePage": {
-
+  "Links": {
+    "yourdata": "あなたのデータ",
+    "history": "履歴",
+    "favorite": "お気に入り"
   },
   "Recommendations": {
-    "title": "おすすめ製品",
+    "title": "最もおすすめされた製品",
     "noDescription": "まだ説明がありません",
     "especially": "特におすすめ",
     "skin": "肌",
@@ -37,5 +42,14 @@
       "light wrinkles": "小じわ",
       "deep wrinkles": "深いしわ"
     }
+  },
+  "Footer": {
+    "description": "あなたの最高のスキンケアマッチメーカー 🤍",
+    "quickLinks": "クイックリンク",
+    "connect": "お問い合わせ",
+    "email": "contact.naomori@gmail.com",
+    "instagram": "Instagram：もうすぐ…？笑",
+    "credit": "Made with 💙 by Nao Mori",
+    "copyright": "SkinMatch.io – All rights reserved."
   }
 }

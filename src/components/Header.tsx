@@ -3,15 +3,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import LanguageDropdown from "./ui/LanguageDropdown";
-
-const navItems = [
-  { href: "/user/data", label: "yourdata" },
-  { href: "/user/history", label: "Find by Ingredient" },
-  { href: "/product-check", label: "Product Check" },
-];
+import { internalLinks } from "@/data/internalLinks";
+import { useTranslations } from 'next-intl';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const tLinks = useTranslations('Links');
+  const tControls = useTranslations('Controls');
 
   return (
     <header className="
@@ -24,14 +22,14 @@ export default function Header() {
         absolute top-full left-0 w-full md:hidden
         ">
           <div className="flex flex-col items-start bg-[var(--color-bg)] px-4 py-4 gap-4">
-            {navItems.map(({ href, label }) => (
+            {internalLinks.map(({ href, label }) => (
               <Link
               key={href}
               href={href}
               className="text-sm text-gray-700 hover:text-black"
               onClick={() => setMenuOpen(false)}
               >
-                {label}
+                {tLinks(label)}
               </Link>
             ))}
             <LanguageDropdown isWide={false} />
@@ -75,7 +73,7 @@ export default function Header() {
           </button> */}
           <LanguageDropdown isWide={true} />
           <button className="text-sm whitespace-nowrap font-bold ml-2">
-            Sign in with Google
+            {tControls("login")}
           </button>
         </div>
       </div>

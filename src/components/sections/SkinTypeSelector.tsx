@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 
+//Hardcoding for now
 const SKIN_TYPES = [
   { id: 1, label: "Very Dry" },
   { id: 2, label: "Dry" },
@@ -24,8 +25,8 @@ export default function SkinTypeSelector() {
           className={`cursor-pointer animate-bubble rounded-xl px-3 py-1 transition-all border shadow-sm text-sm font-medium m-1
             ${
               selected === id
-                ? "bg-pink-100 border-pink-400 text-pink-800 shadow-md"
-                : "bg-white border-gray-200 text-gray-700 hover:bg-gray-50"
+              ? "bg-pink-100 border-pink-400 text-pink-800 shadow-md"
+              : "bg-white border-gray-200 text-gray-700 hover:bg-gray-50"
             }
           `}
         >
