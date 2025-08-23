@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <header className="
-    sticky w-full top-0 z-50 px-4 py-3 
+    sticky w-full top-0 z-50 px-4 py-3
     bg-gradient-to-b from-[var(--color-bg)] via-[var(--color-bg)] to-transparent
     ">
         <div className="flex items-center justify-between pb-4">

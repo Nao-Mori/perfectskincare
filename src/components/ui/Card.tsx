@@ -25,19 +25,19 @@ export default function Card({
             colorMap[step]
         )}
         >
-        <div
-            className={clsx(`absolute -top-4 left-1/2 transform -translate-x-1/2
-            bg-white font-bold text-lg w-10 h-10 flex items-center
-            justify-center rounded-full shadow-md border-2 font-bold`, textColorMap[step])}
-        >
-            {step}
-        </div>
+            <div
+                className={clsx(`absolute -top-4 left-1/2 transform -translate-x-1/2
+                bg-white font-bold text-lg w-10 h-10 flex items-center
+                justify-center rounded-full shadow-md border-2 font-bold`, textColorMap[step])}
+            >
+                {step}
+            </div>
 
-        <p className="text-center text-lg font-medium mb-3">
-            {title}
-        </p>
+            <p className="text-center text-lg font-medium mb-3">
+                {title}
+            </p>
 
-        {children}
+            {children}
         </div>
     );
 }
