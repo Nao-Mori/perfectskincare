@@ -16,6 +16,7 @@
   "Recommendations": {
     "title": "Top Recommendations",
     "noDescription": "No description yet",
+    "rating": "Rating",
     "especially": "Especially for",
     "skin": "skin",
     "popularFor": "Popular for",
@@ -23,8 +24,8 @@
     "effectivedTo": "Effective to",
     "skinType": {
       "dry": "Dry",
-      "drycombination": "Dry Combination",
-      "oilycombination": "Oily Combination",
+      "drycombination": "Dry Combo",
+      "oilycombination": "Oily Combo",
       "balanced": "balanced/combination",
       "oily": "Oily"
     },

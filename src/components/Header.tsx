@@ -37,17 +37,17 @@ export default function Header() {
           <div className="bg-gradient-to-b from-[var(--color-bg)] to-transparent h-3" />
         </div>
       )}
-        <div>
+        <div className="flex items-center">
           {/* Mobile menu button */}
           <button
-          className="md:hidden mr-3"
+          className="md:hidden mr-2"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
           >
             {menuOpen ? <X size={17}/> : <Menu size={17} />}
           </button>
 
-          <Link href="/" className="text-xl font-bold pr-2">
+          <Link href="/" className="text-xl font-bold pr-1">
             SkinMatch.io
           </Link>
         </div>

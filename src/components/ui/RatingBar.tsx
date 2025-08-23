@@ -1,10 +1,13 @@
+import { useTranslations } from "next-intl";
+
 export default function RatingBar({ rating }: { rating: number }) {
+  const t = useTranslations("Recommendations");
   const percent = (rating / 10) * 100;
 
   return (
     <div className="w-full text-sm text-gray-600">
       <div className="flex justify-between mb-1 px-1">
-        <span>Rating</span>
+        <span>{t("rating")}</span>
         <span>{rating.toFixed(1)} / 10</span>
       </div>
       <div className="relative h-3 rounded-full bg-gray-200 overflow-hidden">

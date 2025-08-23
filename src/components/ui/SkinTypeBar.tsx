@@ -1,11 +1,14 @@
+import { useTranslations } from "next-intl";
+
 export default function SkinTypeBar({ value }: { value: number }) {
-  const labels = ["Dry", "Dry Combo", "Oily Combo", "Oily"];
+  const labels = ["dry", "drycombination", "oilycombination", "oily"];
+  const t = useTranslations("Recommendations.skinType");
 
   return (
     <div className="mt-4">
       <div className="flex justify-between text-xs text-gray-500 mb-1 px-1">
         {labels.map((label, i) => (
-          <span key={i}>{label}</span>
+          <span key={i}>{t(label)}</span>
         ))}
       </div>
 

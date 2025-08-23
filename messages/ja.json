@@ -16,6 +16,7 @@
   "Recommendations": {
     "title": "最もおすすめされた製品",
     "noDescription": "まだ説明がありません",
+    "rating": "評価",
     "especially": "特におすすめ",
     "skin": "肌",
     "popularFor": "人気",
@@ -23,8 +24,8 @@
     "effectivedTo": "レビューされた効果",
     "skinType": {
       "dry": "乾燥",
-      "drycombination": "乾燥気味混合",
-      "oilycombination": "脂性気味混合",
+      "drycombination": "乾燥気味",
+      "oilycombination": "脂性気味",
       "balanced": "普通/混合",
       "oily": "脂性"
     },

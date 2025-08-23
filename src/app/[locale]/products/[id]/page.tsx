@@ -50,39 +50,39 @@ function Details() {
   const arrowPos = ((averageReviewedSkinType - 1) / 7) * 100;
 
   return (
-    <section className="w-full">
-      <div className="flex">
-        <div className="relative w-full h-48"> 
-          <Image
-          src={product.image}
-          alt={product.name}
-          fill
-          className="object-contain p-2"
-          />
-        </div>
-        <div className="text-sm text-gray-600">
-          <div className="flex items-center h-16">
-            <h4 className="text-base font-semibold w-full">{product.name}</h4>
-          </div>
-          {avgRating !== undefined && (
-            <div className="mt-2">
-              <RatingBar rating={avgRating} />
-            </div>
-          )}
-          <SkinTypeBar value={arrowPos} />
-            <div>
-              ⭐ {t("ratedHighBy")} {" "}
-              <strong>{t(`skinType.${topRatedSkinType.group}`)}</strong> {t("skin")}
-              {" "} ({topRatedSkinType.avg})
-            </div>
-            <div>
-              🎯 {t("effectivedTo")} {" "}
-              {topConcerns.map((c, i) => (
-                <strong key={i}>{t(`concern.${c}`)}{i === 0 ? ", " : null}</strong>
-              ))}
-            </div>
-          </div>
+    <div className="w-full flex flex-wrap item-center justify-center mt-5 mb-10">
+      <div className="relative h-60 w-60"> 
+        <Image
+        src={product.image}
+        alt={product.name}
+        fill
+        className="object-contain rounded-lg shadow-md"
+        />
       </div>
-    </section>
+      <div className="text-sm text-gray-600 px-5">
+        <div className="flex items-center h-16">
+          <h4 className="text-base font-semibold w-full">{product.name}</h4>
+        </div>
+        {avgRating !== undefined && (
+          <div className="mt-2">
+            <RatingBar rating={avgRating} />
+          </div>
+        )}
+        <SkinTypeBar value={arrowPos} />
+        <div className="text-sm text-gray-600 mt-4 space-y-1">
+          <div>
+            ⭐ {t("ratedHighBy")} {" "}
+            <strong>{t(`skinType.${topRatedSkinType.group}`)}</strong> {t("skin")}
+            {" "} ({topRatedSkinType.avg})
+          </div>
+          <div>
+            🎯 {t("effectivedTo")} {" "}
+            {topConcerns.map((c, i) => (
+              <strong key={i}>{t(`concern.${c}`)}{i === 0 ? ", " : null}</strong>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
