@@ -14,16 +14,22 @@
     "history": "기록",
     "favorite": "즐겨찾기"
   },
+  "Counseling": {
+    "step1": "피부 타입은 무엇인가요?",
+    "step2": "피부 고민은 무엇인가요?",
+    "step3": "관심 있는 제품은?",
+    "getRecommendations": "추천 받기"
+  },
   "Product": {
-    "name": "Product Name",
-    "category": "Category",
-    "noDescription": "아직 설명이 없어요",
-    "rating": "평가",
-    "especially": "~에 특히 좋아요",
+    "name": "상품명",
+    "category": "카테고리",
+    "noDescription": "설명이 아직 없습니다",
+    "rating": "평점",
+    "especially": "특히 추천",
     "skin": "피부",
-    "popularFor": "~에 인기 있어요",
-    "ratedHighBy": "높은 평점을 준",
-    "effectivedTo": "효과",
+    "popularFor": "인기 이유",
+    "ratedHighBy": "높게 평가한 사용자",
+    "effectivedTo": "다음에 효과적",
     "skinType": {
       "dry": "건성",
       "drycombination": "건성 복합성",
@@ -31,19 +37,29 @@
       "balanced": "중성/복합성",
       "oily": "지성"
     },
-    "concern": {
-      "dryness": "건조함",
+    "concerns": {
+      "dryness": "건조",
       "acne": "여드름",
-      "hydration": "수분 공급",
-      "redness": "붉은기",
-      "aging": "노화",
-      "sensitivity": "민감성",
-      "dark spots": "기미·잡티",
-      "uneven texture": "피부결",
-      "oiliness": "지성",
-      "pores": "모공",
-      "light wrinkles": "잔주름",
-      "deep wrinkles": "깊은 주름"
+      "hydration": "보습",
+      "redness": "홍조",
+      "sagging": "처짐",
+      "sensitivity": "민감함",
+      "darkSpots": "색소 침착",
+      "unevenTexture": "피부 결 불균일",
+      "oiliness": "유분 과다",
+      "pores": "모공이 도드라짐",
+      "lightWrinkles": "잔주름",
+      "deepWrinkles": "깊은 주름",
+      "acneScars": "여드름 흉터",
+      "hyperPigmentation": "과색소침착"
+    },
+    "categories": {
+      "cleanser": "클렌저",
+      "faceWash": "세안제",
+      "toner": "토너",
+      "serum": "세럼",
+      "lotion": "로션",
+      "cream": "크림"
     }
   },
   "Footer": {

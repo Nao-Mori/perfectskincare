@@ -9,41 +9,57 @@
     "button": "おすすめをもらう",
     "recommendations": "最もおすすめされた製品"
   },
+  "Counseling": {
+    "step1": "あなたの肌質は？",
+    "step2": "肌の悩みは？",
+    "step3": "気になる製品は？",
+    "getRecommendations": "おすすめを見る"
+  },
   "Links": {
     "yourdata": "あなたのデータ",
     "history": "履歴",
     "favorite": "お気に入り"
   },
   "Product": {
-    "name": "Product Name",
-    "category": "Category",
-    "noDescription": "まだ説明がありません",
+    "name": "商品名",
+    "category": "カテゴリ",
+    "noDescription": "説明はまだありません",
     "rating": "評価",
     "especially": "特におすすめ",
     "skin": "肌",
-    "popularFor": "人気",
-    "ratedHighBy": "高評価をつけた人",
-    "effectivedTo": "レビューされた効果",
+    "popularFor": "人気のポイント",
+    "ratedHighBy": "高評価したのは",
+    "effectivedTo": "〜に効果的",
     "skinType": {
-      "dry": "乾燥",
-      "drycombination": "乾燥気味",
-      "oilycombination": "脂性気味",
-      "balanced": "普通/混合",
-      "oily": "脂性"
+      "dry": "乾燥肌",
+      "drycombination": "乾燥寄り混合肌",
+      "oilycombination": "脂性寄り混合肌",
+      "balanced": "普通/混合肌",
+      "oily": "脂性肌"
     },
-    "concern": {
+    "concerns": {
       "dryness": "乾燥",
       "acne": "ニキビ",
       "hydration": "保湿",
       "redness": "赤み",
-      "aging": "エイジングケア",
-      "sensitivity": "敏感肌",
-      "dark spots": "シミ",
-      "uneven texture": "肌の凹凸",
-      "oiliness": "脂っぽさ",
-      "pores": "毛穴",
-      "light wrinkles": "小じわ",
-      "deep wrinkles": "深いしわ"
+      "sagging": "たるみ",
+      "sensitivity": "敏感さ",
+      "darkSpots": "シミ",
+      "unevenTexture": "肌の凹凸",
+      "oiliness": "脂性",
+      "pores": "毛穴の目立ち",
+      "lightWrinkles": "小じわ",
+      "deepWrinkles": "深いしわ",
+      "acneScars": "ニキビ跡",
+      "hyperPigmentation": "色素沈着"
+    },
+    "categories": {
+      "cleanser": "クレンザー",
+      "faceWash": "洗顔料",
+      "toner": "化粧水",
+      "serum": "美容液",
+      "lotion": "乳液",
+      "cream": "クリーム"
     }
   },
   "Footer": {

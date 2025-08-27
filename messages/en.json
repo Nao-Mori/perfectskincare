@@ -6,8 +6,13 @@
     "title": "Find the perfect skincare for your skin",
     "subtitle": "Tell us about your skin, and let us find the best matches just for you.",
     "placeholder": "I have dry cheeks and an oily T-zone...",
-    "button": "Get recommendations",
     "recommendations": "Top Recommendations"
+  },
+  "Counseling": {
+    "step1": "What is your skin type?",
+    "step2": "What are your skin concerns?",
+    "step3": "Products you would like?",
+    "getRecommendations": "Get recommendations"
   },
   "Links": {
     "yourdata": "Your Data",
@@ -28,22 +33,32 @@
       "dry": "Dry",
       "drycombination": "Dry Combo",
       "oilycombination": "Oily Combo",
-      "balanced": "balanced/combination",
+      "balanced": "Balanced/combination",
       "oily": "Oily"
     },
-    "concern": {
+    "concerns": {
       "dryness": "dryness",
       "acne": "acne",
       "hydration": "hydration",
       "redness": "redness",
-      "aging": "aging",
+      "sagging": "Sagging",
       "sensitivity": "sensitivity",
-      "dark spots": "dark spots",
-      "uneven texture": "uneven texture",
+      "darkSpots": "dark spots",
+      "unevenTexture": "uneven texture",
       "oiliness": "oiliness",
       "pores": "visible pores",
-      "light wrinkles": "light wrinkles",
-      "deep wrinkles": "deep wrinkles"
+      "lightWrinkles": "light wrinkles",
+      "deepWrinkles": "deep wrinkles",
+      "acneScars": "acne scars",
+      "hyperPigmentation": "hyper pigmentation"
+    },
+    "categories": {
+      "cleanser": "cleanser",
+      "faceWash": "face wash",
+      "toner": "toner",
+      "serum": "serum",
+      "lotion": "lotion",
+      "cream": "cream"
     }
   },
   "Footer": {

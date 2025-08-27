@@ -44,7 +44,7 @@ export default function ReviewResult ({ reviews }: { reviews: Review[] }) {
         <div>
           🎯 {t("effectivedTo")} {" "}
           {topConcerns.map((c, i) => (
-            <strong key={i}>{t(`concern.${c}`)}{i === 0 ? ", " : null}</strong>
+            <strong key={i}>{t(`concerns.${c}`)}{i === 0 ? ", " : null}</strong>
           ))}
         </div>
       </div>

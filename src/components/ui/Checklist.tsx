@@ -1,9 +1,11 @@
 'use client';
 
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 import { useId } from "react";
 
 type Props = {
+  group: string;
   selected: Set<string>;
   onChange: React.Dispatch<React.SetStateAction<Set<string>>>;
   options: string[];
@@ -12,28 +14,32 @@ type Props = {
 }
 
 export default function Checklist({
-  selected, onChange, options, col, multiSelect
+  group, selected, onChange, options, col, multiSelect
 }: Props) {
   const rid = useId();
+  const t = useTranslations(`Product.${group}`);
 
   return (
     <div>
-      <ul className={clsx(`grid gap-2`, `grid-cols-${col}`)}>
+      <ul className={clsx(`grid gap-2`, col === 2 && `grid-cols-2`)}>
         {options.map((label, i) => {
           const id = `${rid}-${i}`;
           const isChecked = selected.has(label);
           return (
             <li key={id} className="relative">
-              <label htmlFor={id} className="
+              <label htmlFor={id} className={clsx(`
                 flex leading-none cursor-pointer
-                rounded-lg border border-amber-300 bg-white/80 px-2 py-2
-                text-[15px] text-amber-900 shadow-sm 
+                rounded-lg border border-amber-200 bg-white/80 px-2 py-2
+                text-amber-900 shadow-sm text-[15px]
                 hover:bg-white hover:shadow
-              ">
+              `, group === "skinType" && `text-[20px] has-[:checked]:bg-orange-100`)}>
                 <input
                   id={id}
                   type="checkbox"
-                  className={clsx("h-3.5 w-3.5 accent-amber-600 mr-1.5 peer pointer-events-none", multiSelect ? "" : "sr-only")}
+                  className={clsx(
+                    "h-3.5 w-3.5 mr-1.5 peer pointer-events-none", 
+                    group === "skinType" ? "sr-only" : group === "categories" ? "accent-green-600" : "accent-amber-600"
+                  )}
                   checked={isChecked}
                   onChange={() =>
                     onChange((prev) => {
@@ -45,10 +51,10 @@ export default function Checklist({
                   }
                 />
                 <span
-                  className={`text-amber-900 truncate`}
+                  className={`text-amber-900 truncate capitalize`}
                   title={label}
                 >
-                  {label}
+                  {t(label)}
                 </span>
               </label>
             </li>

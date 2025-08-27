@@ -21,7 +21,7 @@ export default function SelectorCard({
   return (
     <div
     className={
-      clsx(`rounded-2xl p-6 shadow-lg flex flex-col min-h-[300px] w-[300px] relative m-2 bg-gradient-to-br`, 
+      clsx(`rounded-2xl p-4 shadow-lg flex flex-col min-h-[300px] w-[300px] relative m-2 bg-gradient-to-br`, 
       colorMap[step]
     )}
     >
@@ -33,7 +33,7 @@ export default function SelectorCard({
         {step}
       </div>
 
-      <p className="text-center text-lg font-medium mb-3">
+      <p className="text-center text-lg font-medium my-3">
         {title}
       </p>
 

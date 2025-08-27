@@ -4,11 +4,12 @@ export const concerns = [
   "acne",
   "redness",
   "sensitivity",
-  "aging",
-  "dark spots",
-  "uneven texture",
-  "wrinkles",
+  "sagging",
+  "darkSpots",
+  "unevenTexture",
   "pores",
-  "acne scars",
-  "hyper pigmentation"
+  "lightWrinkles",
+  "deepWrinkles",
+  "acneScars",
+  "hyperPigmentation"
 ];
