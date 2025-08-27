@@ -32,8 +32,8 @@
     "effectivedTo": "〜に効果的",
     "skinType": {
       "dry": "乾燥肌",
-      "drycombination": "乾燥寄り混合肌",
-      "oilycombination": "脂性寄り混合肌",
+      "drycombination": "乾燥気味混合肌",
+      "oilycombination": "脂性気味混合肌",
       "balanced": "普通/混合肌",
       "oily": "脂性肌"
     },
@@ -46,7 +46,7 @@
       "sensitivity": "敏感さ",
       "darkSpots": "シミ",
       "unevenTexture": "肌の凹凸",
-      "oiliness": "脂性",
+      "oiliness": "過剰な皮脂",
       "pores": "毛穴の目立ち",
       "lightWrinkles": "小じわ",
       "deepWrinkles": "深いしわ",

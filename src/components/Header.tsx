@@ -16,13 +16,13 @@ export default function Header() {
     <header className="
     sticky w-full top-0 z-50
     ">
-      <div className="flex items-center justify-between px-4 py-3 bg-[var(--color-bg)]">
+      <div className="flex items-center justify-between px-4 py-3 bg-[var(--color-bg-transparent)]">
       {/* Mobile dropdown */}
       {menuOpen && (
         <div className="
         absolute top-full left-0 w-full md:hidden
         ">
-          <div className="flex flex-col items-start bg-[var(--color-bg)] px-4 py-4 gap-4">
+          <div className="flex flex-col items-start bg-[var(--color-bg-transparent)] px-4 py-4 gap-4">
             {internalLinks.map(({ href, label }) => (
               <Link
               key={href}
@@ -35,7 +35,7 @@ export default function Header() {
             ))}
             <LanguageDropdown isWide={false} />
           </div>
-          <div className="bg-gradient-to-b from-[var(--color-bg)] to-transparent h-3" />
+          <div className="bg-gradient-to-b from-[var(--color-bg-transparent)] to-transparent h-3" />
         </div>
       )}
         <div className="flex items-center">
@@ -71,7 +71,7 @@ export default function Header() {
         </div>
       </div>
       <div className="relative">
-        <div className="bg-gradient-to-b from-[var(--color-bg)] to-transparent h-3 absolute top-0 left-0 w-full" />
+        <div className="bg-gradient-to-b from-[var(--color-bg-transparent)] to-transparent h-3 absolute top-0 left-0 w-full" />
       </div>
     </header>
   );
