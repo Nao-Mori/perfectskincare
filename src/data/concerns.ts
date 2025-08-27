@@ -8,5 +8,7 @@ export const concerns = [
   "dark spots",
   "uneven texture",
   "wrinkles",
-  "pores"
+  "pores",
+  "acne scars",
+  "hyper pigmentation"
 ];

@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import Image from "next/image";
 import type { Product, Review } from "../data/products";
 import Link from "next/link";

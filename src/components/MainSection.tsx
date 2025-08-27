@@ -1,39 +1,34 @@
-import SkinTypeSelector from "./sections/SkinTypeSelector";
+'use client';
+
+import { useState } from "react";
+import Checklist from "./ui/Checklist";
 import SelectorCard from "./ui/SelectorCard";
+import { concerns } from "@/data/concerns";
+import { useTranslations } from "next-intl";
+
+const skinTypes = [
+  "dry", "drycombination", "balanced", "oilycombination", "oily"
+];
+
+const productCategories = [
+  "cleanser", "face wash", "toner", "serum", "lotion", "cream", "sunscreen"
+];
 
 export default function MainSection() {
-  const concerns = ["Dryness", "Oiliness", "Acne", "Redness", "Wrinkles", "Dark Spots", "Rough Skin", "Wrinkles", "Lack of Elasty", "Blackheads"];
+  const [skinType, setSkinType] = useState<Set<string>>(() => new Set());
+  const [myConcerns, setMyConcerns] = useState<Set<string>>(() => new Set());
+  const [chosenCategories, setChosenCategories] = useState<Set<string>>(() => new Set()); 
 
   return (
     <div className="flex flex-wrap justify-center">
       <SelectorCard step={1} title={"Tell us your skin type!"}>
-        <SkinTypeSelector />
+        <Checklist selected={skinType} onChange={setSkinType} options={skinTypes} col={1} multiSelect={false} />
       </SelectorCard>
       <SelectorCard step={2} title={"Tell us your skin concerns!"}>
-        <div className="flex flex-wrap justify-center gap-2 mb-6">
-          {concerns.slice(0,9).map((c, i) => (
-            <span
-            key={i}
-            className="cursor-pointer animate-bubble bg-white text-sm px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm mx-2"
-            >
-              {c}
-            </span>
-          ))}
-        </div>
+        <Checklist selected={myConcerns} onChange={setMyConcerns} options={concerns} col={2} multiSelect />
       </SelectorCard>
-
-      {/* for now dupe */}
       <SelectorCard step={3} title={"Tell us ingredients you like!"}>
-        <div className="flex flex-wrap justify-center gap-2 mb-6 text-white">
-          {concerns.slice(0,9).map((c, i) => (
-            <span
-            key={i}
-            className="animate-bubble bg-blue-400 text-sm px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm mx-2"
-            >
-              {c}
-            </span>
-          ))}
-        </div>
+        <Checklist selected={chosenCategories} onChange={setChosenCategories} options={productCategories} col={1} multiSelect />
       </SelectorCard>
     </div>
   );
