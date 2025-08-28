@@ -5,14 +5,8 @@ import Checklist from "./ui/Checklist";
 import SelectorCard from "./ui/SelectorCard";
 import { concerns } from "@/data/concerns";
 import { useTranslations } from "next-intl";
-
-const skinTypes = [
-  "dry", "drycombination", "balanced", "oilycombination", "oily"
-];
-
-const productCategories = [
-  "cleanser", "faceWash", "toner", "serum", "lotion", "cream"
-];
+import { skinTypes } from "@/data/skinTypes";
+import { categories } from "@/data/categories";
 
 export default function MainSection() {
   const [skinType, setSkinType] = useState<Set<string>>(() => new Set());
@@ -31,7 +25,7 @@ export default function MainSection() {
           <Checklist group="concerns" selected={myConcerns} onChange={setMyConcerns} options={concerns} col={2} multiSelect />
         </SelectorCard>
         <SelectorCard step={3} title={t("step3")}>
-          <Checklist group="categories" selected={chosenCategories} onChange={setChosenCategories} options={productCategories} col={1} multiSelect />
+          <Checklist group="categories" selected={chosenCategories} onChange={setChosenCategories} options={categories} col={1} multiSelect />
         </SelectorCard>
       </div>
       <div className="text-center mt-4">

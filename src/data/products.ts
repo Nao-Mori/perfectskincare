@@ -9,6 +9,7 @@ export interface Product {
   id: number;
   name: string;
   image: string;
+  category: string;
   reviews: Review[];
 }
 
@@ -17,6 +18,7 @@ export const products: Product[] = [
     id: 1,
     name: "CeraVe Moisturizing Cream",
     image: "https://i5.walmartimages.com/seo/CeraVe-Moisturizing-Cream-Face-Moisturizer-Body-Lotion-for-Normal-to-Very-Dry-Skin-12-oz_2fae0aa2-a8af-4ba5-9033-a61e0f1f1e4f.0f1f517b1d4447237c2f3f696f05caad.jpeg",
+    category: "cream",
     reviews: [
       {
         rate: 9,
@@ -32,7 +34,7 @@ export const products: Product[] = [
         skinType: 4,
         concerns: [
           { id: 1, value: "dryness" },
-          { id: 2, value: "hydration" }
+          { id: 2, value: "lightWrinkles" }
         ],
         comment: "Good for night use."
       },
@@ -41,7 +43,7 @@ export const products: Product[] = [
         skinType: 3,
         concerns: [
           { id: 1, value: "sensitivity" },
-          { id: 2, value: "hydration" }
+          { id: 2, value: "dryness" }
         ],
         comment: "Texture is rich but not greasy."
       },
@@ -49,7 +51,8 @@ export const products: Product[] = [
         rate: 9,
         skinType: 2,
         concerns: [
-          { id: 1, value: "dryness" }
+          { id: 1, value: "dryness" },
+          { id: 2, value: "darkSpots" }
         ],
         comment: "Perfect for winter dry patches."
       },
@@ -68,6 +71,7 @@ export const products: Product[] = [
     id: 2,
     name: "La Roche-Posay Toleriane Purifying Foaming Cleanser",
     image: "https://i5.walmartimages.com/asr/739e2b41-8745-4f64-8913-15db54840857.6020ec6b3add10d191904de67af7141c.jpeg",
+    category: "faceWash",
     reviews: [
       {
         rate: 8,
@@ -101,7 +105,7 @@ export const products: Product[] = [
         skinType: 6,
         concerns: [
           { id: 1, value: "acne" },
-          { id: 2, value: "uneven texture" }
+          { id: 2, value: "unevenTexture" }
         ],
         comment: "A bit foamy for sensitive skin."
       },
@@ -120,12 +124,13 @@ export const products: Product[] = [
     id: 3,
     name: "Neutrogena Hydro Boost Water Gel",
     image: "https://i5.walmartimages.com/seo/Neutrogena-Hydro-Boost-Water-Gel-Moisturizer-50-ml_7dec21bf-13a0-475d-9c0c-698414abac0f.216f91aac2622f02dfb87776ddfc2d98.jpeg",
+    category: "cream",
     reviews: [
       {
         rate: 9,
         skinType: 3,
         concerns: [
-          { id: 1, value: "hydration" },
+          { id: 1, value: "lightWrinkles" },
           { id: 2, value: "dryness" }
         ],
         comment: "Instant hydration, no residue."
@@ -134,8 +139,8 @@ export const products: Product[] = [
         rate: 7,
         skinType: 5,
         concerns: [
-          { id: 1, value: "hydration" },
-          { id: 2, value: "uneven texture" }
+          { id: 1, value: "dryness" },
+          { id: 2, value: "unevenTexture" }
         ],
         comment: "Light gel absorbs fast."
       },
@@ -144,7 +149,7 @@ export const products: Product[] = [
         skinType: 4,
         concerns: [
           { id: 1, value: "dryness" },
-          { id: 2, value: "light wrinkles" }
+          { id: 2, value: "lightWrinkles" }
         ],
         comment: "Good under makeup."
       },
@@ -153,7 +158,7 @@ export const products: Product[] = [
         skinType: 6,
         concerns: [
           { id: 1, value: "pores" },
-          { id: 2, value: "light wrinkles" }
+          { id: 2, value: "acne" }
         ],
         comment: "May cause breakouts on oily skin."
       },
