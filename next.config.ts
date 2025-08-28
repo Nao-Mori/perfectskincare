@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'example.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'd14m4ytv3xhrk4.cloudfront.net',
+        pathname: '/uploads/**'
       }
     ]
   }

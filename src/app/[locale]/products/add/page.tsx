@@ -1,6 +1,8 @@
 'use client';
 
 import Spinner from "@/components/ui/Spinner";
+import { categories } from "@/data/categories";
+import { useAddProduct } from "@/hooks/useAddProduct";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -9,49 +11,20 @@ export default function AddProductPage() {
   const [image, setImage] = useState<File | null>(null);
   const [category, setCategory] = useState('');
   const [message, setMessage] = useState('');
-  const [sending, setSending] = useState(false);
+  const { mutateAsync, isPending, error } = useAddProduct();
 
   const t = useTranslations("Product");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setMessage("");
 
     if (!name || !image || !category) {
       setMessage('Please provide both name and image');
       return;
     }
-
-    setSending(true);
-
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('image', image);
-    formData.append('category', category);
-
-    //REMOVE Later
-    console.log(formData);
-    try {
-      const res = await fetch('/api/products/add', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) throw new Error(data.error || 'Failed to add product');
-
-      setMessage('Product added!');
-      setName('');
-      setImage(null);
-      setSending(false);
-    } catch (err) {
-      setSending(false);
-      if (err instanceof Error) {
-        setMessage(err.message);
-      } else {
-        setMessage('An unknown error occurred');
-      }
-    }
+    await mutateAsync({ file: image, name, category });
+    setMessage("Product was added!")
   };
 
   return (
@@ -77,10 +50,9 @@ export default function AddProductPage() {
           <div className="relative">
             <select className="select-base" value={category} onChange={(e) => setCategory(e.target.value)}>
               <option value="" disabled>{t("category")}</option>
-              <option>Cleanser</option>
-              <option>Toner</option>
-              <option>Serum</option>
-              <option>Cream</option>
+              {categories.map((value:string)=>(
+                <option key={value} value={value}>{t(`categories.${value}`)}</option>
+              ))}
             </select>
             <svg className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500"
             viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
@@ -89,7 +61,7 @@ export default function AddProductPage() {
             </svg>
           </div>
         </label>
-        {sending ? (
+        {isPending ? (
           <Spinner />
         ) : (
           <button
@@ -99,7 +71,7 @@ export default function AddProductPage() {
             Add Product
           </button>
         )}
-        {message && <p className="text-sm mt-2">{message}</p>}
+        <p>{error ? (error as Error).message : message && "Unknow error occured"}</p>
       </form>
     </div>
   );
