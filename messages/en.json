@@ -17,7 +17,8 @@
   "Links": {
     "yourdata": "Your Data",
     "history": "History",
-    "favorite": "Favorite"
+    "favorite": "Favorite",
+    "addProduct": "Add Product"
   },
   "Product": {
     "name": "Product Name",

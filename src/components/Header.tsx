@@ -51,20 +51,19 @@ export default function Header() {
           <Link href="/" className="text-xl font-bold pr-1">
             SkinMatch.io
           </Link>
+          {/* Desktop nav */}
+          <nav className="hidden md:flex gap-4 items-center ml-7">
+            {internalLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-sm text-gray-700 hover:text-black whitespace-nowrap"
+              >
+                {tLinks(label)}
+              </Link>
+            ))}
+          </nav>
         </div>
-
-        {/* Desktop nav */}
-        {/* <nav className="hidden md:flex gap-6 items-center">
-          {navItems.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="text-sm text-gray-700 hover:text-black mr-2 whitespace-nowrap"
-            >
-              {label}
-            </Link>
-          ))}
-        </nav> */}
         <div className="flex">
           <LanguageDropdown isWide={true} />
           <LoginButton />

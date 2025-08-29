@@ -18,7 +18,8 @@
   "Links": {
     "yourdata": "あなたのデータ",
     "history": "履歴",
-    "favorite": "お気に入り"
+    "favorite": "お気に入り",
+    "addProduct": "商品を追加"
   },
   "Product": {
     "name": "商品名",
