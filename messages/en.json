@@ -1,6 +1,7 @@
 {
   "Controls": {
-    "login": "Sign in with Google"
+    "login": "Sign in with Google",
+    "addProduct": "Add Product"
   },
   "Hero": {
     "title": "Find the perfect skincare for your skin",
@@ -21,7 +22,7 @@
     "addProduct": "Add Product"
   },
   "Product": {
-    "name": "Product Name",
+    "name": "Product Name (Brand + Title)",
     "category": "Category",
     "noDescription": "No description yet",
     "rating": "Rating",

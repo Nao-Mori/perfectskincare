@@ -13,7 +13,8 @@ export default function AddProductPage() {
   const [message, setMessage] = useState('');
   const { mutateAsync, isPending, error } = useAddProduct();
 
-  const t = useTranslations("Product");
+  const t = useTranslations("Controls");
+  const tProduct = useTranslations("Product");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,11 +30,11 @@ export default function AddProductPage() {
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow rounded">
-      <h2 className="text-xl font-bold mb-4">Add New Product</h2>
+      <h2 className="text-xl font-bold mb-4">{t("addProduct")}</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="text"
-          placeholder="Product name"
+          placeholder={tProduct("name")}
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="input-base"
@@ -49,9 +50,9 @@ export default function AddProductPage() {
         <label className="block">
           <div className="relative">
             <select className="select-base" value={category} onChange={(e) => setCategory(e.target.value)}>
-              <option value="" disabled>{t("category")}</option>
+              <option value="" disabled>{tProduct("category")}</option>
               {categories.map((value:string)=>(
-                <option key={value} value={value}>{t(`categories.${value}`)}</option>
+                <option key={value} value={value}>{tProduct(`categories.${value}`)}</option>
               ))}
             </select>
             <svg className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500"
@@ -66,9 +67,9 @@ export default function AddProductPage() {
         ) : (
           <button
             type="submit"
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="btn--gradient"
           >
-            Add Product
+            {t("addProduct")}
           </button>
         )}
         <p>{error ? (error as Error).message : message && "Unknow error occured"}</p>

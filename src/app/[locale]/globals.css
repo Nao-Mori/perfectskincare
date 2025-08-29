@@ -99,6 +99,14 @@ a {
   :where(button, a.btn).btn--outlined:hover {
     background-color: var(--color-soft-blue);
   }
+  :where(button, a.btn).btn--gradient {
+    @apply bg-gradient-to-r from-pink-100 via-blue-100 to-purple-100 shadow-xl
+           font-semibold border border-gray-400 text-gray-800 py-3
+  }
+  :where(button, a.btn).btn--gradient:hover {
+    @apply bg-orange-50;
+    background-image: none;
+  }
 
   .input-base {
     @apply rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900

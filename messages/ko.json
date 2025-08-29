@@ -1,6 +1,7 @@
 {
   "Controls": {
-    "login": "Google 로그인"
+    "login": "Google 로그인",
+    "addProduct": "제품 추가"
   },
   "Hero": {
     "title": "피부에 꼭 맞는 스킨케어 찾기",
@@ -22,7 +23,7 @@
     "getRecommendations": "추천 받기"
   },
   "Product": {
-    "name": "상품명",
+    "name": "상품 (브랜드 + 상품명)",
     "category": "카테고리",
     "noDescription": "설명이 아직 없습니다",
     "rating": "평점",

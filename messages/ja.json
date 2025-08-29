@@ -1,6 +1,7 @@
 {
   "Controls": {
-    "login": "Googleでログイン"
+    "login": "Googleでログイン",
+    "addProduct": "商品を追加"
   },
   "Hero": {
     "title": "ぴったりのスキンケアを見つけましょう",
@@ -22,7 +23,7 @@
     "addProduct": "商品を追加"
   },
   "Product": {
-    "name": "商品名",
+    "name": "商品 (ブランド + 商品名)",
     "category": "カテゴリ",
     "noDescription": "説明はまだありません",
     "rating": "評価",

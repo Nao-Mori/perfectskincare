@@ -30,10 +30,7 @@ export default function MainSection() {
       </div>
       <div className="text-center mt-4">
         <button
-        className="
-        bg-gradient-to-r from-pink-100 via-blue-100 to-purple-100 shadow-xl
-        font-semibold border border-gray-400 text-gray-800 py-3
-        "
+        className="btn--gradient"
         disabled={skinType.size === 0 || myConcerns.size === 0 || chosenCategories.size === 0}>
           {t("getRecommendations")}
         </button>
