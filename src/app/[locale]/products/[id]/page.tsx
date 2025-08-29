@@ -9,6 +9,7 @@ import Spinner from '@/components/ui/Spinner';
 import RecentlyViewed from "@/components/RecentlyViewed";
 import Link from 'next/link';
 import ReviewResult from '@/components/ui/ReviewResult';
+import { cloudfrontLoader } from '@/lib/cloudFrontLoader';
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -42,6 +43,7 @@ function Details({ id }: { id: string }) {
     <div className="flex flex-wrap item-center justify-center">
       <div className="relative min-w-full min-h-60 md:min-w-[500px] md:h-80"> 
         <Image
+        loader={cloudfrontLoader}
         src={product.image}
         alt={product.name}
         fill

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Prisma } from '@prisma/client';
 import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
@@ -13,13 +13,20 @@ export async function POST(req: Request) {
   try {
     const { name, image, category } = await req.json();
 
-    await prisma.product.create({ 
+    await prisma.product.create({
       data: { name, image, category }
     });
 
     return NextResponse.json({ name, image, category }, { status: 201 });
-  } catch (error) {
-    console.log(error)
-    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+  } catch (error: unknown) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      if (error.code === 'P2002') {
+        return NextResponse.json(
+          { error: "This product already exists!" },
+          { status: 400 }
+        );
+      }
+    }
+    return NextResponse.json({ error: "Server Error" }, { status: 500 });
   }
 }
