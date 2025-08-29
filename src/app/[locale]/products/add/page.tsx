@@ -1,5 +1,6 @@
 'use client';
 
+import FeedbackPopup from "@/components/FeedbackPopup";
 import Spinner from "@/components/ui/Spinner";
 import { categories } from "@/data/categories";
 import { useAddProduct } from "@/hooks/useAddProduct";
@@ -10,22 +11,30 @@ export default function AddProductPage() {
   const [name, setName] = useState('');
   const [image, setImage] = useState<File | null>(null);
   const [category, setCategory] = useState('');
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState<string | null>(null);
+  const [id, setId] = useState<string | null>(null);
   const { mutateAsync, isPending, error } = useAddProduct();
 
   const t = useTranslations("Controls");
   const tProduct = useTranslations("Product");
 
+  const clearFields = () => {
+    setName("");
+    setImage(null);
+    setCategory("");
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setMessage("");
+    setMessage(null);
 
     if (!name || !image || !category) {
       setMessage('Please provide both name and image');
       return;
     }
     await mutateAsync({ file: image, name, category });
-    setMessage("Product was added!")
+    clearFields();
+    set
   };
 
   return (
@@ -63,7 +72,7 @@ export default function AddProductPage() {
           </div>
         </label>
         {isPending ? (
-          <Spinner />
+          <Spinner size="sm" />
         ) : (
           <button
             type="submit"
@@ -72,7 +81,7 @@ export default function AddProductPage() {
             {t("addProduct")}
           </button>
         )}
-        <p>{error ? (error as Error).message : message && "Unknow error occured"}</p>
+        <FeedbackPopup error={error} message={message} id={id} />
       </form>
     </div>
   );

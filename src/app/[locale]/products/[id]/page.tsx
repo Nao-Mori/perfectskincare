@@ -31,7 +31,7 @@ function Details({ id }: { id: string }) {
 
   if (isLoading) {
     return (
-      <Spinner />
+      <Spinner size="lg" />
     );
   }
 
