@@ -16,8 +16,8 @@ export default function ProductPage() {
 
   return (
     <>
-    <div className="w-full mt-5 mb-10 bg-white shadow-md py-5 rounded-2xl min-h-60">
-      <Details id={String(id)} />
+      <div className="max-w-5xl w-full mt-5 mb-10 bg-white shadow-md bg-white py-5 rounded-2xl">
+        <Details id={String(id)} />
       </div>
       <RecentlyViewed id={String(id)} />
     </>
@@ -29,33 +29,35 @@ function Details({ id }: { id: string }) {
   const { data, isLoading, error } = useProduct(param.id as string);
   const product = data as Product;
 
-  if (isLoading) {
-    return (
-      <Spinner size="lg" />
-    );
-  }
-
-  if (error || !product) {
+  if (error) {
     return <div className="text-red-500 text-center">Product does not exist</div>;
   }
 
   return (
     <div className="flex flex-wrap item-center justify-center">
-      <div className="relative min-w-full min-h-60 md:min-w-[500px] md:h-80"> 
-        <Image
-        loader={cloudfrontLoader}
-        src={product.image}
-        alt={product.name}
-        fill
-        className="object-contain rounded-lg"
-        />
+      <div className="flex-1 relative min-w-full min-h-60 md:min-w-[500px] md:h-80"> 
+        {!product ? (
+          <div className="w-full h-full flex justify-center items-center">
+            <Spinner size={70} />
+          </div>
+        ) : (
+          <Image
+          loader={cloudfrontLoader}
+          src={product.image}
+          alt={product.name}
+          fill
+          className="object-contain rounded-lg w-full"
+          />
+        )}
       </div>
-      <div className="text-sm text-gray-600 px-5 min-w-full md:min-w-[500px]">
+      <div className="flex-1 text-sm text-gray-600 px-5 min-w-full md:min-w-[500px]">
         <div className="flex items-center mb-5 mt-3">
-          <h4 className="text-base md:text-xl font-semibold w-full">{product.name}</h4>
+          <h4 className="text-base md:text-xl font-semibold w-full flex">
+            {product?.name || "loading..."}
+          </h4>
         </div>
-        <ReviewResult reviews={product.reviews} />
-        <Link className="btn mt-5 font-bold" href={`${id}/reviews`}>Post a review!</Link>
+        <ReviewResult reviews={product?.reviews || []} />
+        <button className="mt-5 font-bold">Post a review!</button>
       </div>
     </div>
   );

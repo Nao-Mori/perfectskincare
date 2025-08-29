@@ -18,11 +18,11 @@ export default function RecentlyViewed({ id }: { id: string }) {
   const { data: products, error, isPending } = useProducts(ids);
 
   return (
-    <aside>
+    <aside className="w-full max-w-5xl">
       <h3 className="text-xl font-semibold mb-6">Recently viewed</h3>
 
       {isPending ? (
-        <Spinner />
+        <Spinner size={50} />
       ) : products ? (
         <ProductList products={products} />
       ) : (

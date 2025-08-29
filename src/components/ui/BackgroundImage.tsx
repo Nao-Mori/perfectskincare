@@ -15,7 +15,7 @@ export default function BackgroundImage () {
   if (!loaded) return null;
 
   return (
-    <div className="absolute w-full z-0 inset-0 overflow-hidden">
+    <div className="absolute w-full z-0 inset-0">
       <div className="flex flex-row-reverse justify-between gap-2">
         <div>
           <Image 
@@ -30,7 +30,7 @@ export default function BackgroundImage () {
           />
         </div>
       </div>
-      <div className="block lg:hidden max-w-[700px]">
+      <div className="block md:hidden max-w-[700px]">
         <Image
           alt="background3" loading="lazy" src="/images/background2.webp"
           className="opacity-90" height={1024} width={1024}

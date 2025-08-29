@@ -10,10 +10,6 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'i5.walmartimages.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'example.com',
       },
       {

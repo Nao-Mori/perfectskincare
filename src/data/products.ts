@@ -15,9 +15,9 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    id: 1,
+    id: 270002,
     name: "CeraVe Moisturizing Cream",
-    image: "https://i5.walmartimages.com/seo/CeraVe-Moisturizing-Cream-Face-Moisturizer-Body-Lotion-for-Normal-to-Very-Dry-Skin-12-oz_2fae0aa2-a8af-4ba5-9033-a61e0f1f1e4f.0f1f517b1d4447237c2f3f696f05caad.jpeg",
+    image: "uploads/1756450115635-0a0f8f64-abc9-4d70-b666-6101429b6cd5.webp",
     category: "cream",
     reviews: [
       {
@@ -68,9 +68,9 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 2,
+    id: 300001,
     name: "La Roche-Posay Toleriane Purifying Foaming Cleanser",
-    image: "https://i5.walmartimages.com/asr/739e2b41-8745-4f64-8913-15db54840857.6020ec6b3add10d191904de67af7141c.jpeg",
+    image: "uploads/1756453461585-1da63b4f-6291-4654-a124-7d98d24ba29c.webp",
     category: "faceWash",
     reviews: [
       {
@@ -121,9 +121,9 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 3,
+    id: 270003,
     name: "Neutrogena Hydro Boost Water Gel",
-    image: "https://i5.walmartimages.com/seo/Neutrogena-Hydro-Boost-Water-Gel-Moisturizer-50-ml_7dec21bf-13a0-475d-9c0c-698414abac0f.216f91aac2622f02dfb87776ddfc2d98.jpeg",
+    image: "uploads/1756453311500-08cb0807-ebcd-408e-8565-261d9ad837f7.webp",
     category: "cream",
     reviews: [
       {
