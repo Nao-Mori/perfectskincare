@@ -1,14 +1,13 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Modal from './ui/Modal';
 import Link from 'next/link';
 
-function getErrorMessage(err: unknown) {
-  if (typeof err === 'string') return err;
-  if (err && typeof err === 'object' && 'message' in err) {
-    return String((err as any).message);
+function getErrorMessage(error: unknown) {
+  if (typeof error === 'string') return error;
+  if (error instanceof Error) {
+    return error.message;
   }
   return 'Unknown error occurred';
 }
@@ -23,7 +22,6 @@ export default function FeedbackPopup({
   productId: string | null;
 }) {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
 
   const isError = Boolean(error || message);
   const body = useMemo(
