@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation';
 import { useProduct } from '@/hooks/useProduct';
 import type { Product } from '@/data/products';
 import Spinner from '@/components/ui/Spinner';
-import RecentlyViewed from "@/components/RecentlyViewed";
+import RecentlyViewed from '@/components/RecentlyViewed';
 import Link from 'next/link';
 import ReviewResult from '@/components/ui/ReviewResult';
 import { cloudfrontLoader } from '@/lib/cloudFrontLoader';
@@ -30,30 +30,32 @@ function Details({ id }: { id: string }) {
   const product = data as Product;
 
   if (error) {
-    return <div className="text-red-500 text-center">Product does not exist</div>;
+    return (
+      <div className="text-red-500 text-center">Product does not exist</div>
+    );
   }
 
   return (
     <div className="flex flex-wrap item-center justify-center">
-      <div className="flex-1 relative min-w-full min-h-60 md:min-w-[500px] md:h-80"> 
+      <div className="flex-1 relative min-w-full min-h-60 md:min-w-[500px] md:h-80">
         {!product ? (
           <div className="w-full h-full flex justify-center items-center">
             <Spinner size={70} />
           </div>
         ) : (
           <Image
-          loader={cloudfrontLoader}
-          src={product.image}
-          alt={product.name}
-          fill
-          className="object-contain rounded-lg w-full"
+            loader={cloudfrontLoader}
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-contain rounded-lg w-full"
           />
         )}
       </div>
       <div className="flex-1 text-sm text-gray-600 px-5 min-w-full md:min-w-[500px]">
         <div className="flex items-center mb-5 mt-3">
           <h4 className="text-base md:text-xl font-semibold w-full flex">
-            {product?.name || "loading..."}
+            {product?.name || 'loading...'}
           </h4>
         </div>
         <ReviewResult reviews={product?.reviews || []} />

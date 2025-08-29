@@ -13,19 +13,19 @@ export async function POST(req: Request) {
       skinType,
       comment,
       product: {
-        connect: { id: productId }
-      }
-    }
+        connect: { id: productId },
+      },
+    },
   });
 
   if (concerns && concerns.length > 0) {
     await prisma.concern.createMany({
       data: concerns.map((value: string) => ({
         value,
-        reviewId: review.id
-      }))
+        reviewId: review.id,
+      })),
     });
   }
 
-  return NextResponse.json({ review }, { status: 201 })
+  return NextResponse.json({ review }, { status: 201 });
 }

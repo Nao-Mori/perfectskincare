@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import { useSession, signIn, signOut } from "next-auth/react";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
-import Link from "next/link";
+import { useSession, signIn, signOut } from 'next-auth/react';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function LoginButton() {
   const tControls = useTranslations('Controls');
@@ -11,10 +11,13 @@ export default function LoginButton() {
 
   if (!session) {
     return (
-      <button className="text-sm whitespace-nowrap font-bold ml-2" onClick={() => signIn("google")}>
-        {tControls("login")}
+      <button
+        className="text-sm whitespace-nowrap font-bold ml-2"
+        onClick={() => signIn('google')}
+      >
+        {tControls('login')}
       </button>
-    )
+    );
   }
   const name = session.user?.name ?? 'Account';
   const img = session.user?.image;

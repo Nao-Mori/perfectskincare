@@ -9,17 +9,17 @@ async function main(pro: Product) {
     data: {
       name: pro.name,
       image: pro.image,
-      category: pro.category
+      category: pro.category,
     },
   });
 
   // Step 2: Create a Review
-  for(const review of pro.reviews) {
+  for (const review of pro.reviews) {
     const reviewDoc = await prisma.review.create({
       data: {
-      rate: review.rate,
-      skinType: review.skinType,
-      comment: review.comment || null,
+        rate: review.rate,
+        skinType: review.skinType,
+        comment: review.comment || null,
         product: {
           connect: { id: product.id },
         },
@@ -28,19 +28,22 @@ async function main(pro: Product) {
     // Step 3: Add Concerns to that Review
     const concerns = review.concerns;
     await prisma.concern.createMany({
-      data: concerns.map(({ value }:any)=> ({ value, reviewId: reviewDoc.id })),
+      data: concerns.map(({ value }: any) => ({
+        value,
+        reviewId: reviewDoc.id,
+      })),
     });
   }
 
   console.log('Seed completed');
 }
-for(const i in products) {
+for (const i in products) {
   main(products[i])
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+    .catch((e) => {
+      console.error(e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
 }

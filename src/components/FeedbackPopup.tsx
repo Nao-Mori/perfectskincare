@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-import Modal from "./ui/Modal";
-import Link from "next/link";
+import { useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Modal from './ui/Modal';
+import Link from 'next/link';
 
 function getErrorMessage(err: unknown) {
-  if (typeof err === "string") return err;
-  if (err && typeof err === "object" && "message" in err) {
+  if (typeof err === 'string') return err;
+  if (err && typeof err === 'object' && 'message' in err) {
     return String((err as any).message);
   }
-  return "Unknown error occurred";
+  return 'Unknown error occurred';
 }
 
 export default function FeedbackPopup({
@@ -27,7 +27,7 @@ export default function FeedbackPopup({
 
   const isError = Boolean(error || message);
   const body = useMemo(
-    () => (isError ? getErrorMessage(error) : message ?? "Product was added"),
+    () => (isError ? getErrorMessage(error) : (message ?? 'Product was added')),
     [isError, error, message]
   );
 
@@ -39,27 +39,18 @@ export default function FeedbackPopup({
     <Modal
       open={open}
       onClose={() => setOpen(false)}
-      title={isError ? "Error" : "Success"}
+      title={isError ? 'Error' : 'Success'}
       footer={
         isError ? (
-          <button
-            className="btn--outlined"
-            onClick={() => setOpen(false)}
-          >
+          <button className="btn--outlined" onClick={() => setOpen(false)}>
             Close
           </button>
         ) : productId ? (
           <>
-            <button
-              className="btn--outlined"
-              onClick={() => setOpen(false)}
-            >
+            <button className="btn--outlined" onClick={() => setOpen(false)}>
               Not now
             </button>
-            <Link
-            className="btn"
-            href={productId}
-            >
+            <Link className="btn" href={productId}>
               Leave a first review
             </Link>
           </>

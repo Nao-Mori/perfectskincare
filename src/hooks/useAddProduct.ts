@@ -14,7 +14,7 @@ export function useAddProduct() {
       const pres = await fetch('/api/uploads/s3', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ fileType: file.type, fileName: file.name })
+        body: JSON.stringify({ fileType: file.type, fileName: file.name }),
       });
       if (!pres.ok) throw new Error('Failed to create upload URL');
       const { uploadUrl, key } = await pres.json();
@@ -22,15 +22,15 @@ export function useAddProduct() {
       const put = await fetch(uploadUrl, {
         method: 'PUT',
         headers: { 'content-type': file.type },
-        body: file
-      })
+        body: file,
+      });
 
       if (!put.ok) throw new Error(`S3 upload failed (${put.status})`);
 
       const save = await fetch('/api/products/add', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ name, category, image: key })
+        body: JSON.stringify({ name, category, image: key }),
       });
       const product = await save.json();
       if (!save.ok) throw new Error(product.error || 'Failed to save product');
@@ -39,7 +39,8 @@ export function useAddProduct() {
     },
     onSuccess: (product) => {
       qc.invalidateQueries({ queryKey: ['products'] });
-      if (product?.id) qc.invalidateQueries({ queryKey: ['product', product.id] });
+      if (product?.id)
+        qc.invalidateQueries({ queryKey: ['product', product.id] });
     },
   });
 }

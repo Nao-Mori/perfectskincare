@@ -1,8 +1,8 @@
-import { useTranslations } from "next-intl";
+import { useTranslations } from 'next-intl';
 
 export default function SkinTypeBar({ value }: { value: number }) {
-  const labels = ["dry", "drycombination", "oilycombination", "oily"];
-  const t = useTranslations("Product.skinType");
+  const labels = ['dry', 'drycombination', 'oilycombination', 'oily'];
+  const t = useTranslations('Product.skinType');
 
   return (
     <div className="mt-4">
@@ -17,13 +17,13 @@ export default function SkinTypeBar({ value }: { value: number }) {
           className="absolute top-0 left-0 h-full transition-all duration-700 ease-out"
           style={{
             width: `${value}%`,
-            background: "linear-gradient(to right, #f9c5d1, #fbc2eb)"
+            background: 'linear-gradient(to right, #f9c5d1, #fbc2eb)',
           }}
         />
-        
+
         <div
           className="absolute top-[-6px] text-pink-500 text-lg transition-all duration-500"
-          style={{ left: `${value}%`, transform: "translateX(-50%)" }}
+          style={{ left: `${value}%`, transform: 'translateX(-50%)' }}
         >
           ▲
         </div>

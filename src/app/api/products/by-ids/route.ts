@@ -3,22 +3,20 @@ import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-export async function POST(
-  req: Request,
-) {
+export async function POST(req: Request) {
   const { ids } = (await req.json()) as { ids: number[] };
-  const norm = ids.map((v) => (typeof v === "string" ? Number(v) : v));
+  const norm = ids.map((v) => (typeof v === 'string' ? Number(v) : v));
 
   try {
     const products = await prisma.product.findMany({
       where: { id: { in: norm } },
-      include: { 
+      include: {
         reviews: {
           include: {
-            concerns: true
-          }
-        }
-      }
+            concerns: true,
+          },
+        },
+      },
     });
 
     if (!products?.length) {

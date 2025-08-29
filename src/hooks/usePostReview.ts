@@ -1,10 +1,14 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export function usePostReview() {
   const qc = useQueryClient();
 
   return useMutation({
-    mutationFn: async (payload: { id: string; rating: number; comment: string }) => {
+    mutationFn: async (payload: {
+      id: string;
+      rating: number;
+      comment: string;
+    }) => {
       const res = await fetch(`/api/products/${payload.id}/reviews`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },

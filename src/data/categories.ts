@@ -1,3 +1,8 @@
 export const categories = [
-  "cleanser", "faceWash", "toner", "serum", "lotion", "cream"
+  'cleanser',
+  'faceWash',
+  'toner',
+  'serum',
+  'lotion',
+  'cream',
 ];

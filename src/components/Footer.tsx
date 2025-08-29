@@ -1,6 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { internalLinks } from "@/data/internalLinks";
+import { internalLinks } from '@/data/internalLinks';
 
 export default function Footer() {
   const t = useTranslations('Footer');
@@ -18,7 +18,11 @@ export default function Footer() {
           <h4 className="text-md font-semibold mb-2">{t('quickLinks')}</h4>
           <ul className="space-y-1">
             {internalLinks.map(({ href, label }) => (
-              <li key={href}><Link href={href} className="hover:underline">{tLinks(label)}</Link></li>
+              <li key={href}>
+                <Link href={href} className="hover:underline">
+                  {tLinks(label)}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>

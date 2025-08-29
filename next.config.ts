@@ -15,12 +15,11 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'd14m4ytv3xhrk4.cloudfront.net',
-        pathname: '/uploads/**'
-      }
-    ]
-  }
+        pathname: '/uploads/**',
+      },
+    ],
+  },
 };
-
 
 const withNextIntl = createNextIntlPlugin();
 

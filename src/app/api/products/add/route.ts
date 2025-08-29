@@ -14,19 +14,22 @@ export async function POST(req: Request) {
     const { name, image, category } = await req.json();
 
     const { id: productId } = await prisma.product.create({
-      data: { name, image, category }
+      data: { name, image, category },
     });
 
-    return NextResponse.json({ name, image, category, productId }, { status: 201 });
+    return NextResponse.json(
+      { name, image, category, productId },
+      { status: 201 }
+    );
   } catch (error: unknown) {
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       if (error.code === 'P2002') {
         return NextResponse.json(
-          { error: "This product already exists!" },
+          { error: 'This product already exists!' },
           { status: 400 }
         );
       }
     }
-    return NextResponse.json({ error: "Server Error" }, { status: 500 });
+    return NextResponse.json({ error: 'Server Error' }, { status: 500 });
   }
 }

@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 
 export default function Hero() {
-  const t = useTranslations("Hero");
+  const t = useTranslations('Hero');
 
   return (
     <section className="text-center max-w-xl mb-5 mt-9 z-10">

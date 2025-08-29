@@ -12,13 +12,13 @@ export async function GET(
   try {
     const product = await prisma.product.findUnique({
       where: { id: Number(id) },
-      include: { 
+      include: {
         reviews: {
           include: {
-            concerns: true
-          }
-        }
-      }
+            concerns: true,
+          },
+        },
+      },
     });
 
     if (!product) {

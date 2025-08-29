@@ -19,13 +19,14 @@ export async function POST(req: Request) {
     const { fileType, fileName } = await req.json();
 
     if (!fileType || !fileName) {
-      return NextResponse.json({ error: 'fileType and fileName required' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'fileType and fileName required' },
+        { status: 400 }
+      );
     }
 
     const ext =
-      mimeToExt[fileType] ??
-      fileName.split('.').pop()?.toLowerCase() ??
-      'bin';
+      mimeToExt[fileType] ?? fileName.split('.').pop()?.toLowerCase() ?? 'bin';
 
     const key = `uploads/${Date.now()}-${crypto.randomUUID()}.${ext}`;
 
@@ -39,7 +40,8 @@ export async function POST(req: Request) {
 
     const host = process.env.NEXT_PUBLIC_ASSET_HOST?.replace(/\/$/, '') ?? '';
     return NextResponse.json({
-      uploadUrl, key,
+      uploadUrl,
+      key,
       publicUrl: host ? `${host}/${key}` : undefined,
     });
   } catch (err: any) {

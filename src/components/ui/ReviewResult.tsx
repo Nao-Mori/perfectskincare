@@ -1,11 +1,11 @@
-import { Review } from "@/data/products";
-import { summarizeReviews } from "@/lib/summarizeReviews";
-import { useTranslations } from "next-intl";
-import RatingBar from "./RatingBar";
-import SkinTypeBar from "./SkinTypeBar";
+import { Review } from '@/data/products';
+import { summarizeReviews } from '@/lib/summarizeReviews';
+import { useTranslations } from 'next-intl';
+import RatingBar from './RatingBar';
+import SkinTypeBar from './SkinTypeBar';
 
-export default function ReviewResult ({ reviews }: { reviews: Review[] }) {
-  const t = useTranslations("Product");
+export default function ReviewResult({ reviews }: { reviews: Review[] }) {
+  const t = useTranslations('Product');
 
   if (reviews.length === 0) {
     return (
@@ -13,17 +13,12 @@ export default function ReviewResult ({ reviews }: { reviews: Review[] }) {
         <RatingBar rating={0} />
         <h2 className="mt-3">No review yet... please post a first review!</h2>
       </div>
-    )
+    );
   }
-  
-  const { 
-    avgRating,
-    topRatedSkinType,
-    topConcerns,
-    averageReviewedSkinType
-  } = summarizeReviews(reviews);
 
-  
+  const { avgRating, topRatedSkinType, topConcerns, averageReviewedSkinType } =
+    summarizeReviews(reviews);
+
   // convert to percentage offset for arrow placement (1–8 scale)
   const arrowPos = ((averageReviewedSkinType - 1) / 7) * 100;
 
@@ -37,17 +32,20 @@ export default function ReviewResult ({ reviews }: { reviews: Review[] }) {
       <SkinTypeBar value={arrowPos} />
       <div className="text-sm text-gray-600 mt-4 space-y-1">
         <div>
-          ⭐ {t("ratedHighBy")} {" "}
-          <strong>{t(`skinType.${topRatedSkinType.group}`)}</strong> {t("skin")}
-          {" "} ({topRatedSkinType.avg})
+          ⭐ {t('ratedHighBy')}{' '}
+          <strong>{t(`skinType.${topRatedSkinType.group}`)}</strong> {t('skin')}{' '}
+          ({topRatedSkinType.avg})
         </div>
         <div>
-          🎯 {t("effectivedTo")} {" "}
+          🎯 {t('effectivedTo')}{' '}
           {topConcerns.map((c, i) => (
-            <strong key={i}>{t(`concerns.${c}`)}{i === 0 ? ", " : null}</strong>
+            <strong key={i}>
+              {t(`concerns.${c}`)}
+              {i === 0 ? ', ' : null}
+            </strong>
           ))}
         </div>
       </div>
     </div>
-  )
+  );
 }
