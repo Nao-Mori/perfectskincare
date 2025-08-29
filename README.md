@@ -81,13 +81,6 @@ This project is part of my **developer portfolio** and reflects my passion for:
 - 💻 Modern front-end development
 - 💖 Empowering users through accessible, smart design
 
-## 👩‍💻 About Me
-
-I'm a front-end developer with 5+ years of experience, currently based in Korea and expanding into AI-powered applications.  
-I'm passionate about skincare, effortless UX, and building tools that make people feel more confident and empowered.
-
-> Looking for opportunities in product-focused, inclusive teams where design, performance, and user impact matter.
-
 ## 📸 Screenshots (Coming soon)
 
 ## 🛠️ Setup
