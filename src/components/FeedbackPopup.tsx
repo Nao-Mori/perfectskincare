@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import Modal from "./ui/Modal";
+import Link from "next/link";
 
 function getErrorMessage(err: unknown) {
   if (typeof err === "string") return err;
@@ -47,7 +48,7 @@ export default function FeedbackPopup({
           >
             Close
           </button>
-        ) : productId ?? (
+        ) : productId ? (
           <>
             <button
               className="btn--outlined"
@@ -55,13 +56,14 @@ export default function FeedbackPopup({
             >
               Not now
             </button>
-            <button
-              onClick={() => router.push(productId!)}
+            <Link
+            className="btn"
+            href={productId}
             >
               Leave a first review
-            </button>
+            </Link>
           </>
-        )
+        ) : null
       }
     >
       {body}

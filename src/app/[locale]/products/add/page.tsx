@@ -72,7 +72,7 @@ export default function AddProductPage() {
           </div>
         </label>
         {isPending ? (
-          <Spinner size="sm" />
+          <Spinner size={20} />
         ) : (
           <button
             type="submit"
