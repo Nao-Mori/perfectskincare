@@ -15,11 +15,11 @@ function getErrorMessage(err: unknown) {
 export default function FeedbackPopup({
   error,
   message,
-  id,
+  productId,
 }: {
   error?: unknown;
   message: string | null;
-  id: string | null;
+  productId: string | null;
 }) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -31,8 +31,8 @@ export default function FeedbackPopup({
   );
 
   useEffect(() => {
-    setOpen(Boolean(error || message || id));
-  }, [error, message]);
+    setOpen(Boolean(error || message || productId));
+  }, [error, message, productId]);
 
   return (
     <Modal
@@ -47,7 +47,7 @@ export default function FeedbackPopup({
           >
             Close
           </button>
-        ) : (
+        ) : productId ?? (
           <>
             <button
               className="btn--outlined"
@@ -56,7 +56,7 @@ export default function FeedbackPopup({
               Not now
             </button>
             <button
-              onClick={() => router.push(`products/${id}/reviews/add`)}
+              onClick={() => router.push(productId!)}
             >
               Leave a first review
             </button>

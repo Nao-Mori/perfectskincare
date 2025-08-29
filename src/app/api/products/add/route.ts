@@ -13,11 +13,11 @@ export async function POST(req: Request) {
   try {
     const { name, image, category } = await req.json();
 
-    await prisma.product.create({
+    const { id: productId } = await prisma.product.create({
       data: { name, image, category }
     });
 
-    return NextResponse.json({ name, image, category }, { status: 201 });
+    return NextResponse.json({ name, image, category, productId }, { status: 201 });
   } catch (error: unknown) {
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       if (error.code === 'P2002') {

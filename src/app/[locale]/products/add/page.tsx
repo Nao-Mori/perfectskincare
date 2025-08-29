@@ -12,7 +12,7 @@ export default function AddProductPage() {
   const [image, setImage] = useState<File | null>(null);
   const [category, setCategory] = useState('');
   const [message, setMessage] = useState<string | null>(null);
-  const [id, setId] = useState<string | null>(null);
+  const [productId, setProductId] = useState<string | null>(null);
   const { mutateAsync, isPending, error } = useAddProduct();
 
   const t = useTranslations("Controls");
@@ -32,9 +32,9 @@ export default function AddProductPage() {
       setMessage('Please provide both name and image');
       return;
     }
-    await mutateAsync({ file: image, name, category });
+    const { productId } =  await mutateAsync({ file: image, name, category });
+    setProductId(productId);
     clearFields();
-    set
   };
 
   return (
@@ -81,7 +81,7 @@ export default function AddProductPage() {
             {t("addProduct")}
           </button>
         )}
-        <FeedbackPopup error={error} message={message} id={id} />
+        <FeedbackPopup error={error} message={message} productId={productId} />
       </form>
     </div>
   );
