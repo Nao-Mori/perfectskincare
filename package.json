@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "seed": "ts-node prisma/seed.ts",
+    "seed": "ts-node --project tsconfig.scripts.json prisma/seed.ts",
     "postinstall": "prisma generate",
     "format": "prettier --write ."
   },
@@ -22,7 +22,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.539.0",
-    "next": "15.4.4",
+    "next": "^15.5.2",
     "next-auth": "4.24.11",
     "next-intl": "^4.3.4",
     "react": "19.1.0",

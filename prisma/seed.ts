@@ -1,17 +1,18 @@
-import { Product, products } from '@/data/products';
+import 'dotenv/config'; 
+import { Product, products } from '../src/data/products';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 async function main(pro: Product) {
   // Step 1: Create a Product
-  const product = await prisma.product.create({
-    data: {
-      name: pro.name,
-      image: pro.image,
-      category: pro.category,
-    },
-  });
+  // const product = await prisma.product.create({
+  //   data: {
+  //     name: pro.name,
+  //     image: pro.image,
+  //     category: pro.category,
+  //   },
+  // });
 
   // Step 2: Create a Review
   for (const review of pro.reviews) {
@@ -21,7 +22,7 @@ async function main(pro: Product) {
         skinType: review.skinType,
         comment: review.comment || null,
         product: {
-          connect: { id: product.id },
+          connect: { id: pro.id },
         },
       },
     });
