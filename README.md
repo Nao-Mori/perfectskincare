@@ -53,6 +53,11 @@ This project was fully designed and implemented by me as an original work.
 - 🌐 Instant previews on every pull request
 - ☁️ Future deployment plan with **AWS** (ECS/Lambda + RDS) for scalability and fine-grained infrastructure control
 
+**Testing**
+
+- 🧪 **Jest** for unit testing  
+- Ensures core logic and utilities work reliably
+
 **Tooling & Quality**
 
 - 🧩 TypeScript strict mode
