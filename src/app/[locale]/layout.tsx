@@ -23,6 +23,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Skin Match AI',
   description: 'Perfect skincare products for your skin',
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png"
+  }
 };
 
 export default async function RootLayout({
