@@ -2,18 +2,19 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { loadRecent, saveRecent, updateRecent } from '@/lib/recent';
+import { ProductMini } from '@/data/products';
 
 export function useRecentViewed(max: number = 8) {
-  const [recent, setRecent] = useState<string[]>([]);
+  const [recent, setRecent] = useState<ProductMini[]>([]);
 
   useEffect(() => {
     setRecent(loadRecent().slice(0, max));
   }, [max]);
 
   const pushView = useCallback(
-    (id: string) => {
+    (product: ProductMini) => {
       setRecent((prev) => {
-        const next = updateRecent(prev, id, max);
+        const next = updateRecent(prev, product, max);
         saveRecent(next);
         return next;
       });

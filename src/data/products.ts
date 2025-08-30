@@ -13,6 +13,14 @@ export interface Product {
   reviews: Review[];
 }
 
+export interface ProductMini {
+  id: number;
+  name: string;
+  image: string;
+  category: string;
+  seenAt?: number
+}
+
 export const products: Product[] = [
   {
     id: 270002,

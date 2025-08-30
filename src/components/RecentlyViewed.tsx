@@ -2,34 +2,27 @@
 
 import { useRecentViewed } from '@/hooks/useRecentViewed';
 import { useEffect, useMemo } from 'react';
-import { useProducts } from '@/hooks/useProducts';
-import ProductList from './ProductList';
-import Spinner from './ui/Spinner';
+import { ProductMini } from '@/data/products';
+import ProductListMini from './ProductListMini';
 
-export default function RecentlyViewed({ id }: { id: string }) {
+export default function RecentlyViewed({ product }: { product?: ProductMini }) {
   const { recent, pushView } = useRecentViewed(8);
 
   useEffect(() => {
-    pushView(id);
-  }, [id, pushView]);
+    if(product) pushView(product);
+  }, [product, pushView]);
 
-  const ids = useMemo(() => recent ?? [], [recent]);
+  const products = useMemo(() => {
+    if (!recent) return [];
+    return product ? recent.filter(p => p.id !== product.id) : recent;
+  }, [recent, product]);
 
-  const { data: products, error, isPending } = useProducts(ids);
+  if (!products.length) return null;
 
   return (
     <aside className="w-full max-w-5xl">
       <h3 className="text-xl font-semibold mb-6">Recently viewed</h3>
-
-      {isPending ? (
-        <Spinner size={50} />
-      ) : products ? (
-        <ProductList products={products} />
-      ) : (
-        <p style={{ color: 'crimson' }}>
-          {error ? (error as Error).message : 'Unknow error occured'}
-        </p>
-      )}
+      <ProductListMini products={products} />
     </aside>
   );
 }
