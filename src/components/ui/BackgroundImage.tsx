@@ -20,8 +20,8 @@ export default function BackgroundImage() {
         <div>
           <Image
             alt="background"
-            loading="lazy"
             src="/images/background.webp"
+            priority
             className="w-full opacity-90"
             height={1536}
             width={1024}
@@ -30,9 +30,9 @@ export default function BackgroundImage() {
         <div className="hidden lg:block">
           <Image
             alt="background2"
-            loading="lazy"
             src="/images/background2.webp"
             className="w-full opacity-90"
+            priority
             height={1024}
             width={1024}
           />
@@ -41,8 +41,8 @@ export default function BackgroundImage() {
       <div className="block md:hidden max-w-[700px]">
         <Image
           alt="background3"
-          loading="lazy"
           src="/images/background2.webp"
+          priority
           className="opacity-90"
           height={1024}
           width={1024}
