@@ -8,7 +8,7 @@ import { cloudfrontLoader } from '@/lib/cloudFrontLoader';
 export default function ProductListMini({ products }: { products: readonly ProductMini[] }) {
   return (
     <section className="max-w-5xl w-full">
-      <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
         {products.map((product: ProductMini) => {
           return (
             <Card
@@ -42,7 +42,7 @@ function Card({
         transition-shadow duration-200
       "
       >
-        <div className="relative w-full h-48">
+        <div className="relative w-full h-30 md:h-40">
           <Image
             loader={cloudfrontLoader}
             src={image}
@@ -52,7 +52,7 @@ function Card({
           />
         </div>
         <div className="flex items-center h-12 text-left px-2">
-          <h5 className="text-base text-sm font-semibold w-full">{title}</h5>
+          <h5 className="text-base text-xs md:text-sm font-semibold w-full line-clamp-2">{title}</h5>
         </div>
       </div>
     </Link>
