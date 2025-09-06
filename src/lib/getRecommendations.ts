@@ -87,30 +87,39 @@ class MinHeap<T> {
 export function getRecommendations(
   userInput: UserInput,
   limit: number = LIMIT_DEFAULT
-): Product[] {
+): Record<string, Product[]> {
   const userConcerns = new Set(userInput.concerns);
   const userCategories = new Set(userInput.categories);
 
   type Entry = { score: number; item: Product };
-  const heap = new MinHeap<Entry>((x, y) =>
-    x.score === y.score ? x.item.id < y.item.id : x.score < y.score
-  );
+  const heaps = new Map<string, MinHeap<Entry>>();
 
   for (let i = 0; i < products.length; i++) {
     const p = products[i];
     if (!userCategories.has(p.category)) continue;
     const s = bestReviewScore(p, userConcerns, userInput.skinType);
     if (!Number.isFinite(s)) continue;
-    if (heap.size() < limit) {
-      heap.push({ score: s, item: p });
-    } else if (s > heap.peek().score) {
-      heap.pop();
-      heap.push({ score: s, item: p });
+    if (!heaps.has(p.category)) {
+      heaps.set(
+        p.category,
+        new MinHeap<Entry>((x, y) => (x.score === y.score ? x.item.id < y.item.id : x.score < y.score))
+      )
+    }
+    const h = heaps.get(p.category)!
+    if (h.size() < limit) {
+      h.push({ score: s, item: p })
+    } else if (s > h.peek().score) {
+      h.pop()
+      h.push({ score: s, item: p })
     }
   }
 
-  return heap
-    .toArray()
-    .sort((a, b) => b.score - a.score)
-    .map((e) => e.item);
+  const out: Record<string, Product[]> = {};
+  for (const [cat, heap] of heaps) {
+    out[cat] = heap.toArray().sort((a, b) => b.score - a.score).map(e => e.item);
+  }
+  for (const cat of userCategories) {
+    if (!(cat in out)) out[cat] = [];
+  }
+  return out;
 }
