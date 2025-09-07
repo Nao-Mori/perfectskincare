@@ -86,40 +86,36 @@ class MinHeap<T> {
 
 export function getRecommendations(
   userInput: UserInput,
-  limit: number = LIMIT_DEFAULT
+  limit: number = LIMIT_DEFAULT,
+  loadProductsForCategory: (category: string) => Product[]
 ): Record<string, Product[]> {
   const userConcerns = new Set(userInput.concerns);
-  const userCategories = new Set(userInput.categories);
+  const out: Record<string, Product[]> = {};
 
   type Entry = { score: number; item: Product };
-  const heaps = new Map<string, MinHeap<Entry>>();
 
-  for (let i = 0; i < products.length; i++) {
-    const p = products[i];
-    if (!userCategories.has(p.category)) continue;
-    const s = bestReviewScore(p, userConcerns, userInput.skinType);
-    if (!Number.isFinite(s)) continue;
-    if (!heaps.has(p.category)) {
-      heaps.set(
-        p.category,
-        new MinHeap<Entry>((x, y) => (x.score === y.score ? x.item.id < y.item.id : x.score < y.score))
-      )
-    }
-    const h = heaps.get(p.category)!
-    if (h.size() < limit) {
-      h.push({ score: s, item: p })
-    } else if (s > h.peek().score) {
-      h.pop()
-      h.push({ score: s, item: p })
-    }
-  }
+  for (const cat of userInput.categories) {
+    const products = loadProductsForCategory(cat) ?? [];
+    const heap = new MinHeap<Entry>((x, y) =>
+      x.score === y.score ? x.item.id < y.item.id : x.score < y.score
+    );
 
-  const out: Record<string, Product[]> = {};
-  for (const [cat, heap] of heaps) {
+    for (let i = 0; i < products.length; i++) {
+      const p = products[i];
+      if (p.category !== cat) continue;
+      const s = bestReviewScore(p, userConcerns, userInput.skinType);
+      if (!Number.isFinite(s)) continue;
+
+      if (heap.size() < limit) {
+        heap.push({ score: s, item: p });
+      } else if (s > heap.peek().score) {
+        heap.pop();
+        heap.push({ score: s, item: p });
+      }
+    }
+
     out[cat] = heap.toArray().sort((a, b) => b.score - a.score).map(e => e.item);
   }
-  for (const cat of userCategories) {
-    if (!(cat in out)) out[cat] = [];
-  }
+
   return out;
 }
