@@ -1,7 +1,7 @@
 export interface Review {
   rate: number; // 1–10
   skinType: number; // 1 very dry, 8 very oily
-  concerns: { id: number; value: string }[];
+  concerns: string[];
   comment: string;
 }
 
@@ -31,46 +31,31 @@ export const products: Product[] = [
       {
         rate: 9,
         skinType: 2,
-        concerns: [
-          { id: 1, value: 'dryness' },
-          { id: 2, value: 'sensitivity' },
-        ],
+        concerns: ['dryness', 'sensitivity'],
         comment: 'Super hydrating, calms redness.',
       },
       {
         rate: 8,
         skinType: 4,
-        concerns: [
-          { id: 1, value: 'dryness' },
-          { id: 2, value: 'lightWrinkles' },
-        ],
+        concerns: ['dryness', 'lightWrinkles'],
         comment: 'Good for night use.',
       },
       {
         rate: 7,
         skinType: 3,
-        concerns: [
-          { id: 1, value: 'sensitivity' },
-          { id: 2, value: 'dryness' },
-        ],
+        concerns: ['sensitivity', 'dryness'],
         comment: 'Texture is rich but not greasy.',
       },
       {
         rate: 9,
         skinType: 2,
-        concerns: [
-          { id: 1, value: 'dryness' },
-          { id: 2, value: 'darkSpots' },
-        ],
+        concerns: ['dryness', 'darkSpots'],
         comment: 'Perfect for winter dry patches.',
       },
       {
         rate: 8,
         skinType: 5,
-        concerns: [
-          { id: 1, value: 'redness' },
-          { id: 2, value: 'sensitivity' },
-        ],
+        concerns: ['redness', 'sensitivity'],
         comment: 'Lightweight yet nourishing.',
       },
     ],
@@ -84,46 +69,31 @@ export const products: Product[] = [
       {
         rate: 8,
         skinType: 7,
-        concerns: [
-          { id: 1, value: 'oiliness' },
-          { id: 2, value: 'acne' },
-        ],
+        concerns: ['oiliness', 'acne'],
         comment: 'Gently cleans without over-drying.',
       },
       {
         rate: 7,
         skinType: 6,
-        concerns: [
-          { id: 1, value: 'acne' },
-          { id: 2, value: 'pores' },
-        ],
+        concerns: ['acne', 'pores'],
         comment: 'Helps with breakouts over time.',
       },
       {
         rate: 9,
         skinType: 8,
-        concerns: [
-          { id: 1, value: 'oiliness' },
-          { id: 2, value: 'sensitivity' },
-        ],
+        concerns: ['oiliness', 'sensitivity'],
         comment: 'Very gentle yet effective.',
       },
       {
         rate: 6,
         skinType: 6,
-        concerns: [
-          { id: 1, value: 'acne' },
-          { id: 2, value: 'unevenTexture' },
-        ],
+        concerns: ['acne', 'unevenTexture'],
         comment: 'A bit foamy for sensitive skin.',
       },
       {
         rate: 8,
         skinType: 7,
-        concerns: [
-          { id: 1, value: 'pores' },
-          { id: 2, value: 'oiliness' },
-        ],
+        concerns: ['pores', 'oiliness'],
         comment: 'Great morning cleanser.',
       },
     ],
@@ -137,43 +107,31 @@ export const products: Product[] = [
       {
         rate: 9,
         skinType: 3,
-        concerns: [
-          { id: 1, value: 'lightWrinkles' },
-          { id: 2, value: 'dryness' },
-        ],
+        concerns: ['lightWrinkles', 'dryness'],
         comment: 'Instant hydration, no residue.',
       },
       {
         rate: 7,
         skinType: 5,
-        concerns: [
-          { id: 1, value: 'dryness' },
-          { id: 2, value: 'unevenTexture' },
-        ],
+        concerns: ['dryness', 'unevenTexture'],
         comment: 'Light gel absorbs fast.',
       },
       {
         rate: 9,
         skinType: 4,
-        concerns: [
-          { id: 1, value: 'dryness' },
-          { id: 2, value: 'lightWrinkles' },
-        ],
+        concerns: ['dryness', 'lightWrinkles'],
         comment: 'Good under makeup.',
       },
       {
         rate: 6,
         skinType: 6,
-        concerns: [
-          { id: 1, value: 'pores' },
-          { id: 2, value: 'acne' },
-        ],
+        concerns: ['pores', 'acne'],
         comment: 'May cause breakouts on oily skin.',
       },
       {
         rate: 8,
         skinType: 2,
-        concerns: [{ id: 1, value: 'dryness' }],
+        concerns: ['dryness'],
         comment: 'Great for dry to combination.',
       },
     ],

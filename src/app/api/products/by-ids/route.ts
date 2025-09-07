@@ -1,3 +1,4 @@
+import { mapProducts, productSelect } from '@/lib/mappers/product';
 import { PrismaClient } from '@prisma/client';
 import { NextResponse } from 'next/server';
 
@@ -10,20 +11,14 @@ export async function POST(req: Request) {
   try {
     const products = await prisma.product.findMany({
       where: { id: { in: norm } },
-      include: {
-        reviews: {
-          include: {
-            concerns: true,
-          },
-        },
-      },
+      ...productSelect
     });
 
     if (!products?.length) {
       return NextResponse.json({ error: 'Product not found' }, { status: 404 });
     }
 
-    return NextResponse.json({ products }, { status: 200 });
+    return NextResponse.json({ products: mapProducts(products) }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   } finally {

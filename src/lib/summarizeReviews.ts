@@ -1,10 +1,7 @@
+import { Review } from "@/data/products";
+
 export function summarizeReviews(
-  reviews: {
-    rate: number;
-    skinType: number; // 1–8
-    concerns: { value: string }[];
-    comment: string;
-  }[]
+  reviews: Review[]
 ): {
   avgRating: number;
   mostFrequentGroup: string;
@@ -66,7 +63,7 @@ export function summarizeReviews(
 
   reviews.forEach((r) => {
     r.concerns.forEach((c) => {
-      concernCounts[c.value] = (concernCounts[c.value] || 0) + 1;
+      concernCounts[c] = (concernCounts[c] || 0) + 1;
     });
   });
 
