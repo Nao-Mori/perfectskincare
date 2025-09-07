@@ -12,6 +12,7 @@ test('make sure average rating and top-rated skin average rating to be different
       avg: expect.any(Number),
     },
     topConcerns: expect.arrayContaining(['dryness']),
+    averageReviewedSkinType: expect.any(Number)
   });
 
   expect(result.topConcerns.length).toBeLessThanOrEqual(2);
