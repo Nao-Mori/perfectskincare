@@ -42,10 +42,9 @@ export function useGetRecommendations(
     queryKey: recommendationsKeys.list(user, fetchLimit),
     queryFn: () => fetchByCategory(user.categories, fetchLimit),
     placeholderData: keepPreviousData,
-    staleTime: options?.staleTime ?? 60_000,
+    staleTime: options?.staleTime ?? 86_400_000,
     enabled: options?.enabled ?? true,
     select: (byCategory: ByCategoryResponse): Recommendations => {
-      console.log(byCategory['faceWash']);
       return getRecommendations(
         user,
         perCategoryLimit,
