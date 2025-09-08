@@ -21,6 +21,12 @@ export interface ProductMini {
   seenAt?: number
 }
 
+export type UserInput = {
+  concerns: string[];
+  skinType: number;
+  categories: string[];
+};
+
 export const products: Product[] = [
   {
     id: 270002,

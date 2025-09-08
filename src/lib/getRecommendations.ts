@@ -1,10 +1,4 @@
-import { Product, products } from '@/data/products';
-
-type UserInput = {
-  concerns: string[];
-  skinType: number;
-  categories: string[];
-};
+import { Product, UserInput } from '@/data/products';
 
 //How many concerns are matched with the review
 const WEIGHT_CONCERN_OVERLAP = 10; //Usually only 1~3 overlap expected so should be kinda high
@@ -24,7 +18,7 @@ function bestReviewScore(
   for (let i = 0; i < p.reviews.length; i++) {
     const r = p.reviews[i];
     let concernOverlap = 0;
-    for (const j in r.concerns) {
+    for (const j of r.concerns) {
       if (userConcerns.has(j)) concernOverlap++;
     }
     if (concernOverlap === 0) continue;
@@ -102,7 +96,6 @@ export function getRecommendations(
 
     for (let i = 0; i < products.length; i++) {
       const p = products[i];
-      if (p.category !== cat) continue;
       const s = bestReviewScore(p, userConcerns, userInput.skinType);
       if (!Number.isFinite(s)) continue;
 

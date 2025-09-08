@@ -43,7 +43,7 @@ describe("getRecommendations", () => {
     console.log(result);
     expect(result.faceWash.length).toBeGreaterThanOrEqual(2);
     expect(result.cream.length).toBeGreaterThanOrEqual(2);
-    expect(result.faceWash[0]?.id).toBe(productsFixture[productsFixture.length - 1].id);
-    expect(result.cream[0]?.id).toBe(productsFixture[productsFixture.length - 2].id);
+    expect(result.faceWash[0]?.id).toBe(productsFixture[productsFixture.length - 2].id);
+    expect(result.cream[0]?.id).toBe(productsFixture[productsFixture.length - 1].id);
   });
 });

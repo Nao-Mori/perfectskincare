@@ -5,14 +5,15 @@ import { NextResponse } from 'next/server';
 const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
-  const { categories } = (await req.json()) as { categories: string[] };
+  const { categories, limit = 10 } = (await req.json()) as { categories: string[], limit: number };
 
   try {
     const products = await Promise.all(
       categories.map(async (cat) => {
         const rows = await prisma.product.findMany({
           where: { category: cat },
-          ...productSelect
+          ...productSelect,
+          take: Math.min(Number(limit) || 10, 100)
         });
         return mapProducts(rows);
       })
