@@ -14,7 +14,9 @@
     "step1": "あなたの肌質は？",
     "step2": "肌の悩みは？",
     "step3": "気になる製品は？",
-    "getRecommendations": "おすすめを見る"
+    "getRecommendations": "おすすめを見る",
+    "recommendedForYou": "あなたにオススメの{category}",
+    "lookingForProducts": "あなたに最適な商品を探しています..."
   },
   "Links": {
     "yourdata": "あなたのデータ",
@@ -32,6 +34,9 @@
     "popularFor": "人気のポイント",
     "ratedHighBy": "高評価したのは",
     "effectivedTo": "〜に効果的",
+    "postReview": "レビュー投稿",
+    "recentlyViewed": "最近チェックした商品",
+    "noReview": "まだレビューがありません… 最初のレビューを投稿しましょう！",
     "skinType": {
       "dry": "乾燥肌",
       "drycombination": "乾燥気味混合肌",
@@ -46,6 +51,7 @@
       "redness": "赤み",
       "sagging": "たるみ",
       "sensitivity": "敏感さ",
+      "blackheads": "黒ずみ毛穴",
       "darkSpots": "シミ",
       "unevenTexture": "肌の凹凸",
       "oiliness": "過剰な皮脂",

@@ -9,9 +9,9 @@ export default function ReviewResult({ reviews }: { reviews: Review[] }) {
 
   if (reviews.length === 0) {
     return (
-      <div>
+      <div className="mt-2">
         <RatingBar rating={0} />
-        <h2 className="mt-3">No review yet... please post a first review!</h2>
+        <h2 className="py-4 text-gray-500">{t('noReview')}</h2>
       </div>
     );
   }

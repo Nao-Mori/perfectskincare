@@ -7,11 +7,13 @@ import Spinner from '@/components/ui/Spinner';
 import RecentlyViewed from '@/components/RecentlyViewed';
 import ReviewResult from '@/components/ui/ReviewResult';
 import { ProductImage } from '@/components/ui/ProductImage';
+import { useTranslations } from 'next-intl';
 
 export default function ProductPage() {
   const param = useParams();
   const { data, isLoading, error } = useProduct(param.id as string);
   const product = data as Product;
+  const t = useTranslations('Product');
 
   if (error) {
     return (
@@ -42,7 +44,7 @@ export default function ProductPage() {
             </h4>
           </div>
           <ReviewResult reviews={product?.reviews || []} />
-          <button className="mt-5 font-bold">Post a review!</button>
+          <button className="mt-5 font-bold">{t('postReview')}</button>
         </div>
       </div>
       {product && (

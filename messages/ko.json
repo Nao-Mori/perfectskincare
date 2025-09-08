@@ -10,17 +10,19 @@
     "button": "추천 받기",
     "recommendations": "맞춤 추천 제품"
   },
-  "Links": {
-    "yourdata": "당신의 데이터",
-    "history": "기록",
-    "favorite": "즐겨찾기",
-    "addProduct": "제품 추가"
-  },
   "Counseling": {
     "step1": "피부 타입은 무엇인가요?",
     "step2": "피부 고민은 무엇인가요?",
     "step3": "관심 있는 제품은?",
-    "getRecommendations": "추천 받기"
+    "getRecommendations": "추천 받기",
+    "recommendedForYou": "회원님을 위한 추천 {category}",
+    "lookingForProducts": "가장 적합한 상품을 찾고 있습니다."
+  },
+    "Links": {
+    "yourdata": "당신의 데이터",
+    "history": "기록",
+    "favorite": "즐겨찾기",
+    "addProduct": "제품 추가"
   },
   "Product": {
     "name": "상품 (브랜드 + 상품명)",
@@ -32,6 +34,9 @@
     "popularFor": "인기 이유",
     "ratedHighBy": "높게 평가한 사용자",
     "effectivedTo": "다음에 효과적",
+    "postReview": "리뷰 작성",
+    "recentlyViewed": "최근 본 상품",
+    "noReview": "아직 리뷰가 없어요… 첫 리뷰를 남겨보세요!",
     "skinType": {
       "dry": "건성",
       "drycombination": "건성 복합성",
@@ -46,6 +51,7 @@
       "redness": "홍조",
       "sagging": "처짐",
       "sensitivity": "민감함",
+      "blackheads": "블랙헤드",
       "darkSpots": "색소 침착",
       "unevenTexture": "피부 결 불균일",
       "oiliness": "유분 과다",

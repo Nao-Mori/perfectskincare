@@ -13,7 +13,9 @@
     "step1": "What is your skin type?",
     "step2": "What are your skin concerns?",
     "step3": "Products you would like?",
-    "getRecommendations": "Get recommendations"
+    "getRecommendations": "Get recommendations",
+    "recommendedForYou": "{category} Recommended for you",
+    "lookingForProducts": "Finding the best skincare products for you"
   },
   "Links": {
     "yourdata": "Your Data",
@@ -31,6 +33,9 @@
     "popularFor": "Popular for",
     "ratedHighBy": "Rated High by",
     "effectivedTo": "Effective to",
+    "postReview": "Post Review",
+    "recentlyViewed": "Recently Viewed",
+    "noReview": "No review yet... Let's post a first review!",
     "skinType": {
       "dry": "Dry",
       "drycombination": "Dry Combo",
@@ -45,6 +50,7 @@
       "redness": "redness",
       "sagging": "Sagging",
       "sensitivity": "sensitivity",
+      "blackheads": "blackheads",
       "darkSpots": "dark spots",
       "unevenTexture": "uneven texture",
       "oiliness": "oiliness",
@@ -55,12 +61,12 @@
       "hyperPigmentation": "hyper pigmentation"
     },
     "categories": {
-      "cleanser": "cleanser",
-      "faceWash": "face wash",
-      "toner": "toner",
-      "serum": "serum",
-      "lotion": "lotion",
-      "cream": "cream"
+      "cleanser": "Cleanser",
+      "faceWash": "Face Wash",
+      "toner": "Toner",
+      "serum": "Serum",
+      "lotion": "Lotion",
+      "cream": "Cream"
     }
   },
   "Footer": {
