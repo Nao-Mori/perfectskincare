@@ -23,7 +23,7 @@ export default function LoginButton() {
   const img = session.user?.image;
 
   return (
-    <Link href="user" className="ml-3 flex items-center gap-2">
+    <Link href="/user/favorite" className="ml-3 flex items-center gap-2">
       {img ? (
         <Image
           src={img}

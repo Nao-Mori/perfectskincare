@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 
 export default function RecentlyViewed({ product }: { product?: ProductMini }) {
   const { recent, pushView } = useRecentViewed(8);
-  const t = useTranslations("Product");
+  const t = useTranslations('Product');
 
   useEffect(() => {
     if (product) pushView(product);
@@ -23,7 +23,7 @@ export default function RecentlyViewed({ product }: { product?: ProductMini }) {
 
   return (
     <aside className="w-full max-w-5xl">
-      <h3 className="text-xl font-semibold mb-6">{t("recentlyViewed")}</h3>
+      <h3 className="text-xl font-semibold mb-6">{t('recentlyViewed')}</h3>
       <ProductListMini products={products} />
     </aside>
   );

@@ -1,4 +1,4 @@
-import 'dotenv/config'; 
+import 'dotenv/config';
 import { manyProducts, Product } from '../src/data/products';
 import { PrismaClient } from '@prisma/client';
 
@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 async function addMany() {
   //STEP 1: Create Many Products
   const pros = await prisma.product.createMany({
-    data: manyProducts.map((p)=> ({ ...p, image: `uploads/${p.image}` })),
+    data: manyProducts.map((p) => ({ ...p, image: `uploads/${p.image}` })),
   });
 }
 
@@ -21,7 +21,6 @@ async function addMany() {
 // });
 
 async function main(pro: Product) {
-
   // Step 1: Create a Product
   const product = await prisma.product.create({
     data: {
@@ -52,8 +51,6 @@ async function main(pro: Product) {
       })),
     });
   }
-
-  
 
   console.log('Seed completed');
 }

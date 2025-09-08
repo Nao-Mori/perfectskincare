@@ -4,6 +4,7 @@ export const concerns = [
   'acne',
   'redness',
   'sensitivity',
+  'blackheads',
   'sagging',
   'darkSpots',
   'unevenTexture',

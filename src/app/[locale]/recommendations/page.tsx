@@ -35,7 +35,7 @@ export default function RecommendationsPage({
 
   if (isLoading)
     return (
-      <div className="space-y-8 py-4">
+      <div className="space-y-8 py-4 flex flex-col items-center justify-center">
         <Loader className="animate-spin text-blue-300" size={65} />
         <h3>{t('lookingForProducts')}</h3>
       </div>
@@ -53,7 +53,7 @@ export default function RecommendationsPage({
             </h2>
             <ProductList products={data[cat] ?? []} />
           </section>
-        )
+        );
       })}
     </div>
   );

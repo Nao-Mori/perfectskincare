@@ -68,7 +68,7 @@ export default function MainSection() {
           />
         </SelectorCard>
       </div>
-      <div className="text-center mt-4">
+      <div className="text-center mt-4 flex flex-col items-center justify-center">
         {moving ? (
           <Loader2 className="animate-spin text-blue-300" />
         ) : (

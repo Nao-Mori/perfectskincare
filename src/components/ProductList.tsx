@@ -12,7 +12,7 @@ export default function ProductList({
 }) {
   return (
     <section className="max-w-5xl w-full">
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-stretch">
         {products.map((product: Product) => {
           return (
             <Card
@@ -46,7 +46,7 @@ function Card({
         className="
         rounded-xl bg-white p-4 shadow-md text-center z-10 
         hover:shadow-[0_10px_28px_rgba(250,152,141,0.7)]
-        transition-shadow duration-200
+        transition-shadow duration-200 h-full
       "
       >
         <div className="relative w-full h-48">

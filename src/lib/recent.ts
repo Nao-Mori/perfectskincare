@@ -1,4 +1,4 @@
-import { ProductMini } from "@/data/products";
+import { ProductMini } from '@/data/products';
 
 const KEY = 'recentProducts';
 
@@ -36,8 +36,8 @@ export function loadRecent(): ProductMini[] {
           id,
           name: typeof x.name === 'string' ? x.name : '(unknown)',
           image: typeof x.image === 'string' ? x.image : '',
-          category: typeof x.category === 'string' ? x.category : "",
-          seenAt: typeof x.seenAt === 'number' ? x.seenAt : now
+          category: typeof x.category === 'string' ? x.category : '',
+          seenAt: typeof x.seenAt === 'number' ? x.seenAt : now,
         } as ProductMini;
       })
       .filter((x): x is ProductMini => Boolean(x));
@@ -48,8 +48,5 @@ export function loadRecent(): ProductMini[] {
 
 export function saveRecent(products: ProductMini[]): void {
   if (typeof window === 'undefined') return;
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(products)
-  );
+  localStorage.setItem(KEY, JSON.stringify(products));
 }
