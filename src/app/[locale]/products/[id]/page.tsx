@@ -1,14 +1,12 @@
 'use client';
 
-import Image from 'next/image';
-import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useProduct } from '@/hooks/useProduct';
 import type { Product } from '@/data/products';
 import Spinner from '@/components/ui/Spinner';
 import RecentlyViewed from '@/components/RecentlyViewed';
 import ReviewResult from '@/components/ui/ReviewResult';
-import { cloudfrontLoader } from '@/lib/cloudFrontLoader';
+import { ProductImage } from '@/components/ui/ProductImage';
 
 export default function ProductPage() {
   const param = useParams();
@@ -32,12 +30,9 @@ export default function ProductPage() {
               <Spinner size={70} />
             </div>
           ) : (
-            <Image
-              loader={cloudfrontLoader}
+            <ProductImage
               src={product.image}
               alt={product.name}
-              fill
-              className="object-contain rounded-lg w-full"
             />
           )}
         </div>

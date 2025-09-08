@@ -8,7 +8,7 @@ type Props = {
   group: string;
   selected: Set<string>;
   onChange: React.Dispatch<React.SetStateAction<Set<string>>>;
-  options: string[];
+  options: readonly string[];
   col: number;
   multiSelect: boolean;
 };
