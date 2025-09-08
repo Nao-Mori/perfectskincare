@@ -21,19 +21,18 @@ export default function ProductPage() {
 
   return (
     <>
-      <div className="
+      <div
+        className="
         max-w-5xl w-full mt-5 mb-10 bg-white shadow-md bg-white py-5 rounded-2xl flex flex-wrap item-center justify-center
-      ">
+      "
+      >
         <div className="flex-1 relative min-w-full min-h-60 md:min-w-[500px] md:h-80">
           {!product || isLoading ? (
             <div className="w-full h-full flex justify-center items-center">
               <Spinner size={70} />
             </div>
           ) : (
-            <ProductImage
-              src={product.image}
-              alt={product.name}
-            />
+            <ProductImage src={product.image} alt={product.name} />
           )}
         </div>
         <div className="flex-1 text-sm text-gray-600 px-5 min-w-full md:min-w-[500px]">
@@ -52,8 +51,8 @@ export default function ProductPage() {
             id: product.id,
             name: product.name,
             image: product.image,
-            category: product.category
-          }} 
+            category: product.category,
+          }}
         />
       )}
     </>

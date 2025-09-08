@@ -9,12 +9,12 @@ export default function RecentlyViewed({ product }: { product?: ProductMini }) {
   const { recent, pushView } = useRecentViewed(8);
 
   useEffect(() => {
-    if(product) pushView(product);
+    if (product) pushView(product);
   }, [product, pushView]);
 
   const products = useMemo(() => {
     if (!recent) return [];
-    return product ? recent.filter(p => p.id !== product.id) : recent;
+    return product ? recent.filter((p) => p.id !== product.id) : recent;
   }, [recent, product]);
 
   if (!products.length) return null;

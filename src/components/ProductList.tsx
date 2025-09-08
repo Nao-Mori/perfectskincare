@@ -5,7 +5,11 @@ import type { Product, Review } from '../data/products';
 import ReviewResult from './ui/ReviewResult';
 import { ProductImage } from './ui/ProductImage';
 
-export default function ProductList({ products }: { products: readonly Product[] }) {
+export default function ProductList({
+  products,
+}: {
+  products: readonly Product[];
+}) {
   return (
     <section className="max-w-5xl w-full">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -46,10 +50,7 @@ function Card({
       "
       >
         <div className="relative w-full h-48">
-          <ProductImage
-            src={image}
-            alt={title}
-          />
+          <ProductImage src={image} alt={title} />
         </div>
         <div className="flex items-center h-16">
           <h4 className="text-base font-semibold w-full">{title}</h4>
