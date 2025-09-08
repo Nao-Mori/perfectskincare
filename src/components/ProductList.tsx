@@ -1,10 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import type { Product, Review } from '../data/products';
 import ReviewResult from './ui/ReviewResult';
-import { cloudfrontLoader } from '@/lib/cloudFrontLoader';
+import { ProductImage } from './ui/ProductImage';
 
 export default function ProductList({ products }: { products: readonly Product[] }) {
   return (
@@ -47,12 +46,9 @@ function Card({
       "
       >
         <div className="relative w-full h-48">
-          <Image
-            loader={cloudfrontLoader}
+          <ProductImage
             src={image}
             alt={title}
-            fill
-            className="object-contain p-2"
           />
         </div>
         <div className="flex items-center h-16">

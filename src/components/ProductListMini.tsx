@@ -1,9 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import type { ProductMini } from '../data/products';
-import { cloudfrontLoader } from '@/lib/cloudFrontLoader';
+import { ProductImage } from './ui/ProductImage';
 
 export default function ProductListMini({ products }: { products: readonly ProductMini[] }) {
   return (
@@ -35,21 +34,13 @@ function Card({
 }) {
   return (
     <Link href={`/products/${id}`}>
-      <div
-        className="
+      <div className="
         rounded-xl bg-white p-2 shadow-md text-center z-10 
         hover:shadow-[0_10px_28px_rgba(250,152,141,0.7)]
         transition-shadow duration-200
-      "
-      >
+      ">
         <div className="relative w-full h-30 md:h-40">
-          <Image
-            loader={cloudfrontLoader}
-            src={image}
-            alt={title}
-            fill
-            className="object-contain"
-          />
+          <ProductImage src={image} alt={title} />
         </div>
         <div className="flex items-center h-12 text-left px-2">
           <h5 className="text-base text-xs md:text-sm font-semibold w-full line-clamp-2">{title}</h5>
