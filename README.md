@@ -55,7 +55,7 @@ This project was fully designed and implemented by me as an original work.
 
 **Testing**
 
-- 🧪 **Jest** for unit testing  
+- 🧪 **Jest** for unit testing
 - Ensures core logic and utilities work reliably
 
 **Tooling & Quality**

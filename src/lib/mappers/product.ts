@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from '@prisma/client';
 
 export const productSelect = {
   select: {
@@ -38,11 +38,11 @@ export function mapProduct(row: ProductRow): ProductDTO {
     name: row.name,
     image: row.image,
     category: row.category,
-    reviews: row.reviews.map(r => ({
+    reviews: row.reviews.map((r) => ({
       rate: r.rate,
       skinType: r.skinType,
-      comment: r.comment ?? "",
-      concerns: r.concerns.map(c => c.value),
+      comment: r.comment ?? '',
+      concerns: r.concerns.map((c) => c.value),
     })),
   };
 }
