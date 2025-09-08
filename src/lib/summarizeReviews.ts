@@ -1,8 +1,6 @@
-import { Review } from "@/data/products";
+import { Review } from '@/data/products';
 
-export function summarizeReviews(
-  reviews: Review[]
-): {
+export function summarizeReviews(reviews: Review[]): {
   avgRating: number;
   mostFrequentGroup: string;
   topRatedSkinType: { skinType: number; group: string; avg: number };

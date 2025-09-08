@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 
 function toParam(list: string[]) {
-  return list.map(encodeURIComponent).join(",");
+  return list.map(encodeURIComponent).join(',');
 }
 
 export default function MainSection() {
@@ -28,9 +28,9 @@ export default function MainSection() {
   const getRecommendations = () => {
     setMoving(true);
     const params = new URLSearchParams();
-    params.set("skinType", String(getSkinTypeId([...skinType][0])));
-    params.set("concerns", toParam([ ...myConcerns ]));
-    params.set("categories", toParam([ ...chosenCategories ]));
+    params.set('skinType', String(getSkinTypeId([...skinType][0])));
+    params.set('concerns', toParam([...myConcerns]));
+    params.set('categories', toParam([...chosenCategories]));
     router.push(`/recommendations?${params.toString()}`);
   };
 

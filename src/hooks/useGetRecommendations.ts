@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { useQuery, keepPreviousData } from "@tanstack/react-query";
-import { getRecommendations } from "@/lib/getRecommendations";
-import { Product, UserInput } from "@/data/products";
+import { useQuery, keepPreviousData } from '@tanstack/react-query';
+import { getRecommendations } from '@/lib/getRecommendations';
+import { Product, UserInput } from '@/data/products';
 
 export type ByCategoryResponse = Record<string, Product[]>;
 export type Recommendations = Record<string, Product[]>;
 
 const recommendationsKeys = {
-  all: ["recommendations"] as const,
+  all: ['recommendations'] as const,
   list: (user: UserInput, take: number) =>
     [...recommendationsKeys.all, { user, take }] as const,
 };
 
 async function fetchByCategory(categories: string[], take: number) {
-  const res = await fetch("/api/products/by-category", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+  const res = await fetch('/api/products/by-categories', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       categories,
       limit: take,
@@ -45,6 +45,7 @@ export function useGetRecommendations(
     staleTime: options?.staleTime ?? 60_000,
     enabled: options?.enabled ?? true,
     select: (byCategory: ByCategoryResponse): Recommendations => {
+      console.log(byCategory['faceWash']);
       return getRecommendations(
         user,
         perCategoryLimit,

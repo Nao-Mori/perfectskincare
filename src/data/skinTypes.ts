@@ -1,12 +1,12 @@
 export const skinTypeNames = [
-  "dry",
-  "drycombination",
-  "balanced",
-  "oilycombination",
-  "oily",
+  'dry',
+  'drycombination',
+  'balanced',
+  'oilycombination',
+  'oily',
 ] as const;
 
-export type SkinTypeName = typeof skinTypeNames[number];
+export type SkinTypeName = (typeof skinTypeNames)[number];
 
 export const skinTypeMapping: Record<SkinTypeName, number> = Object.fromEntries(
   skinTypeNames.map((name, i) => [name, i + 1])

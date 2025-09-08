@@ -13,7 +13,7 @@ export async function GET(
   try {
     const product = await prisma.product.findUnique({
       where: { id: Number(id) },
-      ...productSelect
+      ...productSelect,
     });
 
     if (!product) {

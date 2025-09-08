@@ -14,7 +14,7 @@ function bestReviewScore(
   userConcerns: Set<string>,
   userSkinType: number
 ): number {
-  let best = -Infinity;
+  let best = 0;
   for (let i = 0; i < p.reviews.length; i++) {
     const r = p.reviews[i];
     let concernOverlap = 0;
@@ -80,7 +80,7 @@ class MinHeap<T> {
 
 export function getRecommendations(
   userInput: UserInput,
-  limit: number = LIMIT_DEFAULT,
+  perCategoryLimit: number = LIMIT_DEFAULT,
   loadProductsForCategory: (category: string) => Product[]
 ): Record<string, Product[]> {
   const userConcerns = new Set(userInput.concerns);
@@ -94,12 +94,13 @@ export function getRecommendations(
       x.score === y.score ? x.item.id < y.item.id : x.score < y.score
     );
 
+    console.log(products.length);
+
     for (let i = 0; i < products.length; i++) {
       const p = products[i];
       const s = bestReviewScore(p, userConcerns, userInput.skinType);
-      if (!Number.isFinite(s)) continue;
 
-      if (heap.size() < limit) {
+      if (heap.size() < perCategoryLimit) {
         heap.push({ score: s, item: p });
       } else if (s > heap.peek().score) {
         heap.pop();
@@ -107,7 +108,12 @@ export function getRecommendations(
       }
     }
 
-    out[cat] = heap.toArray().sort((a, b) => b.score - a.score).map(e => e.item);
+    out[cat] = heap
+      .toArray()
+      .sort((a, b) => b.score - a.score)
+      .map((e) => e.item);
+
+    console.log(out);
   }
 
   return out;

@@ -11,14 +11,17 @@ export async function POST(req: Request) {
   try {
     const products = await prisma.product.findMany({
       where: { id: { in: norm } },
-      ...productSelect
+      ...productSelect,
     });
 
     if (!products?.length) {
       return NextResponse.json({ error: 'Product not found' }, { status: 404 });
     }
 
-    return NextResponse.json({ products: mapProducts(products) }, { status: 200 });
+    return NextResponse.json(
+      { products: mapProducts(products) },
+      { status: 200 }
+    );
   } catch (error) {
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   } finally {
