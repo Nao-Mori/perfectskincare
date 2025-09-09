@@ -11,7 +11,7 @@ export function summarizeReviews(reviews: Review[]): {
   const avgRating =
     reviews.reduce((sum, r) => sum + r.rate, 0) / reviews.length;
 
-  // 2. Skin type (grouped 1–2, 3–4, 5–6, 7–8) that reviewed the most
+  // 2. Skin type (grouped 1–2, 3–5, 6–7) that reviewed the most
   const skinTypeGroups: Record<
     'dry' | 'drycombination' | 'oilycombination' | 'oily',
     number[]
@@ -25,7 +25,8 @@ export function summarizeReviews(reviews: Review[]): {
   const groupLabel = (num: number) => {
     if (num <= 2) return 'dry';
     if (num <= 4) return 'drycombination';
-    if (num <= 6) return 'oilycombination';
+    if (num <= 4) return 'drycombination';
+    if (num <= 5) return 'oilycombination';
     return 'oily';
   };
 

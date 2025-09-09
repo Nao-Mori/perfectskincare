@@ -1,9 +1,11 @@
 export const skinTypeNames = [
+  'verydry',
   'dry',
   'drycombination',
   'balanced',
   'oilycombination',
   'oily',
+  'veryoily',
 ] as const;
 
 export type SkinTypeName = (typeof skinTypeNames)[number];

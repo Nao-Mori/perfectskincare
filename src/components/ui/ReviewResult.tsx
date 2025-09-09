@@ -19,9 +19,6 @@ export default function ReviewResult({ reviews }: { reviews: Review[] }) {
   const { avgRating, topRatedSkinType, topConcerns, averageReviewedSkinType } =
     summarizeReviews(reviews);
 
-  // convert to percentage offset for arrow placement (1–8 scale)
-  const arrowPos = ((averageReviewedSkinType - 1) / 7) * 100;
-
   return (
     <div>
       {avgRating !== undefined && (
@@ -29,7 +26,7 @@ export default function ReviewResult({ reviews }: { reviews: Review[] }) {
           <RatingBar rating={avgRating} />
         </div>
       )}
-      <SkinTypeBar value={arrowPos} />
+      <SkinTypeBar value={averageReviewedSkinType} />
       <div className="text-sm text-gray-600 mt-4 space-y-1">
         <div>
           ⭐ {t('ratedHighBy')}{' '}

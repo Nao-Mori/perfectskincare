@@ -373,7 +373,7 @@ export const manyProducts = [
   // --- Cream (American / Korean) ---
   {
     name: 'Dr. Dennis Gross Advanced Retinol + Ferulic Wrinkle Cream',
-    image: 'drgrosscream',
+    image: 'drgrosscream.jpg',
     category: 'cream',
   },
   {
