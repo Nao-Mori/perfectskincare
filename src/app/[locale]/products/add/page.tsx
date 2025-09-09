@@ -38,7 +38,7 @@ export default function AddProductPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow rounded">
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow rounded w-full">
       <h2 className="text-xl font-bold mb-4">{t('addProduct')}</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input

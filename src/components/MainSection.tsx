@@ -36,7 +36,7 @@ export default function MainSection() {
 
   return (
     <section>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center gap-2">
         <SelectorCard step={1} title={t('step1')}>
           <Checklist
             group="skinType"

@@ -37,11 +37,13 @@
     "recentlyViewed": "Recently Viewed",
     "noReview": "No review yet... Let's post a first review!",
     "skinType": {
+      "verydry": "Very Dry",
       "dry": "Dry",
       "drycombination": "Dry Combo",
       "oilycombination": "Oily Combo",
       "balanced": "Balanced/combination",
-      "oily": "Oily"
+      "oily": "Oily",
+      "veryoily": "Very Oily"
     },
     "concerns": {
       "dryness": "dryness",

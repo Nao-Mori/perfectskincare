@@ -38,11 +38,13 @@
     "recentlyViewed": "最近チェックした商品",
     "noReview": "まだレビューがありません… 最初のレビューを投稿しましょう！",
     "skinType": {
+      "verydry": "超乾燥肌",
       "dry": "乾燥肌",
       "drycombination": "乾燥気味混合肌",
       "oilycombination": "脂性気味混合肌",
       "balanced": "普通/混合肌",
-      "oily": "脂性肌"
+      "oily": "脂性肌",
+      "veryoily": "超脂性肌"
     },
     "concerns": {
       "dryness": "乾燥",

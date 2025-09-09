@@ -42,7 +42,7 @@ export default function Checklist({
                 hover:bg-white hover:shadow
               `,
                   group === 'skinType' &&
-                    `text-[20px] has-[:checked]:bg-orange-100`
+                    `text-[17px] has-[:checked]:bg-orange-100`
                 )}
               >
                 <input
