@@ -19,7 +19,7 @@
     "lookingForProducts": "가장 적합한 상품을 찾고 있습니다."
   },
   "Links": {
-    "yourdata": "당신의 데이터",
+    "yourdata": "멤버 정보",
     "history": "기록",
     "favorite": "즐겨찾기",
     "addProduct": "제품 추가"
@@ -73,7 +73,7 @@
     }
   },
   "Footer": {
-    "description": "당신을 위한 스킨케어 매치메이커 🤍",
+    "description": "여러분을 위한 스킨케어 매치메이커 🤍",
     "quickLinks": "바로가기",
     "connect": "연락하기",
     "email": "contact.naomori@gmail.com",
