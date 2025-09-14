@@ -1,9 +1,11 @@
 {
   "Controls": {
     "login": "Google 로그인",
-    "addProduct": "제품 추가"
+    "addProduct": "제품 추가",
+    "loading": "로드 중"
   },
   "Hero": {
+    "site": "Skin Match",
     "title": "피부에 꼭 맞는 스킨케어 찾기",
     "subtitle": "피부에 대해 알려주세요. 우리가 딱 맞는 제품을 찾아드릴게요.",
     "placeholder": "볼은 건조하고 T존은 기름져요...",
@@ -32,7 +34,7 @@
     "especially": "특히 추천",
     "skin": "피부",
     "popularFor": "인기 이유",
-    "ratedHighBy": "높게 평가한 사용자",
+    "ratedHighBy": "높게 평가한 피부 타입",
     "effectivedTo": "다음에 효과적",
     "postReview": "리뷰 작성",
     "recentlyViewed": "최근 본 상품",

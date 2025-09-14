@@ -1,9 +1,11 @@
 {
   "Controls": {
     "login": "Sign in with Google",
-    "addProduct": "Add Product"
+    "addProduct": "Add Product",
+    "loading": "Loading"
   },
   "Hero": {
+    "site": "Skin Match",
     "title": "Find the perfect skincare for your skin",
     "subtitle": "Tell us about your skin, and let us find the best matches just for you.",
     "placeholder": "I have dry cheeks and an oily T-zone...",

@@ -30,8 +30,8 @@ export default function ReviewResult({ reviews }: { reviews: Review[] }) {
       <div className="text-sm text-gray-600 mt-4 space-y-1">
         <div>
           ⭐ {t('ratedHighBy')}{' '}
-          <strong>{t(`skinType.${topRatedSkinType.group}`)}</strong> {t('skin')}{' '}
-          ({topRatedSkinType.avg})
+          <strong>{t(`skinType.${topRatedSkinType.group}`)}</strong>{' '}
+          {t('skin')}{' '}
         </div>
         <div>
           🎯 {t('effectivedTo')}{' '}

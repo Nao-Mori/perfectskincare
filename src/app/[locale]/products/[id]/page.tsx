@@ -14,6 +14,7 @@ export default function ProductPage() {
   const { data, isLoading, error } = useProduct(param.id as string);
   const product = data as Product;
   const t = useTranslations('Product');
+  const tControls = useTranslations('Controls');
 
   if (error) {
     return (
@@ -40,7 +41,7 @@ export default function ProductPage() {
         <div className="flex-1 text-sm text-gray-600 px-5 min-w-full md:min-w-[500px]">
           <div className="flex items-center mb-5 mt-3">
             <h4 className="text-base md:text-xl font-semibold w-full flex">
-              {product?.name || 'loading...'}
+              {product?.name || tControls('loading') + '...'}
             </h4>
           </div>
           <ReviewResult reviews={product?.reviews || []} />

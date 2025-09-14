@@ -1,9 +1,11 @@
 {
   "Controls": {
     "login": "Googleでログイン",
-    "addProduct": "商品を追加"
+    "addProduct": "商品を追加",
+    "loading": "読み込み中"
   },
   "Hero": {
+    "site": "Skin Match",
     "title": "ぴったりのスキンケアを見つけましょう",
     "subtitle": "肌の状態を教えてください。最適な製品を見つけます！",
     "placeholder": "頬は乾燥していてTゾーンは脂っぽいです…",
@@ -32,7 +34,7 @@
     "especially": "特におすすめ",
     "skin": "肌",
     "popularFor": "人気のポイント",
-    "ratedHighBy": "高評価したのは",
+    "ratedHighBy": "高評価が多い肌質",
     "effectivedTo": "〜に効果的",
     "postReview": "レビュー投稿",
     "recentlyViewed": "最近チェックした商品",
