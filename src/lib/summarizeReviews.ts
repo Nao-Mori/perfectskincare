@@ -1,86 +1,97 @@
 import { Review } from '@/data/products';
 
-export function summarizeReviews(reviews: Review[]): {
+type Bin = { skinType: number; averageReview: number; reviewCount: number };
+
+// Centered skin type weighted by the average review rate
+function getSkinTypeCenter(bins: Bin[]): number {
+  let num = 0, den = 0;
+  for (const b of bins) {
+    // More review count = Trust worthy
+    const w = b.averageReview * b.reviewCount * 0.5;
+    if (w > 0) { 
+      num += b.skinType * w;
+      den += w;
+    }
+  }
+  return den ? num / den : NaN;
+}
+
+export function aggregateReviews(reviews: readonly Review[]) {
+  const skinTypeRateMap = new Map<number, { sum: number; count: number }>();
+  const concernCounts: Record<string, number> = {};
+
+  for (const r of reviews) {
+    const cur = skinTypeRateMap.get(r.skinType) ?? { sum: 0, count: 0 };
+    cur.sum += r.rate;
+    cur.count += 1;
+    skinTypeRateMap.set(r.skinType, cur);
+
+    r.concerns.forEach((c) => {
+      concernCounts[c] = (concernCounts[c] || 0) + 1;
+    });
+  }
+  const skinTypeRates = Array.from(skinTypeRateMap, ([skinType, { sum, count }]) => ({
+    skinType,
+    averageReview: sum / count,
+    reviewCount: count,
+  })).sort((a, b) => a.skinType - b.skinType);
+
+  // 5. Average Skin type that reviewed this product
+  const highReviewSkinType = getSkinTypeCenter(skinTypeRates);
+
+  return {
+    skinTypeRates,
+    concernCounts,
+    highReviewSkinType
+  }
+}
+
+export function summarizeReviews(reviews: readonly Review[]): {
   avgRating: number;
-  mostFrequentGroup: string;
   topRatedSkinType: { skinType: number; group: string; avg: number };
   topConcerns: string[];
-  averageReviewedSkinType: number;
+  highReviewSkinType: number;
 } {
   // 1. Average rating overall
   const avgRating =
     reviews.reduce((sum, r) => sum + r.rate, 0) / reviews.length;
 
-  // 2. Skin type (grouped 1–2, 3–5, 6–7) that reviewed the most
-  const skinTypeGroups: Record<
-    'dry' | 'drycombination' | 'oilycombination' | 'oily',
-    number[]
-  > = {
-    dry: [],
-    drycombination: [],
-    oilycombination: [],
-    oily: [],
+  const SKIN_GROUPS: Record<number, string> = {
+    1: "verydry",
+    2: "dry",
+    3: "drycombination",
+    4: "balanced",
+    5: "oilycombination",
+    6: "oily",
+    7: "veryoily",
   };
 
-  const groupLabel = (num: number) => {
-    if (num <= 2) return 'dry';
-    if (num <= 4) return 'drycombination';
-    if (num <= 4) return 'drycombination';
-    if (num <= 5) return 'oilycombination';
-    return 'oily';
-  };
+  const { skinTypeRates, concernCounts, highReviewSkinType } = aggregateReviews(reviews);
 
-  const skinTypeCount: Record<string, number> = {};
-  const skinTypeRateMap: Record<number, number[]> = {};
+  // 2. Find the highest rated skin type
+  const topRatedSkinType = (() => {
+    let best: { skinType: number; group: string; avg: number } | null = null;
 
-  for (const r of reviews) {
-    const group = groupLabel(r.skinType);
-    skinTypeGroups[group].push(r.skinType);
+    for (const b of skinTypeRates as Bin[]) {
+      if (!b.reviewCount) continue;
+      const avg = b.averageReview;
+      const group = SKIN_GROUPS[b.skinType] ?? "unknown";
+      if (!best || avg > best.avg) best = { skinType: b.skinType, group, avg };
+    }
 
-    skinTypeCount[group] = (skinTypeCount[group] || 0) + 1;
+    return best ?? { skinType: NaN, group: "unknown", avg: 0 };
+  })();
 
-    if (!skinTypeRateMap[r.skinType]) skinTypeRateMap[r.skinType] = [];
-    skinTypeRateMap[r.skinType].push(r.rate);
-  }
-
-  const mostFrequentGroup = Object.entries(skinTypeCount).sort(
-    (a, b) => b[1] - a[1]
-  )[0]?.[0];
-
-  // 3. Highest avg rating by specific skinType number
-  const topRatedSkinType: { skinType: number; group: string; avg: number } =
-    Object.entries(skinTypeRateMap)
-      .map(([skinNumStr, rates]) => ({
-        skinType: Number(skinNumStr),
-        group: groupLabel(Number(skinNumStr)),
-        avg: rates.reduce((sum, r) => sum + r, 0) / rates.length,
-      }))
-      .sort((a, b) => b.avg - a.avg)[0];
-
-  // 4. Top 2 concerns
-  const concernCounts: Record<string, number> = {};
-
-  reviews.forEach((r) => {
-    r.concerns.forEach((c) => {
-      concernCounts[c] = (concernCounts[c] || 0) + 1;
-    });
-  });
-
+  // 3. Top 2 concerns
   const topConcerns = Object.entries(concernCounts)
     .sort((a, b) => b[1] - a[1]) // sort by count
     .slice(0, 2) // top 2
     .map(([concern]) => concern);
 
-  // 5. Average Skin type that reviewed this product
-  const allSkinTypes = reviews.map((r) => r.skinType);
-  const averageReviewedSkinType =
-    allSkinTypes.reduce((a, b) => a + b, 0) / allSkinTypes.length;
-
   return {
     avgRating: Number(avgRating.toFixed(2)),
-    mostFrequentGroup,
     topRatedSkinType,
     topConcerns,
-    averageReviewedSkinType,
+    highReviewSkinType, // 4. Skin type to recommend, centered
   };
 }

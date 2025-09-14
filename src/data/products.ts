@@ -1,6 +1,6 @@
 export interface Review {
   rate: number; // 1–10
-  skinType: number; // 1 very dry, 8 very oily
+  skinType: number; // 1-7 1 very dry, 4 normal, 7 very oily
   concerns: string[];
   comment: string;
 }

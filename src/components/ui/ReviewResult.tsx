@@ -16,7 +16,7 @@ export default function ReviewResult({ reviews }: { reviews: Review[] }) {
     );
   }
 
-  const { avgRating, topRatedSkinType, topConcerns, averageReviewedSkinType } =
+  const { avgRating, topRatedSkinType, topConcerns, highReviewSkinType } =
     summarizeReviews(reviews);
 
   return (
@@ -26,15 +26,15 @@ export default function ReviewResult({ reviews }: { reviews: Review[] }) {
           <RatingBar rating={avgRating} />
         </div>
       )}
-      <SkinTypeBar value={averageReviewedSkinType} />
+      <SkinTypeBar value={highReviewSkinType} />
       <div className="text-sm text-gray-600 mt-4 space-y-1">
         <div>
-          ⭐ {t('ratedHighBy')}{' '}
+          ⭐ {t('ratedHighBy')}:{' '}
           <strong>{t(`skinType.${topRatedSkinType.group}`)}</strong>{' '}
           {t('skin')}{' '}
         </div>
         <div>
-          🎯 {t('effectivedTo')}{' '}
+          🎯 {t('effectivedTo')}:{' '}
           {topConcerns.map((c, i) => (
             <strong key={i}>
               {t(`concerns.${c}`)}
