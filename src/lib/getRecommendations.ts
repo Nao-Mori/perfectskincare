@@ -1,4 +1,4 @@
-import { Product, UserInput } from '@/data/products';
+import { Product, Review, UserInput } from '@/data/products';
 
 //How many concerns are matched with the review
 const WEIGHT_CONCERN_OVERLAP = 10; //Usually only 1~3 overlap expected so should be kinda high
@@ -9,27 +9,34 @@ const WEIGHT_SKIN_DIFF = 12; //Pretty crutial to have a similar skin type, keep 
 //How many products to recommend for each category
 const LIMIT_DEFAULT = 10;
 
-function bestReviewScore(
-  p: Product,
+function getMatchingScore(
+  reviews: Review[],
   userConcerns: Set<string>,
   userSkinType: number
 ): number {
-  let best = 0;
-  for (let i = 0; i < p.reviews.length; i++) {
-    const r = p.reviews[i];
+  const n = reviews.length;
+  if (n === 0) return -Infinity;
+
+  let total = 0;
+  for (let i = 0; i < n; i++) {
+    const r = reviews[i];
     let concernOverlap = 0;
-    for (const j of r.concerns) {
-      if (userConcerns.has(j)) concernOverlap++;
+    for (const c of r.concerns) {
+      if (userConcerns.has(c)) concernOverlap++;
     }
-    if (concernOverlap === 0) continue;
     const skinDiff = Math.abs(r.skinType - userSkinType);
     const score =
       concernOverlap * WEIGHT_CONCERN_OVERLAP +
       r.rate * WEIGHT_RATE -
       skinDiff * WEIGHT_SKIN_DIFF;
-    if (score > best) best = score;
+    total += score;
   }
-  return best;
+
+  const average = total / n;
+
+  //Penalty up to -20% if reviews are too few (<21)
+  const penaltyFactor = n >= 21 ? 1 : 0.8 + 0.2 * ((n - 1) / 20);
+  return average * penaltyFactor;
 }
 
 class MinHeap<T> {
@@ -94,11 +101,9 @@ export function getRecommendations(
       x.score === y.score ? x.item.id < y.item.id : x.score < y.score
     );
 
-    console.log(products.length);
-
     for (let i = 0; i < products.length; i++) {
       const p = products[i];
-      const s = bestReviewScore(p, userConcerns, userInput.skinType);
+      const s = getMatchingScore(p.reviews, userConcerns, userInput.skinType);
 
       if (heap.size() < perCategoryLimit) {
         heap.push({ score: s, item: p });
@@ -112,8 +117,6 @@ export function getRecommendations(
       .toArray()
       .sort((a, b) => b.score - a.score)
       .map((e) => e.item);
-
-    console.log(out);
   }
 
   return out;
