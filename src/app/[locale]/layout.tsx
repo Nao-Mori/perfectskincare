@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { hasLocale } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import './globals.css';
@@ -20,15 +20,35 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-  title: 'Skin Match AI',
-  description: 'Perfect skincare products for your skin',
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/icon.png',
-    apple: '/apple-icon.png',
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: 'en' | 'ja' | 'ko' };
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Hero' });
+
+  return {
+    title: t('site'),
+    description: t('title'),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        en: '/en',
+        ja: '/ja',
+        ko: '/ko',
+      },
+    },
+    openGraph: {
+      type: 'website',
+      url: 'https://skinmatch.io/recommendations',
+      siteName: t('site'),
+      title: t('site'),
+      description: t('title'),
+      locale: locale === 'ja' ? 'ja_JP' : locale === 'ko' ? 'ko_KR' : 'en_US',
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
