@@ -33,8 +33,6 @@ export async function POST(req: Request) {
       );
     }
 
-    console.log(byCategory);
-
     return NextResponse.json(byCategory, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: 'Server error' }, { status: 500 });

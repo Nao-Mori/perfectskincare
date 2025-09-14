@@ -14,6 +14,17 @@ function toParam(list: string[]) {
   return list.map(encodeURIComponent).join(',');
 }
 
+const orderIndex = new Map(categories.map((c, i) => [c, i]));
+
+function sortCategoriesSet(input: Set<string>): string[] {
+  const known: string[] = [];
+
+  for (const c of input) {
+    if (orderIndex.has(c)) known.push(c);
+  }
+  return known.sort((a, b) => orderIndex.get(a)! - orderIndex.get(b)!);
+}
+
 export default function MainSection() {
   const [skinType, setSkinType] = useState<Set<string>>(() => new Set());
   const [myConcerns, setMyConcerns] = useState<Set<string>>(() => new Set());
@@ -30,7 +41,7 @@ export default function MainSection() {
     const params = new URLSearchParams();
     params.set('skinType', String(getSkinTypeId([...skinType][0])));
     params.set('concerns', toParam([...myConcerns]));
-    params.set('categories', toParam([...chosenCategories]));
+    params.set('categories', toParam(sortCategoriesSet(chosenCategories)));
     router.push(`/recommendations?${params.toString()}`);
   };
 
