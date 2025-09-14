@@ -17,6 +17,7 @@ export function ProductImage({ src, alt }: { src?: string; alt: string }) {
       fill
       onError={() => setImgSrc(FALLBACK)}
       className="object-contain rounded-lg w-full"
+      sizes="(min-width: 350px) 25vw, (min-width: 250px) 80vw, 80vw"
     />
   );
 }

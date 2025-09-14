@@ -86,7 +86,7 @@ export const products: Product[] = [
       },
       {
         rate: 9,
-        skinType: 8,
+        skinType: 7,
         concerns: ['oiliness', 'sensitivity'],
         comment: 'Very gentle yet effective.',
       },
@@ -98,7 +98,7 @@ export const products: Product[] = [
       },
       {
         rate: 8,
-        skinType: 7,
+        skinType: 5,
         concerns: ['pores', 'oiliness'],
         comment: 'Great morning cleanser.',
       },
