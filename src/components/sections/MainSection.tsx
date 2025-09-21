@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Checklist from './ui/Checklist';
-import SelectorCard from './ui/SelectorCard';
+import Checklist from '../ui/Checklist';
+import SelectorCard from '../ui/SelectorCard';
 import { concerns } from '@/data/concerns';
 import { useTranslations } from 'next-intl';
 import { getSkinTypeId, skinTypeNames } from '@/data/skinTypes';

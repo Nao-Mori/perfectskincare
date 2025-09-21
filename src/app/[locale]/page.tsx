@@ -1,5 +1,5 @@
-import Hero from '@/components/Hero';
-import MainSection from '@/components/MainSection';
+import Hero from '@/components/sections/Hero';
+import MainSection from '@/components/sections/MainSection';
 import ProductList from '@/components/ProductList';
 import { products } from '@/data/products';
 import { useTranslations } from 'next-intl';
