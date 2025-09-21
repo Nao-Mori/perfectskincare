@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { getRecommendations } from '@/lib/getRecommendations';
 import { Product, UserInput } from '@/data/products';
@@ -38,7 +39,7 @@ export function useGetRecommendations(
   const perCategoryLimit = options?.perCategoryLimit ?? 10;
   const fetchLimit = options?.fetchPerCategory ?? 50;
 
-  return useQuery({
+  const q = useQuery({
     queryKey: recommendationsKeys.list(user, fetchLimit),
     queryFn: () => fetchByCategory(user.categories, fetchLimit),
     placeholderData: keepPreviousData,
@@ -52,4 +53,20 @@ export function useGetRecommendations(
       );
     },
   });
+
+  useEffect(() => {
+    if (!q.data) return;
+    try {
+      // If logged-in, saved to DB
+
+      // If not logged-in Temporary save and passed to DB on first log-in
+      const key = `reco:${user.skinType}:${user.concerns.join(',')}:${user.categories.join(',')}`;
+      localStorage.setItem(
+        key,
+        JSON.stringify({ recs: q.data, ts: Date.now() })
+      );
+    } catch {}
+  }, [q.data, user.skinType, user.concerns, user.categories]);
+
+  return q;
 }
