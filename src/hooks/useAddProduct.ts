@@ -1,6 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { ProductMini } from '@/data/products';
 
 type AddProductInput = { file: File; name: string; category: string };
 
@@ -37,7 +38,7 @@ export function useAddProduct() {
 
       return product;
     },
-    onSuccess: (product) => {
+    onSuccess: (product: ProductMini) => {
       qc.invalidateQueries({ queryKey: ['products'] });
       if (product?.id)
         qc.invalidateQueries({ queryKey: ['product', product.id] });

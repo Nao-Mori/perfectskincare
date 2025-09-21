@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
+
 import { Geist, Geist_Mono } from 'next/font/google';
 import { hasLocale } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+
 import { routing } from '@/i18n/routing';
-import './globals.css';
 import BackgroundImage from '@/components/ui/BackgroundImage';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Header from '@/components/sections/Header';
+import Footer from '@/components/sections/Footer';
 import AppProviders from '../providers';
+
+import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
