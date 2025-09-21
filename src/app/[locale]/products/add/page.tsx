@@ -32,8 +32,8 @@ export default function AddProductPage() {
       setMessage('Please provide both name and image');
       return;
     }
-    const { productId } = await mutateAsync({ file: image, name, category });
-    setProductId(productId);
+    const { id } = await mutateAsync({ file: image, name, category });
+    setProductId(String(id));
     clearFields();
   };
 

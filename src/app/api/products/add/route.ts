@@ -1,5 +1,6 @@
 import { PrismaClient, Prisma } from '@prisma/client';
 import { NextResponse } from 'next/server';
+import { ProductMini } from '@/data/products';
 
 const prisma = new PrismaClient();
 
@@ -13,14 +14,13 @@ export async function POST(req: Request) {
   try {
     const { name, image, category } = await req.json();
 
-    const { id: productId } = await prisma.product.create({
+    const { id } = await prisma.product.create({
       data: { name, image, category },
     });
 
-    return NextResponse.json(
-      { name, image, category, productId },
-      { status: 201 }
-    );
+    const productData = { name, image, category, id } as ProductMini;
+
+    return NextResponse.json(productData, { status: 201 });
   } catch (error: unknown) {
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       if (error.code === 'P2002') {
