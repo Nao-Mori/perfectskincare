@@ -33,13 +33,15 @@
     "rating": "評価",
     "especially": "特におすすめ",
     "skin": "肌",
+    "skinType": "肌質",
+    "concerns": "お悩み",
     "popularFor": "人気のポイント",
     "ratedHighBy": "高評価が多い肌質",
     "effectivedTo": "効果的な悩み",
     "postReview": "レビュー投稿",
     "recentlyViewed": "最近チェックした商品",
     "noReview": "まだレビューがありません… 最初のレビューを投稿しましょう！",
-    "skinType": {
+    "_skinType": {
       "verydry": "超乾燥",
       "dry": "乾燥",
       "drycombination": "乾燥気味混合",
@@ -48,7 +50,7 @@
       "oily": "脂性",
       "veryoily": "超脂性"
     },
-    "concerns": {
+    "_concerns": {
       "dryness": "乾燥",
       "acne": "ニキビ",
       "hydration": "保湿",
@@ -65,7 +67,7 @@
       "acneScars": "ニキビ跡",
       "hyperPigmentation": "色素沈着"
     },
-    "categories": {
+    "_categories": {
       "cleanser": "クレンザー",
       "faceWash": "洗顔料",
       "toner": "化粧水",

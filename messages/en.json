@@ -32,13 +32,15 @@
     "rating": "Rating",
     "especially": "Especially for",
     "skin": "skin",
+    "skinType": "Skin Type",
+    "concerns": "Concerns",
     "popularFor": "Popular for",
     "ratedHighBy": "Rated High by",
     "effectivedTo": "Effective to",
     "postReview": "Post Review",
     "recentlyViewed": "Recently Viewed",
     "noReview": "No review yet... Let's post a first review!",
-    "skinType": {
+    "_skinType": {
       "verydry": "Very Dry",
       "dry": "Dry",
       "drycombination": "Dry Combo",
@@ -47,7 +49,7 @@
       "oily": "Oily",
       "veryoily": "Very Oily"
     },
-    "concerns": {
+    "_concerns": {
       "dryness": "dryness",
       "acne": "acne",
       "hydration": "hydration",
@@ -64,7 +66,7 @@
       "acneScars": "acne scars",
       "hyperPigmentation": "hyper pigmentation"
     },
-    "categories": {
+    "_categories": {
       "cleanser": "Cleanser",
       "faceWash": "Face Wash",
       "toner": "Toner",

@@ -45,7 +45,7 @@ export default function RecommendationsPage({
   return (
     <div className="space-y-8 py-5">
       {categories.map((cat) => {
-        const categoryLabel = tProduct(`categories.${cat}`);
+        const categoryLabel = tProduct(`_categories.${cat}`);
         return (
           <section key={cat} className="max-w-5xl w-full pb-5">
             <h2 className="text-xl font-semibold pb-5 text-center">

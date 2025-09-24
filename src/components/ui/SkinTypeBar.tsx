@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 
 export default function SkinTypeBar({ value }: { value: number }) {
-  const t = useTranslations('Product.skinType');
+  const t = useTranslations('Product._skinType');
   // convert to percentage offset for arrow placement (1–8 scale)
   const arrowPos = ((value - 1) / 6) * 100;
 

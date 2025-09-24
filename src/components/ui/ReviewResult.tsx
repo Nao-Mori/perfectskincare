@@ -30,14 +30,14 @@ export default function ReviewResult({ reviews }: { reviews: Review[] }) {
       <div className="text-sm text-gray-600 mt-4 space-y-1">
         <div>
           ⭐ {t('ratedHighBy')}:{' '}
-          <strong>{t(`skinType.${topRatedSkinType.group}`)}</strong>{' '}
+          <strong>{t(`_skinType.${topRatedSkinType.group}`)}</strong>{' '}
           {t('skin')}{' '}
         </div>
         <div>
           🎯 {t('effectivedTo')}:{' '}
           {topConcerns.map((c, i) => (
             <strong key={i}>
-              {t(`concerns.${c}`)}
+              {t(`_concerns.${c}`)}
               {i === 0 ? ', ' : null}
             </strong>
           ))}
