@@ -1,5 +1,5 @@
 import { Product, Review } from '@/types/core';
-import { getRecommendations } from '@/lib/getRecommendations';
+import { getRecommendations } from '@/app/[locale]/recommendations/_lib/getRecommendations';
 import { products } from '@/data/products';
 
 const userInput = {

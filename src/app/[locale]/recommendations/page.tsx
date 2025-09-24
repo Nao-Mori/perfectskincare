@@ -1,11 +1,11 @@
 'use client';
 
 import { useMemo, use } from 'react';
-import { useGetRecommendations } from '@/hooks/useGetRecommendations';
-import { UserInput } from '@/data/products';
-import ProductList from '@/components/ProductList';
-import { Loader } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { Loader } from 'lucide-react';
+import { useGetRecommendations } from './_hooks/useGetRecommendations';
+import { UserInput } from '@/types/core';
+import ProductList from '@/components/ProductList';
 
 export default function RecommendationsPage({
   searchParams,

@@ -2,8 +2,8 @@
 
 import { useEffect } from 'react';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
-import { getRecommendations } from '@/lib/getRecommendations';
-import { Product, UserInput } from '@/data/products';
+import { getRecommendations } from '@/app/[locale]/recommendations/_lib/getRecommendations';
+import { Product, UserInput } from '@/types/core';
 
 export type ByCategoryResponse = Record<string, Product[]>;
 export type Recommendations = Record<string, Product[]>;
