@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import Checklist from '../ui/Checklist';
-import SelectorCard from '../ui/SelectorCard';
-import { concerns } from '@/data/concerns';
+import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { Loader2 } from 'lucide-react';
+import Checklist from '../../../components/ui/Checklist';
+import SelectorCard from '../../../components/ui/SelectorCard';
+import { concerns } from '@/data/concerns';
 import { getSkinTypeId, skinTypeNames } from '@/data/skinTypes';
 import { categories } from '@/data/categories';
-import { useRouter } from 'next/navigation';
-import { Loader2 } from 'lucide-react';
 
 function toParam(list: string[]) {
   return list.map(encodeURIComponent).join(',');
