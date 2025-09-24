@@ -1,4 +1,4 @@
-import { Product } from '@/data/products';
+import { Product } from '@/types/core';
 import { useQuery } from '@tanstack/react-query';
 
 export function useProducts(ids: string[]) {

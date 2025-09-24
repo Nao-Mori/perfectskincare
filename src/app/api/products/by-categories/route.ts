@@ -1,4 +1,4 @@
-import { Product } from '@/data/products';
+import { Product } from '@/types/core';
 import { mapProducts, productSelect } from '@/lib/mappers/product';
 import { PrismaClient } from '@prisma/client';
 import { NextResponse } from 'next/server';

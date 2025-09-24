@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { ProductMini } from '@/data/products';
+import { ProductMini } from '@/types/core';
 
 type AddProductInput = { file: File; name: string; category: string };
 

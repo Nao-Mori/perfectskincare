@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { loadRecent, saveRecent, updateRecent } from '@/lib/recent';
-import { ProductMini } from '@/data/products';
+import { ProductMini } from '@/types/core';
 
 export function useRecentViewed(max: number = 8) {
   const [recent, setRecent] = useState<ProductMini[]>([]);
