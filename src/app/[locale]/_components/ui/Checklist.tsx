@@ -22,7 +22,7 @@ export default function Checklist({
   multiSelect,
 }: Props) {
   const rid = useId();
-  const t = useTranslations(`Product.${group}`);
+  const t = useTranslations(`Product._${group}`);
 
   return (
     <div>
