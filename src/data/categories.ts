@@ -6,3 +6,5 @@ export const categories = [
   'lotion',
   'cream',
 ];
+
+export type Category = (typeof categories)[number];

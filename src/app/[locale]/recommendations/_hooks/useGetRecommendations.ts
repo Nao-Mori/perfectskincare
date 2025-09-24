@@ -3,7 +3,8 @@
 import { useEffect } from 'react';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { getRecommendations } from '@/app/[locale]/recommendations/_lib/getRecommendations';
-import { Product, UserInput } from '@/types/core';
+import { Product, ProductMini, UserInput } from '@/types/core';
+import { Category } from '@/data/categories';
 
 export type ByCategoryResponse = Record<string, Product[]>;
 export type Recommendations = Record<string, Product[]>;
@@ -13,6 +14,28 @@ const recommendationsKeys = {
   list: (user: UserInput, take: number) =>
     [...recommendationsKeys.all, { user, take }] as const,
 };
+
+function toProductMini(product: Product) {
+  return {
+    id: product.id,
+    name: product.name,
+    image: product.image,
+    category: product.category,
+  } as ProductMini;
+}
+
+function pickTopProductsByCategory(
+  input: Record<Category, Product[]>
+): Record<Category, Product> {
+  const entries = Object.entries(input) as [Category, Product[]][];
+  const out = Object.fromEntries(
+    entries
+      .filter(([, arr]) => arr.length > 0)
+      .map(([k, arr]) => [k, toProductMini(arr[0])])
+  ) as Record<string, Product>;
+
+  return out;
+}
 
 async function fetchByCategory(categories: string[], take: number) {
   const res = await fetch('/api/products/by-categories', {
@@ -59,11 +82,17 @@ export function useGetRecommendations(
     try {
       // If logged-in, saved to DB
 
+      // Not Implemented YET
+
       // If not logged-in Temporary save and passed to DB on first log-in
-      const key = `reco:${user.skinType}:${user.concerns.join(',')}:${user.categories.join(',')}`;
       localStorage.setItem(
-        key,
-        JSON.stringify({ recs: q.data, ts: Date.now() })
+        'userInput',
+        JSON.stringify({ userInput: user, ts: Date.now() })
+      );
+      const topReco = pickTopProductsByCategory(q.data);
+      localStorage.setItem(
+        'topReco',
+        JSON.stringify({ topReco, ts: Date.now() })
       );
     } catch {}
   }, [q.data, user.skinType, user.concerns, user.categories]);
