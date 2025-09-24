@@ -1,10 +1,10 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useRecentViewed } from '@/hooks/useRecentViewed';
 import { useEffect, useMemo } from 'react';
-import { ProductMini } from '@/data/products';
+import { ProductMini } from '@/types/core';
 import ProductListMini from './ProductListMini';
-import { useTranslations } from 'next-intl';
 
 export default function RecentlyViewed({ product }: { product?: ProductMini }) {
   const { recent, pushView } = useRecentViewed(8);

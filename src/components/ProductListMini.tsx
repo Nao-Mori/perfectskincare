@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import type { ProductMini } from '../data/products';
+import type { ProductMini } from '@/types/core';
 import { ProductImage } from './ui/ProductImage';
 
 export default function ProductListMini({

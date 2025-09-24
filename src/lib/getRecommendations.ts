@@ -1,4 +1,4 @@
-import { Product, Review, UserInput } from '@/data/products';
+import { Product, Review, UserInput } from '@/types/core';
 
 //How many concerns are matched with the review
 const WEIGHT_CONCERN_OVERLAP = 10; //Usually only 1~3 overlap expected so should be kinda high

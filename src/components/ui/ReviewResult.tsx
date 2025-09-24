@@ -1,6 +1,6 @@
-import { Review } from '@/data/products';
-import { summarizeReviews } from '@/lib/summarizeReviews';
 import { useTranslations } from 'next-intl';
+import { Review } from '@/types/core';
+import { summarizeReviews } from '@/lib/summarizeReviews';
 import RatingBar from './RatingBar';
 import SkinTypeBar from './SkinTypeBar';
 

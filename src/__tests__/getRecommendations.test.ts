@@ -1,5 +1,6 @@
-import { Product, products, Review } from '@/data/products';
+import { Product, Review } from '@/types/core';
 import { getRecommendations } from '@/lib/getRecommendations';
+import { products } from '@/data/products';
 
 const userInput = {
   skinType: 2,
@@ -41,7 +42,6 @@ describe('getRecommendations', () => {
     const result = getRecommendations(userInput, 10, (category: string) =>
       productsFixture.filter((p) => p.category === category)
     );
-    console.log(result);
     expect(result.faceWash.length).toBeGreaterThanOrEqual(2);
     expect(result.cream.length).toBeGreaterThanOrEqual(2);
     expect(result.faceWash[0]?.id).toBe(

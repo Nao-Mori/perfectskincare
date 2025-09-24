@@ -1,4 +1,4 @@
-import { Review } from '@/data/products';
+import { Review } from '@/types/core';
 
 type Bin = { skinType: number; averageReview: number; reviewCount: number };
 

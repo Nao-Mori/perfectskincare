@@ -1,8 +1,8 @@
 'use client';
 
-import { cloudfrontLoader } from '@/lib/cloudFrontLoader';
-import Image from 'next/image';
 import { useState } from 'react';
+import Image from 'next/image';
+import { cloudfrontLoader } from '@/lib/cloudFrontLoader';
 
 const FALLBACK = '/images/missing.png';
 

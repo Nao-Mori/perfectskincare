@@ -1,4 +1,4 @@
-import { ProductMini } from '@/data/products';
+import { ProductMini } from '@/types/core';
 
 const KEY = 'recentProducts';
 

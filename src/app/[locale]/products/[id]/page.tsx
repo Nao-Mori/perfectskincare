@@ -1,13 +1,14 @@
 'use client';
 
 import { useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { useProduct } from '@/hooks/useProduct';
-import type { Product } from '@/data/products';
+import type { Product } from '@/types/core';
 import Spinner from '@/components/ui/Spinner';
 import RecentlyViewed from '@/components/RecentlyViewed';
 import ReviewResult from '@/components/ui/ReviewResult';
 import { ProductImage } from '@/components/ui/ProductImage';
-import { useTranslations } from 'next-intl';
+import { Reviews } from '@/components/ui/Reviews';
 
 export default function ProductPage() {
   const param = useParams();
@@ -47,6 +48,7 @@ export default function ProductPage() {
           <ReviewResult reviews={product?.reviews || []} />
           <button className="mt-5 font-bold">{t('postReview')}</button>
         </div>
+        <Reviews reviews={product?.reviews} />
       </div>
       {product && (
         <RecentlyViewed

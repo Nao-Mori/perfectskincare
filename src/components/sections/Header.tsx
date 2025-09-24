@@ -1,11 +1,11 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { Menu, X } from 'lucide-react';
 import LanguageDropdown from '../ui/LanguageDropdown';
 import { internalLinks } from '@/data/internalLinks';
-import { useTranslations } from 'next-intl';
 import LoginButton from '../ui/LoginButton';
 
 export default function Header() {

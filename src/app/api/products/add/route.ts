@@ -1,6 +1,6 @@
 import { PrismaClient, Prisma } from '@prisma/client';
 import { NextResponse } from 'next/server';
-import { ProductMini } from '@/data/products';
+import { ProductMini } from '@/types/core';
 
 const prisma = new PrismaClient();
 
