@@ -68,7 +68,7 @@ export default function AddProductPage() {
               </option>
               {categories.map((value: string) => (
                 <option key={value} value={value}>
-                  {tProduct(`categories.${value}`)}
+                  {tProduct(`_categories.${value}`)}
                 </option>
               ))}
             </select>
