@@ -1,8 +1,13 @@
 import createMiddleware from 'next-intl/middleware';
-import { locales, routing } from './i18n/routing';
+import { routing } from './i18n/routing';
+import { NextResponse, type NextRequest } from 'next/server';
 
-export default createMiddleware(routing);
+const intlMiddleware = createMiddleware(routing);
 
-export const config = {
-  matcher: ['/', `/(?:${locales.join('|')})/:path*`],
-};
+export default function middleware(request: NextRequest) {
+  const response = intlMiddleware(request);
+  response.headers.set('Vary', 'Cookie');
+  return response;
+}
+
+export const config = { matcher: '/((?!api|_next|_vercel|.*\\..*).*)' };
