@@ -17,7 +17,6 @@ export default function Modal({
   children?: React.ReactNode;
   footer?: React.ReactNode;
 }) {
-
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
     if (open) window.addEventListener('keydown', onKey);
@@ -32,10 +31,7 @@ export default function Modal({
       aria-modal="true"
       role="dialog"
     >
-      <div
-        className="absolute inset-0 bg-black/50"
-        onClick={onClose}
-      />
+      <div className="absolute inset-0 bg-black/50" onClick={onClose} />
       <div className="relative z-[10000] w-full max-w-md rounded-2xl bg-white shadow-xl">
         <div className="relative w-full max-w-md rounded-2xl bg-white px-5 py-3">
           <div className="flex items-center justify-between">
@@ -43,7 +39,9 @@ export default function Modal({
               <h3 id="modal-title" className="text-base font-semibold">
                 {title}
               </h3>
-            ) : <span className="sr-only" />}
+            ) : (
+              <span className="sr-only" />
+            )}
             <button
               type="button"
               onClick={onClose}
@@ -54,7 +52,9 @@ export default function Modal({
             </button>
           </div>
           <div className="text-sm text-gray-700 p-4">{children}</div>
-          {footer && <div className="mt-4 flex justify-end gap-2">{footer}</div>}
+          {footer && (
+            <div className="mt-4 flex justify-end gap-2">{footer}</div>
+          )}
         </div>
       </div>
     </div>,

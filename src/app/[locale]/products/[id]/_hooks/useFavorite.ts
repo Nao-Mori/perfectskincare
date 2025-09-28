@@ -21,7 +21,8 @@ export function useFavorite(productId: string, initial?: boolean) {
       return { prev };
     },
     onError: (_err, _next, ctx) => {
-      if (ctx?.prev !== undefined) qc.setQueryData(['favorite', productId], ctx.prev);
+      if (ctx?.prev !== undefined)
+        qc.setQueryData(['favorite', productId], ctx.prev);
     },
     onSuccess: (next) => {
       qc.setQueryData(['favorite', productId], next);
@@ -29,8 +30,12 @@ export function useFavorite(productId: string, initial?: boolean) {
   });
 
   return {
-    isFavorite: (qc.getQueryData<boolean>(['favorite', productId]) ?? initial) ?? false,
-    toggle: () => m.mutate(!( (qc.getQueryData<boolean>(['favorite', productId]) ?? initial) ?? false )),
+    isFavorite:
+      qc.getQueryData<boolean>(['favorite', productId]) ?? initial ?? false,
+    toggle: () =>
+      m.mutate(
+        !(qc.getQueryData<boolean>(['favorite', productId]) ?? initial ?? false)
+      ),
     isPending: m.isPending,
   };
 }
