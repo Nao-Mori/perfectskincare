@@ -2,7 +2,8 @@
   "Controls": {
     "login": "Sign in with Google",
     "addProduct": "Add Product",
-    "loading": "Loading"
+    "loading": "Loading",
+    "close": "Close"
   },
   "Hero": {
     "site": "Skin Match",
@@ -20,7 +21,8 @@
     "lookingForProducts": "Finding the best skincare products for you"
   },
   "Links": {
-    "yourdata": "Your Data",
+    "search": "Find Products",
+    "yourData": "Your Data",
     "history": "History",
     "favorite": "Favorite",
     "addProduct": "Add Product"

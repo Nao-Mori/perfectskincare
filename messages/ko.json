@@ -2,7 +2,8 @@
   "Controls": {
     "login": "Google 로그인",
     "addProduct": "제품 추가",
-    "loading": "로드 중"
+    "loading": "로드 중",
+    "close": "닫다"
   },
   "Hero": {
     "site": "Skin Match",
@@ -21,7 +22,8 @@
     "lookingForProducts": "가장 적합한 상품을 찾고 있습니다."
   },
   "Links": {
-    "yourdata": "멤버 정보",
+    "search": "추천 받기",
+    "yourData": "멤버 정보",
     "history": "기록",
     "favorite": "즐겨찾기",
     "addProduct": "제품 추가"
