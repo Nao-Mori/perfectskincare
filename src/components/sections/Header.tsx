@@ -1,16 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import { Link, usePathname } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { Menu, X } from 'lucide-react';
 import LanguageDropdown from '../ui/LanguageDropdown';
 import { internalLinks } from '@/data/internalLinks';
 import LoginButton from '../ui/LoginButton';
 
+function isActive(current: string, target: string, exact = false) {
+  if (exact) return current === target;
+  return current === target || current.startsWith(target + '/');
+}
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const tLinks = useTranslations('Links');
+  const pathname = usePathname();
 
   return (
     <header
@@ -23,15 +29,15 @@ export default function Header() {
         {menuOpen && (
           <div
             className="
-        absolute top-full left-0 w-full md:hidden
-        "
+            absolute top-full left-0 w-full md:hidden
+            "
           >
             <div className="flex flex-col items-start bg-[var(--color-bg-transparent)] px-4 py-4 gap-4">
               {internalLinks.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
-                  className="text-sm text-gray-700 hover:text-black"
+                  className={isActive(pathname, href) ? "text-sm text-pink-400" : "text-sm text-gray-700 hover:text-black"}
                   onClick={() => setMenuOpen(false)}
                 >
                   {tLinks(label)}
@@ -61,7 +67,7 @@ export default function Header() {
               <Link
                 key={href}
                 href={href}
-                className="text-sm text-gray-700 hover:text-black whitespace-nowrap"
+                className={isActive(pathname, href) ? "text-sm text-pink-400 whitespace-nowrap" : "text-sm text-gray-700 hover:text-black whitespace-nowrap"}
               >
                 {tLinks(label)}
               </Link>
