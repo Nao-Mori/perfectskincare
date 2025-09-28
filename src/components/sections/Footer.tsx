@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { internalLinks } from '@/data/internalLinks';
+import { Link } from '@/i18n/navigation';
 
 export default function Footer() {
   const t = useTranslations('Footer');

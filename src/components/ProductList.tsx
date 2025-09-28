@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import type { Product, Review } from '@/types/core';
 import ReviewResult from './ui/ReviewResult';
 import { ProductImage } from './ui/ProductImage';

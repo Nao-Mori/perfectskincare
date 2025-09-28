@@ -3,7 +3,7 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 
 export default function LoginButton() {
   const tControls = useTranslations('Controls');
@@ -23,7 +23,7 @@ export default function LoginButton() {
   const img = session.user?.image;
 
   return (
-    <Link href="/user/favorite" className="ml-3 flex items-center gap-2">
+    <Link href="/user/data" className="ml-3 flex items-center gap-2">
       {img ? (
         <Image
           src={img}

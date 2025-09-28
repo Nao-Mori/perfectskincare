@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Modal from './ui/Modal';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 
 function getErrorMessage(error: unknown) {
   if (typeof error === 'string') return error;
