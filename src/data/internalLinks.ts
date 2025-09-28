@@ -1,5 +1,5 @@
 export const internalLinks: { href: string; label: string }[] = [
-  { href: '/user/data', label: 'yourdata' },
-  { href: '/user/favorite', label: 'favorite' },
+  { href: '/', label: 'search' },
+  { href: '/user/data', label: 'yourData' },
   { href: '/products/add', label: 'addProduct' },
 ];
