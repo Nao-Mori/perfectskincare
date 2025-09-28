@@ -9,6 +9,7 @@ import RecentlyViewed from '@/components/RecentlyViewed';
 import ReviewResult from '@/components/ui/ReviewResult';
 import { ProductImage } from '@/components/ui/ProductImage';
 import { Reviews } from './_components/Reviews';
+import FavoriteButton from './_components/FavoriteButton';
 
 export default function ProductPage() {
   const param = useParams();
@@ -47,7 +48,12 @@ export default function ProductPage() {
               </h4>
             </div>
             <ReviewResult reviews={product?.reviews || []} />
-            <button className="mt-5 font-bold">{t('postReview')}</button>
+            {product && (
+              <div className="flex">
+                <button className="mt-5 font-bold">{t('postReview')}</button>
+                <FavoriteButton productId={product.id} />
+              </div>
+            )}
           </div>
         </div>
         {product?.reviews && <Reviews reviews={product?.reviews} />}
