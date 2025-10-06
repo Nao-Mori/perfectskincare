@@ -14,17 +14,25 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url = env("DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  id        String   @id @default(cuid())
-  name      String?
-  email     String?  @unique
-  image     String?
-  emailVerified  DateTime?
-  accounts  Account[]
-  sessions  Session[]
+  id            String      @id @default(cuid())
+  name          String?
+  email         String?     @unique
+  image         String?
+  emailVerified DateTime?
+  accounts      Account[]
+  sessions      Session[]
+  preference    Preference?
+}
+
+model Preference {
+  userId   String    @id
+  user     User      @relation(fields: [userId], references: [id])
+  skinType String?
+  concerns Concern[] @relation("PreferenceConcerns")
 }
 
 model Account {
@@ -33,13 +41,13 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  access_token      String?  @db.Text
-  refresh_token     String?  @db.Text
-  id_token          String?  @db.Text
+  access_token      String? @db.Text
+  refresh_token     String? @db.Text
+  id_token          String? @db.Text
   expires_at        Int?
   scope             String?
   token_type        String?
-  user              User     @relation(fields: [userId], references: [id])
+  user              User    @relation(fields: [userId], references: [id])
 
   @@unique([provider, providerAccountId])
 }
@@ -53,26 +61,27 @@ model Session {
 }
 
 model Product {
-  id        Int        @id @default(autoincrement())
-  name      String     @unique
-  image     String     @db.Text
-  category  String
-  reviews   Review[]
+  id       Int      @id @default(autoincrement())
+  name     String   @unique
+  image    String   @db.Text
+  category String
+  reviews  Review[]
 }
 
 model Review {
-  id         Int        @id @default(autoincrement())
-  product    Product    @relation(fields: [productId], references: [id])
-  productId  Int
-  concerns   Concern[]
-  comment    String?
-  rate       Int
-  skinType   Int
+  id        Int       @id @default(autoincrement())
+  product   Product   @relation(fields: [productId], references: [id])
+  productId Int
+  concerns  Concern[] @relation("ReviewConcerns")
+  comment   String?
+  rate      Int
+  skinType  Int
 }
 
 model Concern {
-  id         Int      @id @default(autoincrement())
-  value      String
-  review     Review   @relation(fields: [reviewId], references: [id])
-  reviewId   Int
+  id   Int    @id @default(autoincrement())
+  slug String @unique
+
+  reviews     Review[]     @relation("ReviewConcerns")
+  preferences Preference[] @relation("PreferenceConcerns")
 }

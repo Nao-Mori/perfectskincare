@@ -11,7 +11,7 @@ export const productSelect = {
         rate: true,
         skinType: true,
         comment: true,
-        concerns: { select: { value: true } },
+        concerns: { select: { slug: true } },
       },
     },
   },
@@ -42,7 +42,7 @@ export function mapProduct(row: ProductRow): ProductDTO {
       rate: r.rate,
       skinType: r.skinType,
       comment: r.comment ?? '',
-      concerns: r.concerns.map((c) => c.value),
+      concerns: r.concerns.map((c) => c.slug),
     })),
   };
 }

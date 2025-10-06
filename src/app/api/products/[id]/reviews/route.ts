@@ -7,6 +7,16 @@ export async function POST(req: Request) {
   const body = await req.json();
   const { productId, rate, skinType, comment, concerns } = body;
 
+  const slugs: string[] = Array.isArray(concerns)
+    ? [
+        ...new Set(
+          concerns.filter(
+            (s): s is string => typeof s === 'string' && s.trim() !== ''
+          )
+        ),
+      ]
+    : [];
+
   const review = await prisma.review.create({
     data: {
       rate,
@@ -15,17 +25,16 @@ export async function POST(req: Request) {
       product: {
         connect: { id: productId },
       },
+      concerns: slugs.length
+        ? {
+            connectOrCreate: slugs.map((slug) => ({
+              where: { slug },
+              create: { slug },
+            })),
+          }
+        : undefined,
     },
   });
-
-  if (concerns && concerns.length > 0) {
-    await prisma.concern.createMany({
-      data: concerns.map((value: string) => ({
-        value,
-        reviewId: review.id,
-      })),
-    });
-  }
 
   return NextResponse.json({ review }, { status: 201 });
 }
