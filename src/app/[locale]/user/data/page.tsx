@@ -12,7 +12,10 @@ export default function Page() {
 
   if (!session) {
     return (
-      <div className="mt-10">
+      <div className="mt-10 text-center">
+        <h3 className="mt-5 mb-10 text-3xl font-bold">
+          {tControls('pleaseLogin')}
+        </h3>
         <LoginButton />
       </div>
     );

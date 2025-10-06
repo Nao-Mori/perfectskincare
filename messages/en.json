@@ -2,6 +2,7 @@
   "Controls": {
     "login": "Sign in with Google",
     "logout": "Sign out",
+    "pleaseLogin": "Sign in for this feature!",
     "addProduct": "Add Product",
     "loading": "Loading",
     "close": "Close"
