@@ -41,12 +41,10 @@ export function Reviews({ reviews }: { reviews: Review[] }) {
                       <b>{t('skinType')}</b>:{' '}
                       {t(`_skinType.${getSkinTypeName(r.skinType)}`)}
                     </span>
-                    <span>
-                      <b>{t('concerns')}</b>:{' '}
-                      {r.concerns.map((value: string) =>
-                        t(`_concerns.${value}`)
-                      )}
-                    </span>
+                    <b>{t('concerns')}</b>:{' '}
+                    {r.concerns.map((value: string) => (
+                      <span key={value}>{t(`_concerns.${value}`)} </span>
+                    ))}
                   </div>
                 </div>
               </header>

@@ -56,7 +56,9 @@ export default function ProductPage() {
             )}
           </div>
         </div>
-        {product?.reviews && <Reviews reviews={product?.reviews} />}
+        {(product?.reviews?.length ?? 0) > 0 && (
+          <Reviews reviews={product?.reviews} />
+        )}
       </div>
       {product && (
         <RecentlyViewed
