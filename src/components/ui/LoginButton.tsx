@@ -1,6 +1,6 @@
 'use client';
 
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
@@ -8,6 +8,8 @@ import { Link } from '@/i18n/navigation';
 export default function LoginButton() {
   const tControls = useTranslations('Controls');
   const { data: session, status } = useSession();
+
+  if (status === 'loading') return null;
 
   if (!session) {
     return (

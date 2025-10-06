@@ -37,7 +37,11 @@ export default function Header() {
                 <Link
                   key={href}
                   href={href}
-                  className={isActive(pathname, href) ? "text-sm text-pink-400" : "text-sm text-gray-700 hover:text-black"}
+                  className={
+                    isActive(pathname, href)
+                      ? 'text-sm text-pink-400'
+                      : 'text-sm text-gray-700 hover:text-black'
+                  }
                   onClick={() => setMenuOpen(false)}
                 >
                   {tLinks(label)}
@@ -67,7 +71,11 @@ export default function Header() {
               <Link
                 key={href}
                 href={href}
-                className={isActive(pathname, href) ? "text-sm text-pink-400 whitespace-nowrap" : "text-sm text-gray-700 hover:text-black whitespace-nowrap"}
+                className={
+                  isActive(pathname, href)
+                    ? 'text-sm text-pink-400 whitespace-nowrap'
+                    : 'text-sm text-gray-700 hover:text-black whitespace-nowrap'
+                }
               >
                 {tLinks(label)}
               </Link>

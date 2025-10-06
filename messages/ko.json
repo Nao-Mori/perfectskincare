@@ -1,6 +1,7 @@
 {
   "Controls": {
     "login": "Google 로그인",
+    "logout": "로그아웃",
     "addProduct": "제품 추가",
     "loading": "로드 중",
     "close": "닫다"

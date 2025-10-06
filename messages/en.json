@@ -1,6 +1,7 @@
 {
   "Controls": {
     "login": "Sign in with Google",
+    "logout": "Sign out",
     "addProduct": "Add Product",
     "loading": "Loading",
     "close": "Close"
