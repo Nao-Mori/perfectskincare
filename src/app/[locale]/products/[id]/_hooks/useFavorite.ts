@@ -7,7 +7,7 @@ export function useFavorite(productId: string, initial?: boolean) {
 
   const m = useMutation({
     mutationFn: async (next: boolean) => {
-      const res = await fetch(`/api/favorites/${productId}`, {
+      const res = await fetch(`/api/products/${productId}/favorite`, {
         method: next ? 'POST' : 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       });
