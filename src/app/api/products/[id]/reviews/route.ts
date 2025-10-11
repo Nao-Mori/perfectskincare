@@ -16,25 +16,31 @@ export async function POST(req: Request) {
         ),
       ]
     : [];
-
-  const review = await prisma.review.create({
-    data: {
-      rate,
-      skinType,
-      comment,
-      product: {
-        connect: { id: productId },
+  try {
+    const review = await prisma.review.create({
+      data: {
+        rate,
+        skinType,
+        comment,
+        product: {
+          connect: { id: productId },
+        },
+        concerns: slugs.length
+          ? {
+              connectOrCreate: slugs.map((slug) => ({
+                where: { slug },
+                create: { slug },
+              })),
+            }
+          : undefined,
       },
-      concerns: slugs.length
-        ? {
-            connectOrCreate: slugs.map((slug) => ({
-              where: { slug },
-              create: { slug },
-            })),
-          }
-        : undefined,
-    },
-  });
+    });
 
-  return NextResponse.json({ review }, { status: 201 });
+    return NextResponse.json({ review }, { status: 201 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Failed to add favorite' },
+      { status: 500 }
+    );
+  }
 }
