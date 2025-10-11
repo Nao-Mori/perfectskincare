@@ -51,7 +51,10 @@ export default function ProductPage() {
             {product && (
               <div className="flex">
                 <button className="mt-5 font-bold">{t('postReview')}</button>
-                <FavoriteButton productId={product.id} />
+                <FavoriteButton
+                  productId={product.id}
+                  initial={product.isFavorited || undefined}
+                />
               </div>
             )}
           </div>

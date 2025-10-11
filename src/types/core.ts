@@ -13,6 +13,7 @@ export interface Product {
   image: string;
   category: string;
   reviews: Review[];
+  isFavorited?: boolean;
 }
 
 export interface ProductMini {
