@@ -26,6 +26,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   preference    Preference?
+  favorites     Favorite[]
 }
 
 model Preference {
@@ -33,6 +34,17 @@ model Preference {
   user     User      @relation(fields: [userId], references: [id])
   skinType String?
   concerns Concern[] @relation("PreferenceConcerns")
+}
+
+model Favorite {
+  userId    String
+  productId Int
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@id([userId, productId])
+  @@index([productId])
 }
 
 model Account {
@@ -61,11 +73,12 @@ model Session {
 }
 
 model Product {
-  id       Int      @id @default(autoincrement())
-  name     String   @unique
-  image    String   @db.Text
-  category String
-  reviews  Review[]
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  image     String     @db.Text
+  category  String
+  reviews   Review[]
+  favorites Favorite[]
 }
 
 model Review {
