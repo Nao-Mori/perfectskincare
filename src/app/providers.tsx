@@ -13,7 +13,11 @@ type Props = {
 export default function AppProviders({ locale, messages, children }: Props) {
   return (
     <SessionProvider>
-      <NextIntlClientProvider locale={locale} messages={messages}>
+      <NextIntlClientProvider
+        locale={locale}
+        messages={messages}
+        timeZone="Asia/Seoul"
+      >
         <QueryProvider>{children}</QueryProvider>
       </NextIntlClientProvider>
     </SessionProvider>
