@@ -25,6 +25,18 @@ function sortCategoriesSet(input: Set<string>): string[] {
   return known.sort((a, b) => orderIndex.get(a)! - orderIndex.get(b)!);
 }
 
+async function putPreferences(payload: {
+  skinType: number;
+  concerns: string[];
+}) {
+  const res = await fetch('/api/me/preferences', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw new Error('Failed to save');
+}
+
 export default function MainSection() {
   const [skinType, setSkinType] = useState<Set<string>>(() => new Set());
   const [myConcerns, setMyConcerns] = useState<Set<string>>(() => new Set());
@@ -38,8 +50,12 @@ export default function MainSection() {
 
   const getRecommendations = () => {
     setMoving(true);
+    const st = getSkinTypeId([...skinType][0]);
+
+    putPreferences({ skinType: st, concerns: [...myConcerns] });
+
     const params = new URLSearchParams();
-    params.set('skinType', String(getSkinTypeId([...skinType][0])));
+    params.set('skinType', st!.toString());
     params.set('concerns', toParam([...myConcerns]));
     params.set('categories', toParam(sortCategoriesSet(chosenCategories)));
     router.push(`/recommendations?${params.toString()}`);
