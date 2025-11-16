@@ -32,7 +32,7 @@ model User {
 model Preference {
   userId   String    @id
   user     User      @relation(fields: [userId], references: [id])
-  skinType String?
+  skinType Int?
   concerns Concern[] @relation("PreferenceConcerns")
 }
 
