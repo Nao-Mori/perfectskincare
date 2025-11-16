@@ -19,6 +19,6 @@ export const skinTypeReverse: Record<number, SkinTypeName> = Object.fromEntries(
 ) as Record<number, SkinTypeName>;
 
 export const getSkinTypeId = (name: string) =>
-  (skinTypeMapping as Record<string, number | undefined>)[name];
+  (skinTypeMapping as Record<string, number>)[name];
 
 export const getSkinTypeName = (id: number) => skinTypeReverse[id];
