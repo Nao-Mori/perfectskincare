@@ -37,7 +37,7 @@ function GridSkeleton() {
 }
 
 export default function Page() {
-  const t = useTranslations('Links');
+  const t = useTranslations('Me');
   const tControls = useTranslations('Controls');
   const tProduct = useTranslations('Product');
   const { data: session } = useSession();
@@ -99,7 +99,7 @@ export default function Page() {
             )}
           </div>
         ) : (
-          <div className="text-sm text-zinc-500">No preferences saved yet.</div>
+          <div className="text-sm text-zinc-500">{t('noPreferences')}</div>
         )}
       </div>
       <div className="my-5">
@@ -112,7 +112,7 @@ export default function Page() {
           <ProductListMini products={favorites} />
         ) : (
           <div className="text-sm text-zinc-500">
-            You haven't favorited any products yet.
+            {t('noFavorites')}
           </div>
         )}
       </div>

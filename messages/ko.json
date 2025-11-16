@@ -88,5 +88,11 @@
     "instagram": "인스타그램: 곧..? ㅎㅎ",
     "credit": "Made with 💙 by Nao Mori",
     "copyright": "SkinMatch.io – All rights reserved."
+  },
+  "Me": {
+    "yourData": "내 정보",
+    "favorites": "즐겨찾기",
+    "noFavorites": "아직 즐겨찾기가 없어요",
+    "noPreferences": "아직 피부 타입이 설정되지 않았어요. 먼저 피부 타입을 찾아보세요!"
   }
 }

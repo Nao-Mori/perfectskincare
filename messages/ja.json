@@ -88,5 +88,11 @@
     "instagram": "Instagram：もうすぐ…？笑",
     "credit": "Made with 💙 by Nao Mori",
     "copyright": "SkinMatch.io – All rights reserved."
+  },
+  "Me": {
+    "yourData": "あなたのデータ",
+    "favorites": "お気に入り",
+    "noFavorites": "まだお気に入りがありません",
+    "noPreferences": "まだ肌タイプが設定されていません。まずは肌タイプを診断してみてください。"
   }
 }

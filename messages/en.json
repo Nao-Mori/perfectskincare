@@ -26,7 +26,6 @@
     "search": "Find Products",
     "yourData": "Your Data",
     "history": "History",
-    "favorites": "Favorites",
     "addProduct": "Add Product"
   },
   "Product": {
@@ -87,5 +86,11 @@
     "instagram": "Instagram: soon..? lol",
     "credit": "Made with 💙 by Nao Mori",
     "copyright": "SkinMatch.io – All rights reserved."
+  },
+  "Me": {
+    "yourData":"Your Data",
+    "favorites": "Favorites",
+    "noFavorites": "No favorites yet",
+    "noPreferences": "No preferences yet, try find skin type first."
   }
 }
