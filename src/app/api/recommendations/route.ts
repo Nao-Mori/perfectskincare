@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import { Prisma } from '@prisma/client';
 
 export const runtime = 'nodejs';
 
 type Body = {
-  skinType?: string | null;
+  skinType?: number | null;
   concerns?: unknown;
 };
 
@@ -44,8 +45,10 @@ export async function PUT(req: Request) {
 
   const slugs = hasConcerns ? toSlugArray(body.concerns) : null;
 
-  const createData: any = { userId };
-  const updateData: any = {};
+  const createData: Prisma.PreferenceCreateInput = {
+    user: { connect: { id: userId } },
+  };
+  const updateData: Prisma.PreferenceUpdateInput = {};
 
   if (hasSkinType) {
     createData.skinType = body.skinType ?? null;
@@ -61,7 +64,6 @@ export async function PUT(req: Request) {
       createData.concerns = { connectOrCreate: coc };
       updateData.concerns = { set: [], connectOrCreate: coc };
     } else {
-      createData.concerns = { set: [] };
       updateData.concerns = { set: [] };
     }
   }

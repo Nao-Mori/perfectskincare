@@ -40,9 +40,10 @@ export default function Page() {
   const t = useTranslations('Links');
   const tControls = useTranslations('Controls');
   const tProduct = useTranslations('Product');
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
-  const { me, preference, favorites, favoritesTotal, isLoading, isError } = useMe({ take: 50 });
+  const { me, preference, favorites, favoritesTotal, isLoading, isError } =
+    useMe({ take: 50 });
 
   if (!session) {
     return (
@@ -74,20 +75,26 @@ export default function Page() {
           <div className="mb-10">
             {typeof preference.skinType === 'number' && (
               <div className="flex items-center gap-2 flex-wrap mt-3">
-              <h2>{tProduct('skinType')}:</h2>
-              <Badge>{tProduct(`_skinType.${getSkinTypeName(preference.skinType)}`)}</Badge>
+                <h2>{tProduct('skinType')}:</h2>
+                <Badge>
+                  {tProduct(
+                    `_skinType.${getSkinTypeName(preference.skinType)}`
+                  )}
+                </Badge>
               </div>
             )}
             {typeof preference.concerns?.length && (
               <div className="flex items-center gap-2 flex-wrap mt-3">
-              <h2>{tProduct('concerns')}:</h2>
-              {preference.concerns.length > 0 ? (
-                preference.concerns.map((c:string) => <Badge key={c}>{tProduct(`_concerns.${c}`)}</Badge>)
-              ) : (
-                <span className="text-sm text-zinc-500">
-                  No concerns selected
-                </span>
-              )}
+                <h2>{tProduct('concerns')}:</h2>
+                {preference.concerns.length > 0 ? (
+                  preference.concerns.map((c: string) => (
+                    <Badge key={c}>{tProduct(`_concerns.${c}`)}</Badge>
+                  ))
+                ) : (
+                  <span className="text-sm text-zinc-500">
+                    No concerns selected
+                  </span>
+                )}
               </div>
             )}
           </div>
@@ -96,7 +103,9 @@ export default function Page() {
         )}
       </div>
       <div className="my-5">
-        <h3 className="text-xl font-semibold mb-6">{t('favorites')}</h3>
+        <h3 className="text-xl font-semibold mb-6">
+          {t('favorites')} ({favoritesTotal})
+        </h3>
         {isLoading ? (
           <GridSkeleton />
         ) : favorites.length ? (
